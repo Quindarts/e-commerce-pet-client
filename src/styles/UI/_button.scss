@@ -1,0 +1,25 @@
+.btn {
+    padding: 1.2rem 1.6rem;
+    border: none;
+    border-radius: 6px;
+    @include btn-size(0.4rem, 1.5rem, 1.4rem, 3.2rem);
+
+    &--primary {
+        background-color: $blue;
+
+        &:hover {
+            background-color: $blue-hover;
+        }
+    }
+
+    &--ghost {
+        border: 1px solid $blue;
+        background-color: transparent;
+        color: $blue;
+
+        &:hover {
+            border: 1px solid $blue-hover;
+            color: $blue-hover;
+        }
+    }   
+}

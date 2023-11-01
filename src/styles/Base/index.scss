@@ -5,12 +5,11 @@
   -moz-box-sizing: border-box; /* Firefox, other Gecko */
   box-sizing: border-box;
 }
+
 html {
   line-height: 1.6;
   font-size: 62.5%;
-}
-body {
-  font-family: $rubik-font;
+  height: 100%;
 }
 
 a {
@@ -22,16 +21,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $rubik-font;
+  font-family: $font-quicksan;
 }
 
 p {
-  font-family: $rubik-font;
-}
-button {
-  font-family: $rubik-font;
-  border: none;
-  outline: none;
+  font-family: $font-quicksan;
 }
 
 ul {
