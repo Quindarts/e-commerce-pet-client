@@ -1,25 +1,81 @@
 .btn {
-    padding: 1.2rem 1.6rem;
-    border: none;
-    border-radius: 6px;
-    @include btn-size(0.4rem, 1.5rem, 1.4rem, 3.2rem);
+  display: inline-block;
+  border: none;
+  text-align: center;
+  cursor: pointer;
 
-    &--primary {
-        background-color: $blue;
+  &--primary {
+    border-radius: 2.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: solid 0.2rem $blue-main;
+    background-color: $blue-main;
+    @include text(1.3rem, bold, #fff, 1.6rem);
+    @include flex(space-between, center);
+    @include btn-size(1.5rem, 2.5rem);
 
-        &:hover {
-            background-color: $blue-hover;
-        }
+    span {
+        display: inline-block;
+        font-size: 1.6rem;
+        margin-right: 0.5rem;
     }
 
-    &--ghost {
-        border: 1px solid $blue;
-        background-color: transparent;
-        color: $blue;
+    &:hover {
+        background-color: $blue-main-hover;
+      }
+  }
 
-        &:hover {
-            border: 1px solid $blue-hover;
-            color: $blue-hover;
-        }
-    }   
+  &--green {
+    background-color: $green-1;
+    border-color: $green-1;
+
+    &:hover {
+      background-color: #fff;
+      border-color: #fff;
+      color: $green-1-hover-text;
+    }
+  }
+
+  &--white {
+    background-color: #fff;
+    border-color: #fff;
+    color: $blue-main;
+
+    &:hover {
+      background-color: $blue-main;
+      border-color: $blue-main;
+      color: #fff;
+    }
+  }
+
+  &--ghost {
+    border-color: $blue-main;
+    background-color: transparent;
+    color: $blue-main;
+
+    &:hover {
+      background-color: $blue-main;
+      color: #fff;
+    }
+  }
+
+  &--icon {
+    @include flex(center, center);
+    @include text(2rem, null, $blue-main, null);
+    @include box(4rem, 4rem);
+    border-radius: 50%;
+    background-color: #fff;
+    border: solid 0.2rem $blue-main;
+    transition: $btn-hover-transition;
+
+    &:hover {
+        background-color: $blue-main;
+        color: #fff;
+    }
+  }
+
+  &--small {
+    @include btn-size(0.5rem, 1.8rem);
+    font-size: 1.2rem;
+  }
 }

@@ -85,10 +85,8 @@
     left: $left;
   }
   
-  @mixin btn-size($x, $y, $font, $height) {
+  @mixin btn-size($x, $y) {
     padding: $x $y;
-    font-size: $font;
-    height: $height;
   }
   
   // MEDIA QUERY MANAGER

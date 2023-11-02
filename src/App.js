@@ -1,8 +1,9 @@
+import TestComponents from "./pages/TestComponents";
+
 function App() {
   return (
-    <div className="App">
-      <p>1111</p>
-    </div>
+    <TestComponents />
+    
   );
 }
 
