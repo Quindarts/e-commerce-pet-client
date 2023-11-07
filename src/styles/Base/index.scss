@@ -1,23 +1,27 @@
 * {
-  padding: 0;
-  margin: 0;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box; /* Firefox, other Gecko */
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box; /* Firefox, other Gecko */
+    box-sizing: border-box;
 }
 
 html {
-  line-height: 1.6;
-  font-size: 62.5%;
-  height: 100%;
+    line-height: 1.6;
+    font-size: 62.5%;
+    height: 100%;
 }
 
 body {
-  font-family: $font-outfit;
+    font-family: $font-outfit;
+    height: 100%;
+}
+#root {
+    height: 100%;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 h1,
 h2,
@@ -25,15 +29,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $font-quicksan;
+    font-family: $font-quicksan;
 }
 
 p {
-  font-family: $font-quicksan;
+    font-family: $font-quicksan;
 }
 
 ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }

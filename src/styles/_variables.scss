@@ -1,23 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 //spacing:
 $spacing: 4px;
 
 //font:
-$roboto-font: 'Roboto', sans-serif;
-$font-quicksan: 'Quicksand', sans-serif;
-$font-outfit: 'Outfit', sans-serif;
+$roboto-font: "Roboto", sans-serif;
+$font-quicksan: "Quicksand", sans-serif;
+$font-outfit: "Outfit", sans-serif;
 
 //colors:
-$blue-main: #0052B1;
-$blue-main-hover: #00234B;
+$blue-main: #0052b1;
+$blue-main-hover: #00234b;
 $white: #ffffff;
-$green-1: #73BE2F;
-$green-1-hover-text: #F63E04;
-$green-2: #8DB352;
-$color-icon: #5B85C3;
+$green-1: #73be2f;
+$green-1-hover-text: #f63e04;
+$green-2: #8db352;
+$dark-green: #15542e;
+$color-icon: #5b85c3;
+$black: #091727;
+$brown: #401a0e;
+$purple: #531492;
 
 //hover transition
-$btn-hover-transition: opacity 0.3s linear, visibility 0.3s linear, color 0.15s linear, border-color 0.15s linear, background-color 0.15s linear, box-shadow 0.15s linear;
-
+$btn-hover-transition: opacity 0.3s linear, visibility 0.3s linear,
+    color 0.15s linear, border-color 0.15s linear, background-color 0.15s linear,
+    box-shadow 0.15s linear;
