@@ -1,7 +1,6 @@
 import Button from "../../components/Button";
 import { Icon } from "@iconify/react";
 import TextField from "../../components/textField";
-import Footer from "../../components/Shared/Footer";
 
 const TestComponents = () => {
     return (
