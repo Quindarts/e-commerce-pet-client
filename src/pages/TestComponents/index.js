@@ -1,12 +1,12 @@
 import Button from "../../components/Button";
 import { Icon } from "@iconify/react";
-import TextField from "../../components/textField";
+import TextField from "../../components/TextField";
 
 const TestComponents = () => {
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
-                <Button htmlType="link" type="primary" url="/">
+                {/* <Button htmlType="link" type="primary" url="/">
                     Click me!
                 </Button>
                 <Button htmlType="link" type="primary" color="green" url="/">
@@ -42,7 +42,7 @@ const TestComponents = () => {
                     >
                         Log in
                     </Button>
-                </div>
+                </div> */}
             </div>
             {/* TextField Search */}
             <div className="text__search">
