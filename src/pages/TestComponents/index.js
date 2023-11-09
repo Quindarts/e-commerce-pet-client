@@ -51,7 +51,6 @@ const TestComponents = () => {
                     name="search"
                     placeholder="Start typing..."
                     value=""
-                    onChange=""
                     disabled={false}
                     color="green"
                 />
@@ -60,7 +59,6 @@ const TestComponents = () => {
                     name=""
                     placeholder=""
                     value=""
-                    onChange=""
                     disabled={false}
                     color="green"
                 />
@@ -69,7 +67,6 @@ const TestComponents = () => {
                     name=""
                     placeholder=""
                     value=""
-                    onChange=""
                     disabled={false}
                     color="green"
                 />

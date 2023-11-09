@@ -6,7 +6,6 @@ const TextField = (props) => {
         name,
         placeholder,
         value,
-        onChange,
         disabled,
         color,
         size,
@@ -38,8 +37,6 @@ const TextField = (props) => {
                 className={inputClass}
                 name={name}
                 placeholder={placeholder}
-                value={value}
-                onChange={(e) => console.log(e.target.value)}
                 disabled={disabled}
                 {...restProps}
             />
