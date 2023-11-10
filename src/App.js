@@ -1,10 +1,12 @@
-import TestComponents from "./pages/TestComponents";
+import Running from "./components/Marquee/Running";
+
 
 function App() {
-  return (
-    <TestComponents />
-    
-  );
+    return (
+        <div>
+            <Running></Running>
+        </div>
+    );
 }
 
 export default App;
