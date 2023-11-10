@@ -10,18 +10,20 @@
     text-transform: uppercase;
     border: solid 0.2rem $blue-main;
     background-color: $blue-main;
+    align-items: center;
     @include text(1.3rem, bold, #fff, 1.6rem);
-    @include flex(space-between, center);
     @include btn-size(1.5rem, 2.5rem);
+    display: inline-flex;
 
     span {
-        display: inline-block;
+        display: inline-flex;
         font-size: 1.6rem;
         margin-right: 0.5rem;
     }
 
     &:hover {
         background-color: $blue-main-hover;
+        border-color: $blue-main-hover;
       }
   }
 
