@@ -1,39 +1,51 @@
 .w-100 {
-    width: 100%;
+  width: 100%;
 }
 .text-center {
-    display: inline-block;
-    text-align: center;
+  display: inline-block;
+  text-align: center;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-1 {
-    flex: 1;
+  flex: 1;
 }
 
 .justify-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .justify-center {
-    justify-content: center;
+  justify-content: center;
 }
 
 .items-center {
-    align-items: center;
+  align-items: center;
 }
 
 .gap-5 {
-    gap: 5px;
+  gap: 5px;
 }
 
 .p-20 {
-    padding: 20px;
+  padding: 20px;
 }
 
 .bg-gray {
-    background: #ddd;
+  background: #ddd;
+}
+
+.container {
+  padding: 20px 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  @include box(231px, 400px);
+  border: 1px solid #ddd;
+  padding: 15px 30px;
 }

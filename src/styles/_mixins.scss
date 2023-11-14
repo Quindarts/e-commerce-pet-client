@@ -25,6 +25,12 @@
     animation: #{$str};
 }
 
+@mixin appearance($str){
+    appearance: $str; 
+    -webkit-appearance: $str;
+    -moz-appearance: $str;
+}
+
 //Base
 @mixin flex(
     $justify-content: normal,

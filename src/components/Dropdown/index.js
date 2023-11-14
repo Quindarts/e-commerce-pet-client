@@ -1,15 +1,22 @@
+import { Icon } from "@iconify/react";
+
 const Dropdown = (props) => {
-    const { label, value, options, onChange } = props;
+  const { options, onChange, ...restProps } = props;
+
+  // Kiểm tra default value
+  const defaultOption = options.find(item => item?.defaultValue === true)
+  const defaultValue = defaultOption ? defaultOption.value : "";
+
   return (
     <>
-      <label>
-        {label}
-        <select value={value} onChange={onChange}>
+      <div className="selector">
+        <select defaultValue={defaultValue} onChange={onChange} {...restProps}>
           {options.map((option) => (
-            <option value={option.value}>{option.label}</option>
+            <option key={option.value} value={option.value}>{option.label}</option>
           ))}
         </select>
-      </label>
+        <Icon icon="fa6-solid:angle-down" />
+      </div>
     </>
   );
 };

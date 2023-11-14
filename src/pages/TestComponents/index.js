@@ -5,40 +5,24 @@ import Dropdown from "../../components/Dropdown";
 import { useState } from "react";
 
 const TestComponents = () => {
-  const [value, setValue] = useState("fruit");
+  const [value, setValue] = useState("big");
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
+  const handleChange = (e) => {
+    e.target.value ? setValue(e.target.value) : setValue("big-small");
   };
 
   const options = [
-    { label: "Fruit", value: "fruit" },
-    { label: "Vegetable", value: "vegetable" },
-    { label: "Meat", value: "meat" },
+    { label: "Choose an option", value: "" },
+    { label: "Big", value: "big", defaultValue: true },
+    { label: "Small", value: "small"},
   ];
 
   return (
     <>
-      
-      <Dropdown
-        label="What do we eat?"
-        options={options}
-        value={value}
-        onChange={handleChange}
-      />
-      <div className="containe">
-        <div className="">
-          <form action="cc">
-          <Button type="primary">
-          filter
-        </Button>
-          </form>
-          <Button htmlType="link" type="primary" href="https://google.com">
-          <span>
-          <Icon icon="pepicons-pop:cart" />
-          </span>
-          Add to cart
-        </Button>
+      <div className="container">
+        <div className="card">
+          <h1>{value}</h1>
+          <Dropdown options={options} onChange={handleChange}/>
         </div>
       </div>
     </>

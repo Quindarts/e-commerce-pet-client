@@ -1,0 +1,27 @@
+.selector {
+    position: relative;
+  
+    select {
+      @include text(1.3rem, 500, $blue-main, 1.6rem);
+      @include appearance(none);
+      width: 100%;
+      border-color: #b3cbe8;
+      background-color: #f0f9fc;
+      outline: none;
+      padding: 8px 28px 8px 9px;
+      letter-spacing: 0.01em;
+      border-radius: 3px;
+      font-family: inherit;
+  
+      &:focus {
+        border-color: $blue-main;
+      }
+    }
+  
+    svg {
+      @include position(absolute, 50%, 10px, _, _);
+      @include text(1.3rem, _, $blue-main, _);
+      transform: translateY(-50%);
+      pointer-events: none; 
+    }
+  }
