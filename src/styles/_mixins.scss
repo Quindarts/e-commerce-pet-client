@@ -106,7 +106,11 @@
         outline: 1px solid $outline-color;
     }
 }
-
+@mixin color-checked($content-color) {
+    &:checked::after {
+        content: $content-color;
+    }
+}
 // MEDIA QUERY MANAGER
 /* 
   600px and down for mobile devices
@@ -125,8 +129,7 @@
   large-desktop
   */
 
- 
-  @mixin respond($breakpoint) {
+@mixin respond($breakpoint) {
     @if $breakpoint == large-mobile {
         @media only screen and (min-width: 640px) {
             @content;

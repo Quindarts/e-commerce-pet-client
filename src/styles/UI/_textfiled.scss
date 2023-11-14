@@ -56,6 +56,16 @@
         display: inline-flex !important;
         align-items: center;
         justify-content: center;
+
+        // &:checked + label::before {
+        //     content: "\2713";
+        //     font-size: 14px;
+        //     color: #00b894; /* Màu của dấu tích khi checkbox được chọn */
+        //     position: absolute;
+        //     top: 50%;
+        //     left: 50%;
+        //     transform: translate(-50%, -50%);
+        // }
     }
 
     &--green {

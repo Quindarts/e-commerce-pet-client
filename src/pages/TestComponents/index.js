@@ -1,8 +1,16 @@
 import Button from "../../components/Button";
 import { Icon } from "@iconify/react";
-import TextField from "../../components/TextField";
+import TextField from "../../components/textField";
+import Checkbox from "../../components/CheckBox";
+import { useState } from "react";
 
 const TestComponents = () => {
+    const [isChecked, setChecked] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setChecked(!isChecked);
+    };
+
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -64,7 +72,7 @@ const TestComponents = () => {
                     disabled={false}
                     color="green"
                 />
-                <TextField
+                {/* <TextField
                     type="checkbox"
                     name=""
                     placeholder=""
@@ -72,6 +80,15 @@ const TestComponents = () => {
                     onChange=""
                     disabled={false}
                     color="green"
+                    checked={false}
+                /> */}
+
+                <Checkbox
+                    label="Remember Me"
+                    checked={isChecked}
+                    onChange={handleCheckboxChange}
+                    color="green"
+                    size="c-form"
                 />
             </div>
         </>
