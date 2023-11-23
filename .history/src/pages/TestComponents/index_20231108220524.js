@@ -1,10 +1,10 @@
-import Button from '../../components/Button'
-import { Icon } from '@iconify/react'
-import TextField from '../../components/TextField'
-import Footer from '../../components/Shared/Footer'
+import Button from "../../components/Button";
+import { Icon } from "@iconify/react";
+import TextField from "../../components/textField";
+
 const TestComponents = () => {
     return (
-        <div>
+        <>
             <div className="flex items-center gap-5 bg-gray p-20">
                 <Button htmlType="link" type="primary" url="/">
                     Click me!
@@ -44,6 +44,7 @@ const TestComponents = () => {
                     </Button>
                 </div>
             </div>
+            {/* TextField Search */}
             <div className="text__search">
                 <TextField
                     type="search"
@@ -73,8 +74,8 @@ const TestComponents = () => {
                     color="green"
                 />
             </div>
-            <Footer />
-        </div>
-    )
-}
-export default TestComponents
+            <Footer></Footer>
+        </>
+    );
+};
+export default TestComponents;

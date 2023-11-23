@@ -1,10 +1,7 @@
-import TestComponents from "./pages/TestComponents";
+import TestComponents from './pages/TestComponents'
 
 function App() {
-  return (
-    <TestComponents />
-    
-  );
+    return <TestComponents />
 }
 
-export default App;
+export default App

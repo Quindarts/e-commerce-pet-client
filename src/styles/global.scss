@@ -1,11 +1,11 @@
-@import "./variables";
-@import "./mixins";
+@import './variables';
+@import './mixins';
 
 //Base
-@import "./Base/index.scss";
+@import './Base/index.scss';
 
 //UI Components
-@import "./UI/index.scss";
-@import "./Shared/index.scss";
+@import './UI/index.scss';
+@import './Shared/index.scss';
 
-@import "./Utils/index.scss";
+@import './Utils/index.scss';

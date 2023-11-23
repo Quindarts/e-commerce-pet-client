@@ -25,12 +25,6 @@
     animation: #{$str};
 }
 
-@mixin appearance($str) {
-    appearance: $str;
-    -webkit-appearance: $str;
-    -moz-appearance: $str;
-}
-
 //Base
 @mixin flex(
     $justify-content: normal,
@@ -112,11 +106,7 @@
         outline: 1px solid $outline-color;
     }
 }
-@mixin color-checked($content-color) {
-    &:checked::after {
-        content: $content-color;
-    }
-}
+
 // MEDIA QUERY MANAGER
 /* 
   600px and down for mobile devices
@@ -134,7 +124,6 @@
   desktop, 
   large-desktop
   */
-
 @mixin respond($breakpoint) {
     @if $breakpoint == large-mobile {
         @media only screen and (max-width: 640px) {
