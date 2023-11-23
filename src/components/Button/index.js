@@ -2,32 +2,39 @@ const Button = (props) => {
   const {
     children,
     type,
-    ghost = "",
-    color = "",
+    ghost,
+    color,
     htmlType,
-    url,
-    className = "",
-    size = "",
+    className,
+    size,
+    ...restProps
   } = props;
-  console.log(size);
+
+  // Kiểm tra type hợp lệ
+  const typeValue =
+    type === "primary" || type === "icon" ? ` btn--${type}` : "";
+
+  // Kiểm tra size hợp lệ
+  const sizeValue = size === "small" ? ` btn--${size}` : "";
+
+  // Danh sách màu hợp lệ
+  const validColors = ["green", "white"];
+
+  // Kiểm tra màu hợp lệ
+  const colorValue = [...validColors].includes(color) ? ` btn--${color}` : "";
+
+  const classValue = `btn${typeValue}${
+    ghost ? " btn--ghost" : ""
+  }${colorValue}${sizeValue}${className ? ` ${className}` : ""}`;
+
   return (
     <>
       {htmlType === "link" ? (
-        <a
-          href={url}
-          className={`btn btn--${type}${ghost && " btn--ghost"}${
-            color && ` btn--${color}`
-          }${className && ` ${className}`}${size && ` btn-${size}`}`}
-        >
+        <a className={classValue} {...restProps}>
           {children}
         </a>
       ) : (
-        <button
-          type="submit"
-          className={`btn btn--${type}${ghost && " btn--ghost"}${
-            color && `btn--${color}`
-          }${className && ` ${className}`}${size && ` btn--${size}`}`}
-        >
+        <button className={classValue} {...restProps}>
           {children}
         </button>
       )}
