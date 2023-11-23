@@ -13,19 +13,13 @@ const TextField = (props) => {
         ...restProps
     } = props;
 
-    // Danh sách màu hợp lệ
     const validColors = ["green", "blue", "black", "brown", "purple"];
-
-    // Kiểm tra màu hợp lệ
     const colorClass = validColors.includes(color) ? ` input--${color}` : "";
-
-    // Kiểm tra type hợp lệ
     const typeClass =
         type === "search" || type === "form" || type === "checkbox"
             ? ` input--${type}`
             : "";
 
-    // Tạo class dựa trên các điều kiện
     const inputClass = `input${typeClass}${colorClass}${
         className ? ` ${className}` : ""
     }${size ? ` input--${size}` : ""}`;

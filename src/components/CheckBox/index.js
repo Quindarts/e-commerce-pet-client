@@ -16,17 +16,13 @@ const Checkbox = (props) => {
         ...restProps
     } = props;
 
-    // Danh sách màu hợp lệ
     const validColors = ["green", "blue", "black", "brown", "purple"];
-
-    // Kiểm tra màu hợp lệ
     const colorClass = validColors.includes(color) ? ` checkbox--${color}` : "";
-
     const checkboxClass = `${"checkbox"}${colorClass}${
         className ? ` ${className}` : ""
     }${size ? ` checkbox--${size}` : ""}`;
 
-    const labelClass = `checkbox--${color}`; // Set label class based on checkbox color
+    const labelClass = `checkbox--${color}`; 
 
     return (
         <>

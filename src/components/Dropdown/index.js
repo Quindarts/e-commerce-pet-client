@@ -2,8 +2,6 @@ import { Icon } from "@iconify/react";
 
 const Dropdown = (props) => {
   const { options, onChange, ...restProps } = props;
-
-  // Kiểm tra default value
   const defaultOption = options.find(item => item?.defaultValue === true)
   const defaultValue = defaultOption ? defaultOption.value : "";
 
@@ -19,5 +17,6 @@ const Dropdown = (props) => {
       </div>
     </>
   );
+  
 };
 export default Dropdown;
