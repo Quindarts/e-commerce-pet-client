@@ -39,7 +39,7 @@ const TextField = (props) => {
                 name={name}
                 placeholder={placeholder}
                 value={value}
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) => onChange(e.target.value)} // Use the provided onChange prop
                 disabled={disabled}
                 {...restProps}
             />

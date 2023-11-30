@@ -6,11 +6,14 @@ import { useState } from "react";
 
 const TestComponents = () => {
     const [isChecked, setChecked] = useState(false);
-
+    const [value, setValue] = useState("");
     const handleCheckboxChange = () => {
         setChecked(!isChecked);
     };
 
+    // ...
+
+    console.log(value);
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -58,8 +61,8 @@ const TestComponents = () => {
                     type="search"
                     name="search"
                     placeholder="Start typing..."
-                    value=""
-                    onChange=""
+                    value={value}
+                    onChange={(newValue) => setValue(newValue)}
                     disabled={false}
                     color="green"
                 />
@@ -67,11 +70,12 @@ const TestComponents = () => {
                     type="form"
                     name=""
                     placeholder=""
-                    value=""
-                    onChange=""
+                    value={value}
+                    onChange={(newValue) => setValue(newValue)}
                     disabled={false}
                     color="green"
                 />
+
                 {/* <TextField
                     type="checkbox"
                     name=""
