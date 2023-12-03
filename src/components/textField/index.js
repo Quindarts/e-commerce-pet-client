@@ -6,6 +6,7 @@ const TextField = (props) => {
         name,
         placeholder,
         value,
+        onChange,
         disabled,
         color,
         size,
@@ -13,13 +14,19 @@ const TextField = (props) => {
         ...restProps
     } = props
 
+    // Danh sách màu hợp lệ
     const validColors = ['green', 'blue', 'black', 'brown', 'purple']
+
+    // Kiểm tra màu hợp lệ
     const colorClass = validColors.includes(color) ? ` input--${color}` : ''
+
+    // Kiểm tra type hợp lệ
     const typeClass =
         type === 'search' || type === 'form' || type === 'checkbox'
             ? ` input--${type}`
             : ''
 
+    // Tạo class dựa trên các điều kiện
     const inputClass = `input${typeClass}${colorClass}${
         className ? ` ${className}` : ''
     }${size ? ` input--${size}` : ''}`
@@ -31,10 +38,7 @@ const TextField = (props) => {
                 className={inputClass}
                 name={name}
                 placeholder={placeholder}
-                value={value}
-                disabled={disabled}
                 {...restProps}
-                
             />
         </div>
     )
