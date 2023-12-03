@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const TextField = (props) => {
     const {
@@ -11,18 +11,18 @@ const TextField = (props) => {
         size,
         className,
         ...restProps
-    } = props;
+    } = props
 
-    const validColors = ["green", "blue", "black", "brown", "purple"];
-    const colorClass = validColors.includes(color) ? ` input--${color}` : "";
+    const validColors = ['green', 'blue', 'black', 'brown', 'purple']
+    const colorClass = validColors.includes(color) ? ` input--${color}` : ''
     const typeClass =
-        type === "search" || type === "form" || type === "checkbox"
+        type === 'search' || type === 'form' || type === 'checkbox'
             ? ` input--${type}`
-            : "";
+            : ''
 
     const inputClass = `input${typeClass}${colorClass}${
-        className ? ` ${className}` : ""
-    }${size ? ` input--${size}` : ""}`;
+        className ? ` ${className}` : ''
+    }${size ? ` input--${size}` : ''}`
 
     return (
         <div>
@@ -31,11 +31,13 @@ const TextField = (props) => {
                 className={inputClass}
                 name={name}
                 placeholder={placeholder}
+                value={value}
                 disabled={disabled}
                 {...restProps}
+                
             />
         </div>
-    );
-};
+    )
+}
 
-export default TextField;
+export default TextField
