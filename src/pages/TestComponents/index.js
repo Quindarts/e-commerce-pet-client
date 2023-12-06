@@ -1,12 +1,28 @@
-import TextField from '../../components/TextField'
+import TextField from '../../components/textField'
 import Checkbox from '../../components/CheckBox'
+import Button from '../../components/Button'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 const TestComponents = () => {
     const [isChecked, setChecked] = useState(false)
 
     const handleCheckboxChange = () => {
         setChecked(!isChecked)
+    }
+
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+        reset,
+    } = useForm()
+
+    const onSubmit = (value) => {
+        console.log(value)
+        // Xử lý dữ liệu khi form được submit
+        // Sau khi xử lý, reset giá trị của form
+        reset()
     }
 
     return (
@@ -50,23 +66,42 @@ const TestComponents = () => {
                     </Button>
                 </div> */}
                 {/* TextField Search */}
-                <div className="text__search">
-                    <TextField
+                <form>
+                    {/* <TextField
                         type="search"
                         name="search"
                         placeholder="Start typing..."
                         disabled={false}
                         color="blue"
-                    />
+                    /> */}
                     <TextField
+                        label="Your phone number *"
                         type="form"
-                        name=""
                         placeholder=""
                         disabled={false}
                         color="blue"
+                        id="phone"
+                        register={register}
+                        validate={{
+                            required: 'This field can not empty.',
+                            pattern: {
+                                value: /(0[3|5|7|8|9])+([0-9]{8})\b/,
+                                message: 'Phone number is valid',
+                            },
+                        }}
+                        errors={errors}
                     />
-
-                    {/* <TextField
+                    <Button
+                        onClick={handleSubmit(onSubmit)}
+                        htmlType="submit"
+                        type="primary"
+                        size="small"
+                        ghost
+                    >
+                        submit
+                    </Button>
+                    {/* 
+                    <TextField
                     type="checkbox"
                     name=""
                     placeholder=""
@@ -74,11 +109,11 @@ const TestComponents = () => {
                     onChange=""
                     disabled={false}
                     color="green"
-                    checked={false}
+                    checked={true}
                 /> */}
 
-                    <Checkbox label="Remember Me" color="green" size="c-form" />
-                </div>
+                    {/* <Checkbox label="Remember Me" color="green" size="c-form" /> */}
+                </form>
             </div>
         </>
     )
