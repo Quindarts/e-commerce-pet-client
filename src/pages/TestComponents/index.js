@@ -1,5 +1,6 @@
 import TextField from '../../components/TextField'
 import Checkbox from '../../components/CheckBox'
+import ProductCard from '../../components/ProductCard'
 import { useState } from 'react'
 
 const TestComponents = () => {
@@ -7,6 +8,15 @@ const TestComponents = () => {
 
     const handleCheckboxChange = () => {
         setChecked(!isChecked)
+    }
+
+    const data = {
+        title: "American Journey Landmark Chicken",
+        desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
+        category: ["Whole", "Hearted"],
+        weight: [8, 16, 32],
+        stock: "0",
+        price: "20",
     }
 
     return (
@@ -79,6 +89,9 @@ const TestComponents = () => {
 
                     <Checkbox label="Remember Me" color="green" size="c-form" />
                 </div>
+            </div>
+            <div>
+                <ProductCard data={data}/>
             </div>
         </>
     )

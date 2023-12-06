@@ -1,0 +1,101 @@
+.product-card {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #DCEAF6;
+    @include flex(_, _, column, _);
+    @include box(23.1rem, 51.5rem);
+
+    &__image {
+        display: inline-flex;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__center {
+        padding: 0px 30px 0px 30px;
+        flex: 1;
+        @include flex(space-between, _, column, _);
+        @include px(30px);
+    }
+
+    &__info {
+        flex: 1;
+    }
+
+    &__title {
+        display: block;
+        font-family: $font-quicksan;
+        margin-bottom: 10px;
+        @include text(1.7rem, 700, $blue-main, 1.3);
+        
+        &:hover {
+            color: #F63E04;
+        }
+    }
+
+    &__desc {
+        @include text(1.3rem, 400, #7F8D9D, 1.46);
+    }
+
+    &__tag {
+        display: inline-block;
+        letter-spacing: 0.02em;
+        @include text(1.3rem, 400, $blue-main, 1.6rem);
+
+        &+.product-card__tag{
+            padding-left: 0.5rem;
+
+            &::before {
+                content: ".";  
+                font-weight: 550;
+                color: #73BE2F;
+                font-size: 20px;
+                padding-right: 0.5rem;
+            }
+        }
+    }
+
+    &__bottom {
+        padding: 15px 30px 30px 30px;
+    }
+    &__options {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    &__weight {
+        display: block;
+        letter-spacing: .02em;
+        border-radius: 50%;
+        text-align: center;
+        letter-spacing: 0.01em;
+        border-radius: 13px;
+        padding: 5px 9px;
+        margin-bottom: 13px;
+        cursor: pointer;
+        background-color: #F0F9FC;
+        border: solid 1px #F0F9FC;
+        transition: opacity 0.3s linear,visibility 0.3s linear,color 0.15s linear,border-color 0.15s linear,background-color 0.15s linear,box-shadow 0.15s linear;
+        @include text(1.3rem, 500, #1360B7, 1.6rem);
+    
+        &:hover {
+            border-color: #1360B7;
+        }
+    }
+
+    &__wrap {
+        @include flex(space-between, center);
+    }
+
+    &__stock {
+        display: none;
+    }
+
+    &__price {
+        @include text(1.8rem, 650, #F63E04, 1.5);
+        letter-spacing: .02em;
+    }
+}
