@@ -5,13 +5,13 @@
 
 .textfield {
     width: 100%;
+
     .label {
         width: 100%;
         display: block;
         padding-bottom: 10px;
         @include text(1.3rem, 400, color, 1.8rem);
         letter-spacing: 0.02em;
-      
     }
     .error {
         width: 100%;
@@ -31,7 +31,7 @@
         font-family: $font-quicksan;
         letter-spacing: 0.01em;
         border-radius: 3px;
-    
+
         &--form {
             @include text(1.3rem, 700, color, 1.6rem);
             padding: 9px 12px;
@@ -39,7 +39,7 @@
             min-width: 0;
             border-radius: 3px;
         }
-    
+
         &--search {
             @include text(1.8rem, 400, color, 0);
             padding: 0.5rem;
@@ -50,7 +50,7 @@
                 outline: none !important;
             }
         }
-    
+
         &--checkbox {
             position: relative !important;
             z-index: 1;
@@ -68,19 +68,18 @@
             // display: inline-flex !important;
             // align-items: center;
             // justify-content: center;
-            @include flex(center, center, row, 0)
-    
-            // &:checked + label::before {
-            //     content: "\2713";
-            //     font-size: 14px;
-            //     color: #00b894; /* Màu của dấu tích khi checkbox được chọn */
-            //     position: absolute;
-            //     top: 50%;
-            //     left: 50%;
-            //     transform: translate(-50%, -50%);
-            // }
+            @include flex(center, center, row, 0) // &:checked + label::before {
+                //     content: "\2713";
+                //     font-size: 14px;
+                //     color: #00b894; /* Màu của dấu tích khi checkbox được chọn */
+                //     position: absolute;
+                //     top: 50%;
+                //     left: 50%;
+                //     transform: translate(-50%, -50%);
+                // }
+;
         }
-    
+
         &--green {
             @include color-scheme(
                 $dark-green,
@@ -90,7 +89,7 @@
                 $dark-green
             );
         }
-    
+
         &--blue {
             @include color-scheme(
                 $blue-main,
@@ -100,7 +99,7 @@
                 $blue-main
             );
         }
-    
+
         &--black {
             @include color-scheme(
                 $black,
@@ -110,7 +109,7 @@
                 $black
             );
         }
-    
+
         &--brown {
             @include color-scheme(
                 $brown,
@@ -120,7 +119,7 @@
                 $brown
             );
         }
-    
+
         &--purple {
             @include color-scheme(
                 $purple,
@@ -131,5 +130,4 @@
             );
         }
     }
-    
 }

@@ -75,6 +75,7 @@ const TestComponents = () => {
                         color="blue"
                     /> */}
                     <TextField
+                        className="mt-2"
                         label="Your phone number *"
                         type="form"
                         placeholder=""
@@ -97,6 +98,7 @@ const TestComponents = () => {
                         type="primary"
                         size="small"
                         ghost
+                        className="cc"
                     >
                         submit
                     </Button>

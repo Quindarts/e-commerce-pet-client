@@ -16,6 +16,7 @@ const TextField = (props) => {
         id,
         register,
         validate,
+
         ...restProps
     } = props
 
@@ -40,7 +41,7 @@ const TextField = (props) => {
 
     const errorClass = `error`
     return (
-        <div className="textfield">
+        <div className={`textfield ${className}`}>
             {label && (
                 <label className={labelClass} htmlFor={id}>
                     {label}
