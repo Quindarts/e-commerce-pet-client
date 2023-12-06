@@ -11,6 +11,12 @@ const TextField = (props) => {
         color,
         size,
         className,
+        label,
+        errors,
+        id,
+        register,
+        validate,
+
         ...restProps
     } = props
 
@@ -31,15 +37,28 @@ const TextField = (props) => {
         className ? ` ${className}` : ''
     }${size ? ` input--${size}` : ''}`
 
+    const labelClass = `label${colorClass}`
+
+    const errorClass = `error`
     return (
-        <div>
+        <div className={`textfield ${className}`}>
+            {label && (
+                <label className={labelClass} htmlFor={id}>
+                    {label}
+                </label>
+            )}
             <input
                 type={type}
                 className={inputClass}
                 name={name}
+                id={id}
                 placeholder={placeholder}
+                {...register(id, validate)}
                 {...restProps}
             />
+            {errors && errors[id] && (
+                <small className={errorClass}>{errors[id]?.message}</small>
+            )}
         </div>
     )
 }
