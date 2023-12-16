@@ -4,8 +4,18 @@ import Button from '../../components/Button'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+const data = {
+    title: "American Journey Landmark Chicken",
+    desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
+    category: ["Whole", "Hearted"],
+    weight: [8, 16, 32],
+    stock: "0",
+    price: "20",
+}
+
 const TestComponents = () => {
-    const [isChecked, setChecked] = useState(false)
+    const [isChecked, setChecked] = useState(false);
+    const [dataCard, setDataCard] = useState(data);
 
     const handleCheckboxChange = () => {
         setChecked(!isChecked)
@@ -116,6 +126,9 @@ const TestComponents = () => {
 
                     {/* <Checkbox label="Remember Me" color="green" size="c-form" /> */}
                 </form>
+            </div>
+            <div>
+                <ProductCard data={data}/>
             </div>
         </>
     )
