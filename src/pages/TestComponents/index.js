@@ -10,6 +10,7 @@ const data = {
     desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
     category: ["Whole", "Hearted"],
     weight: [8, 16, 32],
+    selectedWeight: 0,
     stock: "0",
     price: "20",
 }
@@ -17,6 +18,13 @@ const data = {
 const TestComponents = () => {
     const [isChecked, setChecked] = useState(false);
     const [dataCard, setDataCard] = useState(data);
+
+    const handleClick = (weight) => {
+        const weightList = data.weight;
+        data.selectedWeight = weightList.findIndex((item) => item === weight);
+        setDataCard(data);
+        reset();
+    }
 
     const handleCheckboxChange = () => {
         setChecked(!isChecked)
@@ -129,7 +137,7 @@ const TestComponents = () => {
                 </form>
             </div>
             <div>
-                <ProductCard data={data}/>
+                <ProductCard data={dataCard} onClick={handleClick}/>
             </div>
         </>
     )
