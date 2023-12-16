@@ -3,9 +3,9 @@ import Button from '../../components/Button';
 import demo from "../../assets/img/ricky-118-460x373.jpg";
 const CardProduct = (props) => {
 
-  const { data } = props;
+  const { data, onClick, ...last } = props;
 
-  const {title, desc, category, weight, price, ...last} = data;
+  const { title, desc, category, weight, price, selectedWeight } = data;
 
   return (
     <div className="product-card">
@@ -42,12 +42,12 @@ const CardProduct = (props) => {
       <div className="product-card__bottom">
         <div className="product-card__options">
           {weight.map((item, i) => (
-            <span className={i === 0 ? `product-card__weight product-card__weight--active` : `product-card__weight`}>{item} lbs</span>
+            <span className={i === selectedWeight ? `product-card__weight product-card__weight--active` : `product-card__weight`} onClick={() => onClick(item)}>{item} lbs</span>
           ))}
         </div>
         <div className="product-card__stock">OUT OF STOCK</div>
         <div className="product-card__wrap">
-          <div className="product-card__price">${price}.00</div>
+          <div className="product-card__price" >${price}.00</div>
           <div className="product-card__icon">
           <Button htmlType="submit" type="icon">
               <Icon icon="pepicons-pop:cart" />
