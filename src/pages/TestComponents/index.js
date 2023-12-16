@@ -3,21 +3,24 @@ import Checkbox from '../../components/CheckBox'
 import ProductCard from '../../components/ProductCard'
 import { useState } from 'react'
 
+const data = {
+    title: "American Journey Landmark Chicken",
+    desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
+    category: ["Whole", "Hearted"],
+    weight: [8, 16, 32],
+    stock: "0",
+    price: "20",
+}
+
 const TestComponents = () => {
-    const [isChecked, setChecked] = useState(false)
+    const [isChecked, setChecked] = useState(false);
+    const [dataCard, setDataCard] = useState(data);
 
     const handleCheckboxChange = () => {
         setChecked(!isChecked)
     }
 
-    const data = {
-        title: "American Journey Landmark Chicken",
-        desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
-        category: ["Whole", "Hearted"],
-        weight: [8, 16, 32],
-        stock: "0",
-        price: "20",
-    }
+    console.log(dataCard);
 
     return (
         <>

@@ -11,6 +11,17 @@ const CardProduct = (props) => {
     <div className="product-card">
       <a className="product-card__image" href="/">
         <img src={demo} alt={title} />
+        <div className="product-card__overlay">
+        <div className="product-card__overlay-btn-list">
+          <Button className="product-card__overlay-btn" type="icon" color="white" >
+            <Icon icon="radix-icons:eye-open" />
+          </Button>
+          <Button className="product-card__overlay-btn" type="icon" color="white" >
+            <Icon icon="tabler:heart" />
+          </Button>
+        </div>
+          
+        </div>
       </a>
       <div className="product-card__center">
         <div className="product-card__info">
@@ -30,8 +41,8 @@ const CardProduct = (props) => {
       </div>
       <div className="product-card__bottom">
         <div className="product-card__options">
-          {weight.map(item => (
-            <span className="product-card__weight">{item} lbs</span>
+          {weight.map((item, i) => (
+            <span className={i === 0 ? `product-card__weight product-card__weight--active` : `product-card__weight`}>{item} lbs</span>
           ))}
         </div>
         <div className="product-card__stock">OUT OF STOCK</div>
