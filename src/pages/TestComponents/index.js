@@ -10,9 +10,9 @@ const data = {
     desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
     category: ["Whole", "Hearted"],
     weight: [8, 16, 32],
+    stock: [1, 0, 1],
+    price: [20, 30, 40],
     selectedWeight: 0,
-    stock: "0",
-    price: "20",
 }
 
 const TestComponents = () => {

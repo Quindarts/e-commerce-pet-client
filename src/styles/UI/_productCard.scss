@@ -92,6 +92,10 @@
                 padding-right: 0.5rem;
             }
         }
+
+        &:hover {
+            color: #F63E04;
+        }
     }
 
     &__bottom {
@@ -128,10 +132,6 @@
 
     &__wrap {
         @include flex(space-between, center);
-    }
-
-    &__stock {
-        display: none;
     }
 
     &__price {
