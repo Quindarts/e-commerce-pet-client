@@ -5,7 +5,13 @@ const CardProduct = (props) => {
 
   const { data, onClick, ...last } = props;
 
-  const { title, desc, category, weight, price, selectedWeight } = data;
+  const { title, desc, category, weight, stock, price, selectedWeight } = data;
+
+  const selectedPrice = price.find((_, i) => i === selectedWeight);
+
+  const selectedStock = stock.find((_, i) => i === selectedWeight);
+
+  console.log(selectedStock);
 
   return (
     <div className="product-card">
@@ -33,8 +39,8 @@ const CardProduct = (props) => {
           </div>
         </div>
         <div className="product-card__category">
-          {category.map(cate => (
-            <a className="product-card__tag" href="/">
+          {category.map((cate, i) => (
+            <a key={i} className="product-card__tag" href="/">
               {cate}
             </a>))}
         </div>
@@ -42,14 +48,22 @@ const CardProduct = (props) => {
       <div className="product-card__bottom">
         <div className="product-card__options">
           {weight.map((item, i) => (
-            <span className={i === selectedWeight ? `product-card__weight product-card__weight--active` : `product-card__weight`} onClick={() => onClick(item)}>{item} lbs</span>
+            <span 
+              key={i} 
+              className={i === selectedWeight ? `product-card__weight product-card__weight--active` : `product-card__weight`} 
+              onClick={() => onClick(item)}
+            >
+              {item} lbs
+            </span>
           ))}
         </div>
-        <div className="product-card__stock">OUT OF STOCK</div>
+        {selectedStock < 1 && (
+          <div className="product-card__available">OUT OF STOCK</div>
+        )}
         <div className="product-card__wrap">
-          <div className="product-card__price" >${price}.00</div>
+          <div className="product-card__price">${selectedPrice}.00</div>
           <div className="product-card__icon">
-          <Button htmlType="submit" type="icon">
+          <Button className={selectedStock < 1 && 'disabled'} htmlType="submit" type="icon">
               <Icon icon="pepicons-pop:cart" />
           </Button>
           </div>
