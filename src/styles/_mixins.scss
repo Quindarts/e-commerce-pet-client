@@ -96,7 +96,22 @@
     padding: $x $y;
 }
 
+<<<<<<< HEAD
 @mixin color-scheme($text-color,
+=======
+@mixin px($x) {
+    padding-right: $x;
+    padding-left: $x;
+}
+
+@mixin py($y) {
+    padding-top: $y;
+    padding-bottom: $y;
+}
+
+@mixin color-scheme(
+    $text-color,
+>>>>>>> dev
     $placeholder-color,
     $border-color,
     $background-color,

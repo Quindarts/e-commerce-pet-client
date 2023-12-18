@@ -1,12 +1,31 @@
-import TextField from '../../components/textField'
+import TextField from '../../components/TextField'
 import Checkbox from '../../components/CheckBox'
+import ProductCard from '../../components/ProductCard'
 import Button from '../../components/Button'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Icon } from '@iconify/react'
 
+const data = {
+    title: "American Journey Landmark Chicken",
+    desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
+    category: ["Whole", "Hearted"],
+    weight: [8, 16, 32],
+    selectedWeight: 0,
+    stock: "0",
+    price: "20",
+}
+
 const TestComponents = () => {
-    const [isChecked, setChecked] = useState(false)
+    const [isChecked, setChecked] = useState(false);
+    const [dataCard, setDataCard] = useState(data);
+
+    const handleClick = (weight) => {
+        const weightList = data.weight;
+        data.selectedWeight = weightList.findIndex((item) => item === weight);
+        setDataCard(data);
+        reset();
+    }
 
     const handleCheckboxChange = () => {
         setChecked(!isChecked)
@@ -117,6 +136,9 @@ const TestComponents = () => {
 
                     {/* <Checkbox label="Remember Me" color="green" size="c-form" /> */}
                 </form>
+            </div>
+            <div>
+                <ProductCard data={dataCard} onClick={handleClick}/>
             </div>
         </>
     )
