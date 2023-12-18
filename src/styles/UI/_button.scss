@@ -16,15 +16,15 @@
     display: inline-flex;
 
     span {
-        display: inline-flex;
-        font-size: 1.6rem;
-        margin-right: 0.5rem;
+      display: inline-flex;
+      font-size: 1.6rem;
+      margin-right: 0.5rem;
     }
 
     &:hover {
-        background-color: $blue-main-hover;
-        border-color: $blue-main-hover;
-      }
+      background-color: $blue-main-hover;
+      border-color: $blue-main-hover;
+    }
   }
 
   &--green {
@@ -41,7 +41,7 @@
   &--white {
     background-color: #fff;
     border-color: #fff;
-    color: $blue-main;
+    color: $blue-main !important;
 
     &:hover {
       background-color: $blue-main;
@@ -71,8 +71,8 @@
     transition: $btn-hover-transition;
 
     &:hover {
-        background-color: $blue-main;
-        color: #fff;
+      background-color: $blue-main;
+      color: #fff;
     }
   }
 
