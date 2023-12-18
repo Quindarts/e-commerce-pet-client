@@ -6,24 +6,24 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 const data = {
-    title: "American Journey Landmark Chicken",
-    desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
-    category: ["Whole", "Hearted"],
+    title: 'American Journey Landmark Chicken',
+    desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+    category: ['Whole', 'Hearted'],
     weight: [8, 16, 32],
     selectedWeight: 0,
-    stock: "0",
-    price: "20",
+    stock: '0',
+    price: '20',
 }
 
 const TestComponents = () => {
-    const [isChecked, setChecked] = useState(false);
-    const [dataCard, setDataCard] = useState(data);
+    const [isChecked, setChecked] = useState(false)
+    const [dataCard, setDataCard] = useState(data)
 
     const handleClick = (weight) => {
-        const weightList = data.weight;
-        data.selectedWeight = weightList.findIndex((item) => item === weight);
-        setDataCard(data);
-        reset();
+        const weightList = data.weight
+        data.selectedWeight = weightList.findIndex((item) => item === weight)
+        setDataCard(data)
+        reset()
     }
 
     const handleCheckboxChange = () => {
@@ -137,7 +137,7 @@ const TestComponents = () => {
                 </form>
             </div>
             <div>
-                <ProductCard data={dataCard} onClick={handleClick}/>
+                <ProductCard data={dataCard} onClick={handleClick} />
             </div>
         </>
     )
