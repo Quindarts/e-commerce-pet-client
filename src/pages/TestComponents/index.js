@@ -128,7 +128,7 @@ const TestComponents = () => {
                     {/* <Checkbox label="Remember Me" color="green" size="c-form" /> */}
                 </form>
             </div>
-            <div>
+            <div className='container'>
                 <ProductCard data={data} reset={reset}/>
             </div>
         </>
