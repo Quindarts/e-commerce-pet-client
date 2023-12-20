@@ -2,8 +2,9 @@ import TextField from '../../components/TextField'
 import Checkbox from '../../components/CheckBox'
 import ProductCard from '../../components/ProductCard'
 import Button from '../../components/Button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import InputQuantity from '../../components/InputQuantity'
 
 const data = {
     title: 'American Journey Landmark Chicken',
@@ -13,11 +14,14 @@ const data = {
     selectedWeight: 0,
     stock: '0',
     price: '20',
+    quantity: 10,
+    maxQuantity: 100,
 }
 
 const TestComponents = () => {
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
+    const [quantity, setQuantity] = useState(data.quantity || 0)
 
     const handleClick = (weight) => {
         const weightList = data.weight
@@ -39,8 +43,6 @@ const TestComponents = () => {
 
     const onSubmit = (value) => {
         console.log(value)
-        // Xử lý dữ liệu khi form được submit
-        // Sau khi xử lý, reset giá trị của form
         reset()
     }
 
@@ -131,13 +133,46 @@ const TestComponents = () => {
                     disabled={false}
                     color="green"
                     checked={true}
-                /> */}
+                />
 
                     {/* <Checkbox label="Remember Me" color="green" size="c-form" /> */}
                 </form>
             </div>
             <div>
                 <ProductCard data={dataCard} onClick={handleClick} />
+            </div>
+            <div style={{ marginLeft: '500px' }}>
+                <InputQuantity
+                    id="quantity"
+                    validate={{
+                        required: 'This field cannot be empty.',
+                        pattern: {
+                            value: /^[0-9]+$/,
+                            message: 'Value must be greater than or equal to 1',
+                        },
+                    }}
+                    value
+                    onchange
+                    onChangeQuantity={function (quantity) {
+                        setQuantity(quantity)
+                    }}
+                    errors={errors}
+                    register={register}
+                    data={data && data}
+                    size="large"
+                />
+                <Button
+                    onClick={() => {
+                        console.log({ quantity: quantity })
+                    }}
+                    htmlType="submit"
+                    type="primary"
+                    size="small"
+                    ghost
+                    className="cc"
+                >
+                    submit
+                </Button>
             </div>
         </>
     )
