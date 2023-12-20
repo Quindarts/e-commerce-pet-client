@@ -167,3 +167,37 @@
         }
     }
 }
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+);
+
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+
+@mixin make-media-query($dimension) {
+    @media (min-width: $dimension) {
+        @content;
+    }
+}
+
+@each $breakpoint, $dimension in $grid-breakpoints {
+    @include make-media-query($dimension) {
+        .container {
+            width: 100%;
+        }
+    }
+}
