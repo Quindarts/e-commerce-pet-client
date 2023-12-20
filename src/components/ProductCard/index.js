@@ -1,20 +1,31 @@
 import { Icon } from "@iconify/react";
+import { useRef } from "react";
 import Button from '../../components/Button';
 import demo from "../../assets/img/ricky-118-460x373.jpg";
 const CardProduct = (props) => {
 
-  const { data, onClick, ...last } = props;
+  const { data, reset, className, ...rest } = props;
 
-  const { title, desc, category, weight, stock, price, selectedWeight } = data;
+  const { id, title, desc, category, weight, stock, price } = data;
 
-  const selectedPrice = price.find((_, i) => i === selectedWeight);
+  const refWeight = useRef(0);
+  var selectedWeight = refWeight.current;  
 
-  const selectedStock = stock.find((_, i) => i === selectedWeight);
+  var selectedPrice = price.find((_, i) => i === selectedWeight);
 
-  console.log(selectedStock);
+  var selectedStock = stock.find((_, i) => i === selectedWeight);
+
+  const handleClick = (weight) => {
+    refWeight.current = weight;
+    reset();
+  }
+
+  console.log(className);
+
+  const classValue = `product-card${className ? ` ${className}` : ''}`;
 
   return (
-    <div className="product-card">
+    <div className={classValue}>
       <a className="product-card__image" href="/">
         <img src={demo} alt={title} />
         <div className="product-card__overlay">
@@ -51,7 +62,7 @@ const CardProduct = (props) => {
             <span 
               key={i} 
               className={i === selectedWeight ? `product-card__weight product-card__weight--active` : `product-card__weight`} 
-              onClick={() => onClick(item)}
+              onClick={() => handleClick(i)}
             >
               {item} lbs
             </span>

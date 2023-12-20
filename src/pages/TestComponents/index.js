@@ -7,25 +7,17 @@ import { useForm } from 'react-hook-form'
 import { Icon } from '@iconify/react'
 
 const data = {
+    id: "1",
     title: "American Journey Landmark Chicken",
     desc: "Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.",
     category: ["Whole", "Hearted"],
     weight: [8, 16, 32],
     stock: [1, 0, 1],
     price: [20, 30, 40],
-    selectedWeight: 0,
 }
 
 const TestComponents = () => {
     const [isChecked, setChecked] = useState(false);
-    const [dataCard, setDataCard] = useState(data);
-
-    const handleClick = (weight) => {
-        const weightList = data.weight;
-        data.selectedWeight = weightList.findIndex((item) => item === weight);
-        setDataCard(data);
-        reset();
-    }
 
     const handleCheckboxChange = () => {
         setChecked(!isChecked)
@@ -138,7 +130,7 @@ const TestComponents = () => {
                 </form>
             </div>
             <div>
-                <ProductCard data={dataCard} onClick={handleClick}/>
+                <ProductCard data={data} reset={reset}/>
             </div>
         </>
     )
