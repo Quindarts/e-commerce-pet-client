@@ -1,0 +1,99 @@
+@include respond(tablet) {
+    .header {
+        display: none;
+    }
+}
+
+@include respond(desktop) {
+    .header {
+        @include flex(space-between, center, flex-direction, 30px);
+        padding: 2px 50px 0 50px;
+        position: relative;
+        z-index: 100;
+
+        &--decor {
+
+            .header--decor-top {
+                width: 100%;
+                @include position(absolute, 100%, null, null, 0);
+                height: 3px;
+                background-repeat: repeat-x;
+                overflow: hidden;
+
+            }
+
+            .header--list {
+                @include flex(null, center, null, 0);
+                flex-wrap: wrap;
+                margin: 0 -15px;
+                padding: 15px 0 15px 0;
+            }
+
+            .header--item {
+                display: inline-flex;
+                align-items: center;
+                margin: 0 15px;
+                position: relative;
+                letter-spacing: 0.015em;
+
+                svg:last-child {
+                    margin-right: 0 !important;
+                }
+            }
+
+            .icon-down {
+                display: inline-flex;
+                vertical-align: middle;
+                @include text(1.6rem, 800, currentColor !important, 1.6rem);
+                margin-left: 4px;
+            }
+
+
+            .header--right {
+                .header--list {
+                    justify-content: flex-end;
+
+                    a {
+                        @include text(1.3rem, 600, currentColor, 1.8rem);
+                        letter-spacing: 0.015em;
+                    }
+
+                    svg {
+                        @include text(1.6rem, 800, currentColor, 1rem);
+                        display: inline-flex;
+                        margin-right: 9px;
+                        position: relative;
+                    }
+
+                    .icon {
+                        @include text(1.6rem, 800, currentColor, 1.6rem);
+                        margin-left: 4px;
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+.header--top-green {
+    @include color-header(#ffffff, #176335, #47a71a, #47a71a);
+}
+
+.header--top-blue {
+    @include color-header(#00234b, #ffffff, #f63e04, #0052B1);
+}
+
+.header--top-black {
+    @include color-header(#091727, #F1F4F4, #22AC78, #091727);
+}
+
+.header--top-brown {
+    @include color-header(#401a0e, #fff8f1, #ee7200, #ee7200);
+}
+
+.header--top-purple {
+    @include color-header(#f0d9ff, #1f0038, #ffffff, #f0d9ff);
+}

@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard'
 import Button from '../../components/Button'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Icon } from '@iconify/react'
 
 const data = {
     title: "American Journey Landmark Chicken",
@@ -47,7 +48,7 @@ const TestComponents = () => {
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
-                {/* <Button htmlType="link" type="primary" url="/">
+                <Button htmlType="link" type="primary" url="/">
                     Click me!
                 </Button>
                 <Button htmlType="link" type="primary" color="green" url="/">
@@ -83,7 +84,7 @@ const TestComponents = () => {
                     >
                         Log in
                     </Button>
-                </div> */}
+                </div>
                 {/* TextField Search */}
                 <form>
                     {/* <TextField
