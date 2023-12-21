@@ -10,15 +10,13 @@ import formatter from '../../utils/formatter'
 import UseTranslate from '../../utils/translate'
 
 const data = {
+    id: "1",
     title: 'American Journey Landmark Chicken',
     desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
     category: ['Whole', 'Hearted'],
     weight: [8, 16, 32],
-    selectedWeight: 0,
-    stock: '0',
-    price: '20',
-    quantity: 10,
-    maxQuantity: 100,
+    stock: [1, 0, 1],
+    price: [20, 30, 40],
 }
 
 const TestComponents = () => {
@@ -38,13 +36,6 @@ const TestComponents = () => {
         }
         // localStorage.setItem('lang', 'zh-CN');
     }, [])
-
-    const handleClick = (weight) => {
-        const weightList = data.weight
-        data.selectedWeight = weightList.findIndex((item) => item === weight)
-        setDataCard(data)
-        reset()
-    }
 
     const handleCheckboxChange = () => {
         setChecked(!isChecked)
@@ -129,10 +120,6 @@ const TestComponents = () => {
                         submit
                     </Button>
                 </form>
-            </div>
-
-            <div>
-                <ProductCard data={dataCard} onClick={handleClick} />
             </div>
 
             <div className="container">

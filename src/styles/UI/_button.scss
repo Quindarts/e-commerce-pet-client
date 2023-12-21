@@ -24,7 +24,7 @@
     }
 
     &:hover {
-      background-color: $blue-main-hover;
+      background-color: $blue-main-hover !important;
       border-color: $blue-main-hover;
     }
   }
@@ -34,8 +34,8 @@
     border-color: $green-1;
 
     &:hover {
-      background-color: #fff;
-      border-color: #fff;
+      background-color: #fff !important;
+      border-color: #fff !important;
       color: $green-1-hover-text;
     }
   }
@@ -46,8 +46,8 @@
     color: $blue-main !important;
 
     &:hover {
-      background-color: $blue-main;
-      border-color: $blue-main;
+      background-color: $blue-main-hover !important;
+      border-color: $blue-main-hover !important;
       color: #fff;
     }
   }
@@ -58,9 +58,9 @@
     color: $blue-main;
 
     &:hover {
-      background-color: $blue-main;
+      background-color: $blue-main !important;
       color: #fff;
-      border-color: $blue-main;
+      border-color: $blue-main !important;
     }
   }
 
@@ -81,7 +81,7 @@
 
   &:hover {
     background-color: $blue-main;
-    color: #fff;
+    color: #fff !important;
   }
 
   &.disabled {

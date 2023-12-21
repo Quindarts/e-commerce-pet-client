@@ -5,8 +5,7 @@ import demo from '../../assets/img/ricky-118-460x373.jpg'
 import { useRef } from 'react'
 
 const CardProduct = (props) => {
-    // const { data, onClick, ...last } = props
-    // a
+
     const { data, reset, className, ...rest } = props
 
     const { id, title, desc, category, weight, stock, price } = data
