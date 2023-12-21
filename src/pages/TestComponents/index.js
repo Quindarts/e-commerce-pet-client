@@ -2,10 +2,11 @@ import TextField from '../../components/TextField'
 import Checkbox from '../../components/CheckBox'
 import ProductCard from '../../components/ProductCard'
 import Button from '../../components/Button'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import InputQuantity from '../../components/InputQuantity'
-
+import formatter from '../../utils/formatter'
+import UseTranslate from '../../utils/translate'
 const data = {
     title: 'American Journey Landmark Chicken',
     desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
@@ -21,8 +22,19 @@ const data = {
 const TestComponents = () => {
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
-    const [quantity, setQuantity] = useState(data.quantity || 0)
+    const refQuantity = useRef(data.quantity || 0)
 
+    const handleChangeQuantity = (quantity) => {
+        refQuantity.current = Number(quantity)
+        console.log(quantity)
+    }
+    const [lang, setLang] = useState('')
+    useEffect(() => {
+        if (localStorage.getItem('lang')) {
+            setLang(localStorage.getItem('lang'))
+        }
+        // localStorage.setItem('lang', 'zh-CN')
+    }, [])
     const handleClick = (weight) => {
         const weightList = data.weight
         data.selectedWeight = weightList.findIndex((item) => item === weight)
@@ -51,9 +63,6 @@ const TestComponents = () => {
             <div className="flex items-center gap-5 bg-gray p-20">
                 {/* <Button htmlType="link" type="primary" url="/">
                     Click me!
-                </Button>
-                <Button htmlType="link" type="primary" color="green" url="/">
-                    Read more
                 </Button>
                 <Button htmlType="link" type="primary" ghost url="/">
                     Read more
@@ -151,19 +160,17 @@ const TestComponents = () => {
                             message: 'Value must be greater than or equal to 1',
                         },
                     }}
-                    value
-                    onchange
-                    onChangeQuantity={function (quantity) {
-                        setQuantity(quantity)
-                    }}
+                    value={refQuantity.current}
+                    onChangeQuantity={handleChangeQuantity}
                     errors={errors}
                     register={register}
                     data={data && data}
                     size="large"
                 />
+
                 <Button
                     onClick={() => {
-                        console.log({ quantity: quantity })
+                        console.log({ quantity: refQuantity.current })
                     }}
                     htmlType="submit"
                     type="primary"
@@ -171,9 +178,12 @@ const TestComponents = () => {
                     ghost
                     className="cc"
                 >
-                    submit
+                    <UseTranslate
+                        data={{ useUI: true, text: 'submit', lang }}
+                    ></UseTranslate>
                 </Button>
             </div>
+            <span>{formatter(100000)}</span>
         </>
     )
 }

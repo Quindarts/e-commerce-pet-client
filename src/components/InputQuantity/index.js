@@ -24,6 +24,7 @@ const InputQuantity = (props) => {
     const increase = useRef(null)
     const timeoutIdRef = useRef(null)
     const intervalIdRef = useRef(null)
+
     useEffect(() => {
         //MouseDecrease
         const mouseDown = (action) => {
