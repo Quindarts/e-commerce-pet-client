@@ -1,9 +1,7 @@
 import { Icon } from '@iconify/react'
+import { useRef } from 'react'
 import Button from '../../components/Button'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
-
-import { useRef } from 'react'
-
 const CardProduct = (props) => {
 
     const { data, reset, className, ...rest } = props
