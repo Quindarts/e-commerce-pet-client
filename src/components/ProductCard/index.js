@@ -1,13 +1,34 @@
 import { Icon } from '@iconify/react'
 import Button from '../../components/Button'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
-const CardProduct = (props) => {
-    const { data, onClick, ...last } = props
 
-    const { title, desc, category, weight, price, selectedWeight } = data
+import { useRef } from 'react'
+
+const CardProduct = (props) => {
+    // const { data, onClick, ...last } = props
+
+    const { data, reset, className, ...rest } = props
+
+    const { id, title, desc, category, weight, stock, price } = data
+
+    const refWeight = useRef(0)
+    var selectedWeight = refWeight.current
+
+    var selectedPrice = price.find((_, i) => i === selectedWeight)
+
+    var selectedStock = stock.find((_, i) => i === selectedWeight)
+
+    const handleClick = (weight) => {
+        refWeight.current = weight
+        reset()
+    }
+
+    console.log(className)
+
+    const classValue = `product-card${className ? ` ${className}` : ''}`
 
     return (
-        <div className="product-card">
+        <div className={classValue}>
             <a className="product-card__image" href="/">
                 <img src={demo} alt={title} />
                 <div className="product-card__overlay">
@@ -37,8 +58,8 @@ const CardProduct = (props) => {
                     <div className="product-card__desc">{desc}</div>
                 </div>
                 <div className="product-card__category">
-                    {category.map((cate) => (
-                        <a className="product-card__tag" href="/">
+                    {category.map((cate, i) => (
+                        <a key={i} className="product-card__tag" href="/">
                             {cate}
                         </a>
                     ))}
@@ -48,22 +69,31 @@ const CardProduct = (props) => {
                 <div className="product-card__options">
                     {weight.map((item, i) => (
                         <span
+                            key={i}
                             className={
                                 i === selectedWeight
                                     ? `product-card__weight product-card__weight--active`
                                     : `product-card__weight`
                             }
-                            onClick={() => onClick(item)}
+                            onClick={() => handleClick(i)}
                         >
                             {item} lbs
                         </span>
                     ))}
                 </div>
-                <div className="product-card__stock">OUT OF STOCK</div>
+                {selectedStock < 1 && (
+                    <div className="product-card__available">OUT OF STOCK</div>
+                )}
                 <div className="product-card__wrap">
-                    <div className="product-card__price">${price}.00</div>
+                    <div className="product-card__price">
+                        ${selectedPrice}.00
+                    </div>
                     <div className="product-card__icon">
-                        <Button htmlType="submit" type="icon">
+                        <Button
+                            className={selectedStock < 1 && 'disabled'}
+                            htmlType="submit"
+                            type="icon"
+                        >
                             <Icon icon="pepicons-pop:cart" />
                         </Button>
                     </div>

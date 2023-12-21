@@ -1,5 +1,4 @@
 .product-card {
-    margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     border: 1px solid #DCEAF6;
@@ -92,6 +91,10 @@
                 padding-right: 0.5rem;
             }
         }
+
+        &:hover {
+            color: #F63E04;
+        }
     }
 
     &__bottom {
@@ -128,10 +131,6 @@
 
     &__wrap {
         @include flex(space-between, center);
-    }
-
-    &__stock {
-        display: none;
     }
 
     &__price {

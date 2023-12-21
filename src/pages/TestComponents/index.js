@@ -4,9 +4,11 @@ import ProductCard from '../../components/ProductCard'
 import Button from '../../components/Button'
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { Icon } from '@iconify/react'
 import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatter'
 import UseTranslate from '../../utils/translate'
+
 const data = {
     title: 'American Journey Landmark Chicken',
     desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
@@ -28,13 +30,15 @@ const TestComponents = () => {
         refQuantity.current = Number(quantity)
         console.log(quantity)
     }
+
     const [lang, setLang] = useState('')
     useEffect(() => {
         if (localStorage.getItem('lang')) {
             setLang(localStorage.getItem('lang'))
         }
-        // localStorage.setItem('lang', 'zh-CN')
+        // localStorage.setItem('lang', 'zh-CN');
     }, [])
+
     const handleClick = (weight) => {
         const weightList = data.weight
         data.selectedWeight = weightList.findIndex((item) => item === weight)
@@ -61,7 +65,7 @@ const TestComponents = () => {
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
-                {/* <Button htmlType="link" type="primary" url="/">
+                <Button htmlType="link" type="primary" url="/">
                     Click me!
                 </Button>
                 <Button htmlType="link" type="primary" ghost url="/">
@@ -70,7 +74,6 @@ const TestComponents = () => {
                 <Button htmlType="link" type="primary" url="/" color="white">
                     Read more
                 </Button>
-
                 <Button htmlType="link" type="primary" url="/">
                     <span>
                         <Icon icon="mdi:play" />
@@ -94,16 +97,9 @@ const TestComponents = () => {
                     >
                         Log in
                     </Button>
-                </div> */}
+                </div>
                 {/* TextField Search */}
                 <form>
-                    {/* <TextField
-                        type="search"
-                        name="search"
-                        placeholder="Start typing..."
-                        disabled={false}
-                        color="blue"
-                    /> */}
                     <TextField
                         className="mt-2"
                         label="Your phone number *"
@@ -132,24 +128,17 @@ const TestComponents = () => {
                     >
                         submit
                     </Button>
-                    {/* 
-                    <TextField
-                    type="checkbox"
-                    name=""
-                    placeholder=""
-                    value=""
-                    onChange=""
-                    disabled={false}
-                    color="green"
-                    checked={true}
-                />
-
-                    {/* <Checkbox label="Remember Me" color="green" size="c-form" /> */}
                 </form>
             </div>
+
             <div>
                 <ProductCard data={dataCard} onClick={handleClick} />
             </div>
+
+            <div className="container">
+                <ProductCard data={data} reset={reset} />
+            </div>
+
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
                     id="quantity"
@@ -183,8 +172,10 @@ const TestComponents = () => {
                     ></UseTranslate>
                 </Button>
             </div>
+
             <span>{formatter(100000)}</span>
         </>
     )
 }
+
 export default TestComponents

@@ -1,9 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
-a {
-    text-decoration: none;
-}
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 .footer {
-    background-image: url("/assets/images/ricky-9.png");
+    background-image: url('/assets/images/ricky-9.png');
     .container {
         flex-wrap: wrap;
         padding: 6rem 0;
@@ -54,10 +52,10 @@ a {
                     .sitemap {
                         margin-left: 1.3rem;
                         &::before {
-                            content: "·";
+                            content: '·';
                             padding-right: 2rem;
                             @include respond(large-mobile) {
-                                content: "";
+                                content: '';
                                 padding-right: 0rem;
                             }
                         }

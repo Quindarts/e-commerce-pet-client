@@ -18,15 +18,15 @@
     display: inline-flex;
 
     span {
-        display: inline-flex;
-        font-size: 1.6rem;
-        margin-right: 0.5rem;
+      display: inline-flex;
+      font-size: 1.6rem;
+      margin-right: 0.5rem;
     }
 
     &:hover {
-        background-color: $blue-main-hover;
-        border-color: $blue-main-hover;
-      }
+      background-color: $blue-main-hover;
+      border-color: $blue-main-hover;
+    }
   }
 
   &--green {
@@ -43,7 +43,7 @@
   &--white {
     background-color: #fff;
     border-color: #fff;
-    color: $blue-main;
+    color: $blue-main !important;
 
     &:hover {
       background-color: $blue-main;
@@ -72,15 +72,22 @@
     background-color: #fff;
     border: solid 0.2rem $blue-main;
     transition: $btn-hover-transition;
-
-    &:hover {
-        background-color: $blue-main;
-        color: #fff;
-    }
   }
 
   &--small {
     @include btn-size(0.5rem, 1.8rem);
     font-size: 1.2rem;
   }
+
+  &:hover {
+    background-color: $blue-main;
+    color: #fff;
+  }
+
+  &.disabled {
+    opacity: 0.2;
+    cursor: unset;
+    pointer-events: none;
+  }
+  
 }
