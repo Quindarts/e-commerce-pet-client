@@ -10,7 +10,7 @@ const UseTranslate = (Props) => {
 
     const [styleCss, setStyleCss] = useState(null)
     const { Tag, className, lang, useUI, text } = Props.data
-    console.log(text)
+
     const { onPress, style, dep } = Props
     const language = lang
     const elReactString = ReactDomServer.renderToString(Props.children)

@@ -8,6 +8,7 @@ import { Icon } from '@iconify/react'
 import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatter'
 import UseTranslate from '../../utils/translate'
+import Breadcrumb from '../../components/Breadcrumb'
 
 const data = {
     title: 'American Journey Landmark Chicken',
@@ -131,13 +132,13 @@ const TestComponents = () => {
                 </form>
             </div>
 
-            <div>
+            {/* <div>
                 <ProductCard data={dataCard} onClick={handleClick} />
-            </div>
+            </div> */}
 
-            <div className="container">
+            {/* <div className="container">
                 <ProductCard data={data} reset={reset} />
-            </div>
+            </div> */}
 
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
@@ -174,6 +175,9 @@ const TestComponents = () => {
             </div>
 
             <span>{formatter(100000)}</span>
+            <div>
+                <Breadcrumb></Breadcrumb>
+            </div>
         </>
     )
 }

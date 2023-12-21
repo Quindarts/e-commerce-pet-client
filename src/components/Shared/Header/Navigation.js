@@ -11,7 +11,7 @@ import { colorNavigationDecor } from '../../../utils/Color'
 const Navigation = ({ color }) => {
     const [isSticky, setSticky] = useState(false)
     const [openNav, setOpenNav] = useState(false)
-    console.log(openNav)
+
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY
