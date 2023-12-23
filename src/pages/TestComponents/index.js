@@ -9,8 +9,10 @@ import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatter'
 import UseTranslate from '../../utils/translate'
 
+import { useSnackbar } from 'notistack'
+
 const data = {
-    id: "1",
+    id: '1',
     title: 'American Journey Landmark Chicken',
     desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
     category: ['Whole', 'Hearted'],
@@ -20,6 +22,8 @@ const data = {
 }
 
 const TestComponents = () => {
+    const { enqueueSnackbar } = useSnackbar()
+
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
     const refQuantity = useRef(data.quantity || 0)
@@ -53,28 +57,94 @@ const TestComponents = () => {
         reset()
     }
 
+    // SHOW TOAST
+    function showTopRightCustomSnackbar() {
+        enqueueSnackbar(
+            '“American Journey Landmark Chicken” has been added to your cart.',
+            {
+                variant: 'customVariant',
+                // persist: false,
+                anchorOrigin: { vertical: 'top', horizontal: 'right' },
+                autoHideDuration: 3000,
+                hideIconVariant: false,
+                iconVariant: false,
+            }
+        )
+    }
+
+    const handleClickWarning = (variant) => () => {
+        enqueueSnackbar('This is a custom snackbar', {
+            variant,
+        })
+    }
+
+    const handleClickError = (variant) => () => {
+        enqueueSnackbar('This is a custom snackbar', {
+            variant,
+        })
+    }
+
+    const handleSnackbar = (variant) => {
+        enqueueSnackbar('This is a custom snackbar', {
+            variant: 'success', // You can change the variant as needed
+        })
+    }
+
+    const handleClickInfo = (variant) => () => {
+        enqueueSnackbar('This is a custom snackbar', {
+            variant,
+        })
+    }
+
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
                 <Button htmlType="link" type="primary" url="/">
                     Click me!
                 </Button>
-                <Button htmlType="link" type="primary" ghost url="/">
+                <Button
+                    onClick={handleClickInfo('info')}
+                    htmlType="link"
+                    type="primary"
+                    ghost
+                    url="/"
+                >
                     Read more
                 </Button>
-                <Button htmlType="link" type="primary" url="/" color="white">
+                <Button
+                    onClick={handleSnackbar}
+                    htmlType="link"
+                    type="primary"
+                    url="/"
+                    color="white"
+                >
                     Read more
                 </Button>
-                <Button htmlType="link" type="primary" url="/">
+                <Button
+                    onClick={handleClickError('error')}
+                    htmlType="link"
+                    type="primary"
+                    url="/"
+                >
                     <span>
                         <Icon icon="mdi:play" />
                     </span>
                     see on video
                 </Button>
-                <Button htmlType="submit" type="primary" size="small" ghost>
+                <Button
+                    onClick={handleClickWarning('warning')}
+                    htmlType="submit"
+                    type="primary"
+                    size="small"
+                    ghost
+                >
                     filter
                 </Button>
-                <Button htmlType="submit" type="icon">
+                <Button
+                    onClick={showTopRightCustomSnackbar}
+                    htmlType="submit"
+                    type="icon"
+                >
                     <Icon icon="pepicons-pop:cart" />
                 </Button>
                 <Button htmlType="submit" type="icon">
