@@ -4,7 +4,7 @@ import Button from '../../components/Button'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
 const CardProduct = (props) => {
 
-    const { data, reset, className, ...rest } = props
+    const { data, reset, className, handleProductModal, ...rest } = props
 
     const { id, title, desc, category, weight, stock, price } = data
 
@@ -17,7 +17,12 @@ const CardProduct = (props) => {
 
     const handleClick = (weight) => {
         refWeight.current = weight
-        reset()
+        reset();
+    }
+
+    const handleShowModal = (e) => {
+        e.preventDefault();
+        handleProductModal();
     }
 
     console.log(className)
@@ -33,14 +38,13 @@ const CardProduct = (props) => {
                         <Button
                             className="product-card__overlay-btn"
                             type="icon"
-                            color="white"
+                            onClick={handleShowModal}
                         >
                             <Icon icon="radix-icons:eye-open" />
                         </Button>
                         <Button
                             className="product-card__overlay-btn"
                             type="icon"
-                            color="white"
                         >
                             <Icon icon="tabler:heart" />
                         </Button>

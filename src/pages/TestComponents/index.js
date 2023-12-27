@@ -9,6 +9,7 @@ import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatter'
 import UseTranslate from '../../utils/translate'
 import Breadcrumb from '../../components/Breadcrumb'
+import ProductModal from '../../components/ProductModal'
 
 const data = {
     id: "1",
@@ -23,11 +24,16 @@ const data = {
 const TestComponents = () => {
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
+    const [showProductModal, setShowProductModal] = useState(false);
     const refQuantity = useRef(data.quantity || 0)
 
     const handleChangeQuantity = (quantity) => {
         refQuantity.current = Number(quantity)
         console.log(quantity)
+    }
+
+    const handleProductModal = () => {
+        setShowProductModal(!showProductModal);
     }
 
     const [lang, setLang] = useState('')
@@ -127,9 +133,9 @@ const TestComponents = () => {
                 <ProductCard data={dataCard} onClick={handleClick} />
             </div> */}
 
-            {/* <div className="container">
-                <ProductCard data={data} reset={reset} />
-            </div> */}
+            <div className="container">
+                <ProductCard data={data} reset={reset} handleProductModal={handleProductModal}/>
+            </div>
 
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
@@ -169,6 +175,9 @@ const TestComponents = () => {
             <div>
                 <Breadcrumb></Breadcrumb>
             </div>
+            <ProductModal showProductModal={showProductModal} data={data} handleChangeQuantity={handleChangeQuantity} value={refQuantity.current} errors={errors}
+                handleProductModal={handleProductModal}
+            />
         </>
     )
 }

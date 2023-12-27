@@ -3,7 +3,6 @@
   border: none;
   text-align: center;
   cursor: pointer;
-  overflow: hidden;
   transition: opacity 0.3s linear,visibility 0.3s linear,color 0.15s linear,border-color 0.15s linear,background-color 0.15s linear,box-shadow 0.15s linear;
 
   &--primary {
@@ -16,7 +15,7 @@
     @include text(1.3rem, bold, #fff, 1.6rem);
     @include btn-size(1.5rem, 2.5rem);
     display: inline-flex;
-
+    
     span {
       display: inline-flex;
       font-size: 1.6rem;
