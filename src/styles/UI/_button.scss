@@ -3,8 +3,7 @@
   border: none;
   text-align: center;
   cursor: pointer;
-  overflow: hidden;
-  transition: opacity 0.3s linear,visibility 0.3s linear,color 0.15s linear,border-color 0.15s linear,background-color 0.15s linear,box-shadow 0.15s linear;
+  transition: opacity 0.3s linear, visibility 0.3s linear, color 0.15s linear, border-color 0.15s linear, background-color 0.15s linear, box-shadow 0.15s linear;
 
   &--primary {
     border-radius: 2.5rem;
@@ -89,5 +88,5 @@
     cursor: unset;
     pointer-events: none;
   }
-  
+
 }

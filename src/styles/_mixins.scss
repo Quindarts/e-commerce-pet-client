@@ -122,7 +122,8 @@
     background-color: $background-color;
 
     &:focus {
-        outline: 1px solid $outline-color;
+        outline: none;
+        border-color: $outline-color !important;
     }
 }
 

@@ -9,6 +9,7 @@ import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatter'
 import UseTranslate from '../../utils/translate'
 import Breadcrumb from '../../components/Breadcrumb'
+import According from '../../components/According/According'
 
 import { useSnackbar } from 'notistack'
 
@@ -238,6 +239,17 @@ const TestComponents = () => {
             <span>{formatter(100000)}</span>
             <div>
                 <Breadcrumb></Breadcrumb>
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    margin: '50px 50px',
+                }}
+            >
+                <According message="Coupon code">
+                    <div style={{ height: 500 }}></div>
+                </According>
             </div>
         </>
     )

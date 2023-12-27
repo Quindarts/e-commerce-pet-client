@@ -15,9 +15,21 @@
 
         a {
             letter-spacing: 0.015em;
-            @include text (1.3rem, 500, currentColor, 1.23);
+            @include text(1.3rem, 500, currentColor, 1.23);
             text-transform: capitalize;
+
+            &:not(:last-child):hover {
+                color: #F63E04;
+                cursor: pointer;
+
+            }
+
+            &:last-child {
+                cursor: auto;
+            }
         }
+
+
 
     }
 }
