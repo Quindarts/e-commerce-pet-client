@@ -9,9 +9,10 @@ import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatter'
 import UseTranslate from '../../utils/translate'
 import Breadcrumb from '../../components/Breadcrumb'
+import According from '../../components/According/According'
 
 const data = {
-    id: "1",
+    id: '1',
     title: 'American Journey Landmark Chicken',
     desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
     category: ['Whole', 'Hearted'],
@@ -168,6 +169,17 @@ const TestComponents = () => {
             <span>{formatter(100000)}</span>
             <div>
                 <Breadcrumb></Breadcrumb>
+            </div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    margin: '50px 50px',
+                }}
+            >
+                <According message="Coupon code">
+                    <div style={{ height: 500 }}></div>
+                </According>
             </div>
         </>
     )
