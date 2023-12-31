@@ -22,19 +22,35 @@ function Register() {
 
     const onSubmit = async (data) => {
         try {
-            const response = await apiRegister(data)
-            if (response) {
-                navigate('/login')
-            } else {
-                enqueueSnackbar(response.message, { variant: 'error' })
+            const res = await apiRegister(data)
+            console.log(res)
+            if (res.status === 200) {
+                enqueueSnackbar('Sign Up Success', {
+                    variant: 'success',
+                })
+                navigate('/auth/login')
             }
         } catch (error) {
-            console.error('An error occurred', error)
-            enqueueSnackbar('An error occurred', {
-                variant: 'error',
-                anchorOrigin: { vertical: 'top', horizontal: 'right' },
-                timeOut: 3000,
-            })
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                const { message } = error.response.data
+                enqueueSnackbar(`Error: ${message}`, {
+                    variant: 'error',
+                })
+            } else if (error.request) {
+                // The request was made, but no response was received
+                enqueueSnackbar('Error: No response from the server', {
+                    variant: 'error',
+                })
+            } else {
+                // Something happened in setting up the request
+                enqueueSnackbar(
+                    'Error: An error occurred while sending the request',
+                    {
+                        variant: 'error',
+                    }
+                )
+            }
         }
         reset()
     }
