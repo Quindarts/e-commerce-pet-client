@@ -28,7 +28,10 @@ const TextField = (props) => {
 
     // Kiểm tra type hợp lệ
     const typeClass =
-        type === 'search' || type === 'form' || type === 'checkbox'
+        type === 'search' ||
+        type === 'form' ||
+        type === 'checkbox' ||
+        type === 'password'
             ? ` input--${type}`
             : ''
 
