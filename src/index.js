@@ -21,8 +21,10 @@ root.render(
     <SnackbarProvider
         // TransitionComponent={Zoom}
         Components={themeSnackbar}
-        maxSnack={10}
+        maxSnack={5}
         persist={false}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        timeOut={3000}
     >
         <App />
     </SnackbarProvider>
