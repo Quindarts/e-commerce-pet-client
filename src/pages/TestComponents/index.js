@@ -238,7 +238,7 @@ const TestComponents = () => {
 
             <span>{formatter(100000)}</span>
             <div>
-                <Breadcrumb></Breadcrumb>
+                <Breadcrumb targetFormat="snake" className="cc"></Breadcrumb>
             </div>
             <div
                 style={{
