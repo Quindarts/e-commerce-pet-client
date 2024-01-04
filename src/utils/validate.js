@@ -32,4 +32,9 @@ export const schema = yup.object().shape({
             /[^A-Za-z0-9]/,
             'Password must contain at least one special character'
         ),
+
+    confirmPassword: yup
+        .string()
+        .oneOf([yup.ref('password'), null], 'Passwords must match')
+        .required(),
 })
