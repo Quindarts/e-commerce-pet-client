@@ -18,14 +18,15 @@ function Register() {
         reset,
     } = useForm({
         resolver: yupResolver(schema),
+        mode: 'onBlur',
     })
 
-    const onSubmit = async (data) => {
+    const onSubmit = async ({ confirmPassword, ...data }) => {
         try {
             const res = await apiRegister(data)
             console.log(res)
-            if (res.status === 200) {
-                enqueueSnackbar('Sign Up Success', {
+            if (res.success === true) {
+                enqueueSnackbar(res.message, {
                     variant: 'success',
                 })
                 navigate('/auth/login')
@@ -87,6 +88,16 @@ function Register() {
                             disabled={false}
                             color="blue"
                             id="password"
+                            register={register}
+                            errors={errors}
+                        />
+                        <TextField
+                            className="mt-2"
+                            label="Confirm password *"
+                            type="password"
+                            disabled={false}
+                            color="blue"
+                            id="confirmPassword"
                             register={register}
                             errors={errors}
                         />
