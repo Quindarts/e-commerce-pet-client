@@ -9,7 +9,7 @@ import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatter'
 import UseTranslate from '../../utils/translate'
 import Breadcrumb from '../../components/Breadcrumb'
-import According from '../../components/According/According'
+import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
 
@@ -247,9 +247,9 @@ const TestComponents = () => {
                     margin: '50px 50px',
                 }}
             >
-                <According message="Coupon code">
+                <Accordin className="w-100" message="Coupon code">
                     <div style={{ height: 500 }}></div>
-                </According>
+                </Accordin>
             </div>
         </>
     )
