@@ -146,7 +146,7 @@ function Register() {
                     </Button>
                     <div className="register__bottom">
                         You A Member?
-                        <Link>Login</Link>
+                        <Link to={'/auth/login'}>Login</Link>
                     </div>
                 </div>
             </div>

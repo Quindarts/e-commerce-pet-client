@@ -1,0 +1,54 @@
+.common-link-styles {
+    font-size: 1.4rem;
+    color: $blue-main;
+
+    &:hover {
+        color: $green-1-hover-text;
+    }
+}
+
+.login {
+    width: 380px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px 50px 20px;
+    background-color: $white;
+
+    &__header {
+        @include text(2.7rem, 700, $blue-main, 1.27);
+        font-family: $font-quicksan;
+        text-align: center;
+        letter-spacing: -0.01em;
+        margin-bottom: 35px;
+    }
+
+    &__remember {
+        @include flex(space-between, center, null, null);
+        margin: 25px 0 20px 0;
+        text-transform: capitalize;
+
+        &--lost-password {
+            a {
+                @include text(1.3rem, 400, $blue-main, 1.8rem);
+
+                &:hover {
+                    color: $green-1-hover-text;
+                }
+            }
+
+        }
+    }
+
+    &__bottom {
+        margin-top: 32px;
+        @include flex(center, center, null, 20px);
+        text-transform: capitalize;
+        @include text(1.4rem, null, $text-color, 1.5);
+        letter-spacing: 0.02em;
+
+        a {
+            @extend .common-link-styles;
+        }
+    }
+
+}

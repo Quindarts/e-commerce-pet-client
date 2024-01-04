@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 const Checkbox = (props) => {
     const {
@@ -14,15 +14,15 @@ const Checkbox = (props) => {
         checked,
         label,
         ...restProps
-    } = props;
+    } = props
 
-    const validColors = ["green", "blue", "black", "brown", "purple"];
-    const colorClass = validColors.includes(color) ? ` checkbox--${color}` : "";
-    const checkboxClass = `${"checkbox"}${colorClass}${
-        className ? ` ${className}` : ""
-    }${size ? ` checkbox--${size}` : ""}`;
+    const validColors = ['green', 'blue', 'black', 'brown', 'purple']
+    const colorClass = validColors.includes(color) ? ` checkbox--${color}` : ''
+    const checkboxClass = `${'checkbox'}${colorClass}${
+        className ? ` ${className}` : ''
+    }${size ? ` checkbox--${size}` : ''}`
 
-    const labelClass = `checkbox--${color}`; 
+    const labelClass = `checkbox--${color}`
 
     return (
         <>
@@ -38,7 +38,7 @@ const Checkbox = (props) => {
                 {label}
             </label>
         </>
-    );
-};
+    )
+}
 
-export default Checkbox;
+export default Checkbox

@@ -39,3 +39,14 @@ export const apiRegister = (data) => {
     //     }
     // })
 }
+
+export const apiLogin = (data, token) => {
+    return axiosConfig({
+        url: '/auth/login',
+        method: 'post',
+        data,
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+}
