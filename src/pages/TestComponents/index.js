@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Icon } from '@iconify/react'
 import InputQuantity from '../../components/InputQuantity'
-import formatter from '../../utils/formatter'
+import formatter from '../../utils/formatterMoney'
 import UseTranslate from '../../utils/translate'
 import Breadcrumb from '../../components/Breadcrumb'
 import According from '../../components/According/According'
@@ -198,9 +198,9 @@ const TestComponents = () => {
                 <ProductCard data={dataCard} onClick={handleClick} />
             </div> */}
 
-            {/* <div className="container">
+            <div className="container">
                 <ProductCard data={data} reset={reset} />
-            </div> */}
+            </div>
 
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
