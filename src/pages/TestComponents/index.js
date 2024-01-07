@@ -12,6 +12,7 @@ import Breadcrumb from '../../components/Breadcrumb'
 import According from '../../components/According/According'
 
 import { useSnackbar } from 'notistack'
+import QuantityTextField from '../../components/QuantityTextField'
 
 const data = {
     id: '1',
@@ -97,6 +98,16 @@ const TestComponents = () => {
             variant,
         })
     }
+
+    // UPDATE INPUT QUANTITY
+
+    const [quantity, setQuantity] = useState(1)
+    const handleQuantityChange = (newQuantity) => {
+        setQuantity(newQuantity)
+    }
+    console.log(quantity)
+
+    // UPDATE INPUT QUANTITY
 
     return (
         <>
@@ -251,6 +262,14 @@ const TestComponents = () => {
                     <div style={{ height: 500 }}></div>
                 </According>
             </div>
+
+            <QuantityTextField
+                className="mt-2"
+                quantity={quantity}
+                onChange={handleQuantityChange}
+                size="large"
+                style={{ margin: '10px' }}
+            />
         </>
     )
 }
