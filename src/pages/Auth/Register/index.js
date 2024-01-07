@@ -4,9 +4,9 @@ import Button from '../../../components/Button'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { apiRegister } from '../../../services/api'
+import { apiRegister } from '../../../services/auth'
 import { useSnackbar } from 'notistack'
-import { schema } from '../../../utils/schema'
+import { schema } from '../../../utils/validate'
 
 function Register() {
     const { enqueueSnackbar } = useSnackbar()
@@ -16,6 +16,7 @@ function Register() {
         handleSubmit,
         formState: { errors },
         reset,
+        onBlur,
     } = useForm({
         resolver: yupResolver(schema),
         mode: 'onBlur',
@@ -70,6 +71,7 @@ function Register() {
                             id="email"
                             register={register}
                             errors={errors}
+                            onBlur={onBlur}
                         />
                         <TextField
                             className="mt-2"
@@ -144,7 +146,7 @@ function Register() {
                     </Button>
                     <div className="register__bottom">
                         You A Member?
-                        <Link>Login</Link>
+                        <Link to={'/auth/login'}>Login</Link>
                     </div>
                 </div>
             </div>
