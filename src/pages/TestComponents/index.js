@@ -9,6 +9,7 @@ import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatterMoney'
 import UseTranslate from '../../utils/translate'
 import Breadcrumb from '../../components/Breadcrumb'
+import ProductModal from '../../components/ProductModal'
 import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
@@ -29,11 +30,16 @@ const TestComponents = () => {
 
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
+    const [showProductModal, setShowProductModal] = useState(false);
     const refQuantity = useRef(data.quantity || 0)
 
     const handleChangeQuantity = (quantity) => {
         refQuantity.current = Number(quantity)
         console.log(quantity)
+    }
+
+    const handleProductModal = () => {
+        setShowProductModal(!showProductModal);
     }
 
     const [lang, setLang] = useState('')
@@ -210,7 +216,7 @@ const TestComponents = () => {
             </div> */}
 
             <div className="container">
-                <ProductCard data={data} reset={reset} />
+                <ProductCard data={data} reset={reset} handleProductModal={handleProductModal}/>
             </div>
 
             <div style={{ marginLeft: '500px' }}>
@@ -269,6 +275,9 @@ const TestComponents = () => {
                 onChange={handleQuantityChange}
                 size="large"
                 style={{ margin: '10px' }}
+            />
+            <ProductModal showProductModal={showProductModal} data={data} handleChangeQuantity={handleChangeQuantity} value={refQuantity.current} errors={errors}
+                handleProductModal={handleProductModal}
             />
         </>
     )
