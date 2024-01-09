@@ -14,6 +14,7 @@ import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
 import QuantityTextField from '../../components/QuantityTextField'
+import Badge from '../../components/Badge'
 
 const data = {
     id: '1',
@@ -30,7 +31,7 @@ const TestComponents = () => {
 
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
-    const [showProductModal, setShowProductModal] = useState(false);
+    const [showProductModal, setShowProductModal] = useState(false)
     const refQuantity = useRef(data.quantity || 0)
 
     const handleChangeQuantity = (quantity) => {
@@ -39,7 +40,7 @@ const TestComponents = () => {
     }
 
     const handleProductModal = () => {
-        setShowProductModal(!showProductModal);
+        setShowProductModal(!showProductModal)
     }
 
     const [lang, setLang] = useState('')
@@ -114,6 +115,15 @@ const TestComponents = () => {
     console.log(quantity)
 
     // UPDATE INPUT QUANTITY
+
+    // BADGES
+    const badgeMessages = [
+        { message: 'Top', status: 'featured' },
+        { message: 'New', status: 'new' },
+        { message: '-11%', status: 'sale' },
+        { message: 'Out of stock', status: 'outofstock' },
+    ]
+    // BADGES
 
     return (
         <>
@@ -216,9 +226,21 @@ const TestComponents = () => {
             </div> */}
 
             <div className="container">
-                <ProductCard data={data} reset={reset} handleProductModal={handleProductModal}/>
+                <ProductCard
+                    data={data}
+                    reset={reset}
+                    handleProductModal={handleProductModal}
+                />
             </div>
 
+            <ProductCard
+                style={{ position: 'relative', margin: '0 auto' }}
+                data={data}
+                reset={reset}
+                handleProductModal={handleProductModal}
+            >
+                <Badge badges={badgeMessages} />
+            </ProductCard>
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
                     id="quantity"
@@ -276,9 +298,16 @@ const TestComponents = () => {
                 size="large"
                 style={{ margin: '10px' }}
             />
-            <ProductModal showProductModal={showProductModal} data={data} handleChangeQuantity={handleChangeQuantity} value={refQuantity.current} errors={errors}
+            <ProductModal
+                showProductModal={showProductModal}
+                data={data}
+                handleChangeQuantity={handleChangeQuantity}
+                value={refQuantity.current}
+                errors={errors}
                 handleProductModal={handleProductModal}
             />
+
+            <div style={{ position: 'relative' }}></div>
         </>
     )
 }
