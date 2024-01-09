@@ -14,6 +14,7 @@ import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
 import QuantityTextField from '../../components/QuantityTextField'
+import InputRadio from '../../components/InputRadio'
 
 const data = {
     id: '1',
@@ -30,7 +31,7 @@ const TestComponents = () => {
 
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
-    const [showProductModal, setShowProductModal] = useState(false);
+    const [showProductModal, setShowProductModal] = useState(false)
     const refQuantity = useRef(data.quantity || 0)
 
     const handleChangeQuantity = (quantity) => {
@@ -39,7 +40,7 @@ const TestComponents = () => {
     }
 
     const handleProductModal = () => {
-        setShowProductModal(!showProductModal);
+        setShowProductModal(!showProductModal)
     }
 
     const [lang, setLang] = useState('')
@@ -115,6 +116,12 @@ const TestComponents = () => {
 
     // UPDATE INPUT QUANTITY
 
+    // INPUT RADIO
+
+    const roles = [
+        { id: 'Method_1', value: 'Flat rate:', amount: 3000000 },
+        { id: 'Method_2', value: 'Free shipping' },
+    ]
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -216,7 +223,11 @@ const TestComponents = () => {
             </div> */}
 
             <div className="container">
-                <ProductCard data={data} reset={reset} handleProductModal={handleProductModal}/>
+                <ProductCard
+                    data={data}
+                    reset={reset}
+                    handleProductModal={handleProductModal}
+                />
             </div>
 
             <div style={{ marginLeft: '500px' }}>
@@ -276,9 +287,49 @@ const TestComponents = () => {
                 size="large"
                 style={{ margin: '10px' }}
             />
-            <ProductModal showProductModal={showProductModal} data={data} handleChangeQuantity={handleChangeQuantity} value={refQuantity.current} errors={errors}
+            <ProductModal
+                showProductModal={showProductModal}
+                data={data}
+                handleChangeQuantity={handleChangeQuantity}
+                value={refQuantity.current}
+                errors={errors}
                 handleProductModal={handleProductModal}
             />
+            <form>
+                <InputRadio
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        margin: '50px 50px',
+                        width: 400,
+                    }}
+                    label="Payment Method"
+                    register={register}
+                    id="shipping"
+                    validate={{ required: 'This field can not empty.' }}
+                    errors={errors}
+                    options={
+                        roles &&
+                        roles
+                            // .filter((item) => item.code !== 'ROL1')
+                            .map((item) => ({
+                                label: item.value,
+                                value: item.id,
+                                amount: item.amount,
+                            }))
+                    }
+                />
+                <Button
+                    onClick={handleSubmit(onSubmit)}
+                    htmlType="submit"
+                    type="primary"
+                    size="small"
+                    ghost
+                    className="cc"
+                >
+                    submit
+                </Button>
+            </form>
         </>
     )
 }
