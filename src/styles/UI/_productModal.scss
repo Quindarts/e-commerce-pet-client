@@ -167,13 +167,6 @@
             z-index: 1;
             right: 0;
             top: 0;
-            cursor: pointer;
-            border: none;
-
-            &:hover {
-                background-color: #fff;
-                color: $blue-main !important;
-            }
 
             svg {
                 font-size: 2rem;

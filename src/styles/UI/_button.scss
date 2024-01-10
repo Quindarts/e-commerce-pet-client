@@ -1,93 +1,114 @@
 .btn {
-  font-family: $font-outfit;
-  display: inline-block;
-  border: none;
-  text-align: center;
-  cursor: pointer;
-  transition: opacity 0.3s linear, visibility 0.3s linear, color 0.15s linear, border-color 0.15s linear, background-color 0.15s linear, box-shadow 0.15s linear;
+    font-family: $font-outfit;
+    display: inline-block;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition:
+        opacity 0.3s linear,
+        visibility 0.3s linear,
+        color 0.15s linear,
+        border-color 0.15s linear,
+        background-color 0.15s linear,
+        box-shadow 0.15s linear;
 
-  &--primary {
-    border-radius: 2.5rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border: solid 0.2rem $blue-main;
-    background-color: $blue-main;
-    align-items: center;
-    @include text(1.3rem, bold, #fff, 1.6rem);
-    @include btn-size(1.5rem, 2.5rem);
-    display: inline-flex;
-    
-    span {
-      display: inline-flex;
-      font-size: 1.6rem;
-      margin-right: 0.5rem;
+    &--primary {
+        border-radius: 2.5rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        border: solid 0.2rem $blue-main;
+        background-color: $blue-main;
+        align-items: center;
+        @include text(1.3rem, bold, #fff, 1.6rem);
+        @include btn-size(1.5rem, 2.5rem);
+        display: inline-flex;
+
+        span {
+            display: inline-flex;
+            font-size: 1.6rem;
+            margin-right: 0.5rem;
+        }
+
+        &:hover {
+            background-color: $blue-main-hover !important;
+            border-color: $blue-main-hover;
+        }
+    }
+
+    &--green {
+        background-color: $green-1;
+        border-color: $green-1;
+
+        &:hover {
+            background-color: #fff !important;
+            border-color: #fff !important;
+            color: $green-1-hover-text;
+        }
+    }
+
+    &--white {
+        background-color: #fff;
+        border-color: #fff;
+        color: $blue-main !important;
+
+        &:hover {
+            background-color: $blue-main-hover !important;
+            border-color: $blue-main-hover !important;
+            color: #fff;
+        }
+    }
+
+    &--ghost {
+        border-color: $blue-main;
+        background-color: transparent;
+        color: $blue-main;
+
+        &:hover {
+            background-color: $blue-main !important;
+            color: #fff;
+            border-color: $blue-main !important;
+        }
+    }
+
+    &--icon {
+      @include flex(center, center);
+      @include text(2rem, null, $blue-main, null);
+      @include box(4rem, 4rem);
+      border-radius: 50%;
+      background-color: #fff;
+      border: solid 0.2rem $blue-main;
+      transition: $btn-hover-transition;
+
+      &.btn--unbordered {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+
+        &:hover {
+            background-color: transparent !important;
+            color: $blue-main !important;
+        }
+      }
+    }
+
+    &--small {
+        @include btn-size(0.5rem, 1.8rem);
+        font-size: 1.2rem;
+    }
+
+    &--medium {
+        @include btn-size(0.8rem, 3rem);
+        font-size: 1.2rem;
     }
 
     &:hover {
-      background-color: $blue-main-hover !important;
-      border-color: $blue-main-hover;
+        background-color: $blue-main;
+        color: #fff !important;
     }
-  }
 
-  &--green {
-    background-color: $green-1;
-    border-color: $green-1;
-
-    &:hover {
-      background-color: #fff !important;
-      border-color: #fff !important;
-      color: $green-1-hover-text;
+    &.disabled {
+        opacity: 0.2;
+        cursor: unset;
+        pointer-events: none;
     }
-  }
-
-  &--white {
-    background-color: #fff;
-    border-color: #fff;
-    color: $blue-main !important;
-
-    &:hover {
-      background-color: $blue-main-hover !important;
-      border-color: $blue-main-hover !important;
-      color: #fff;
-    }
-  }
-
-  &--ghost {
-    border-color: $blue-main;
-    background-color: transparent;
-    color: $blue-main;
-
-    &:hover {
-      background-color: $blue-main !important;
-      color: #fff;
-      border-color: $blue-main !important;
-    }
-  }
-
-  &--icon {
-    @include flex(center, center);
-    @include text(2rem, null, $blue-main, null);
-    @include box(4rem, 4rem);
-    border-radius: 50%;
-    background-color: #fff;
-    border: solid 0.2rem $blue-main;
-    transition: $btn-hover-transition;
-  }
-
-  &--small {
-    @include btn-size(0.5rem, 1.8rem);
-    font-size: 1.2rem;
-  }
-
-  &:hover {
-    background-color: $blue-main;
-    color: #fff !important;
-  }
-
-  &.disabled {
-    opacity: 0.2;
-    cursor: unset;
-    pointer-events: none;
-  }
-
 }
