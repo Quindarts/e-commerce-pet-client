@@ -3,7 +3,6 @@ import { useRef } from 'react'
 import Button from '../../components/Button'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
 const CardProduct = (props) => {
-
     const { data, reset, className, handleProductModal, ...rest } = props
 
     const { id, title, desc, category, weight, stock, price } = data
@@ -17,15 +16,13 @@ const CardProduct = (props) => {
 
     const handleClick = (weight) => {
         refWeight.current = weight
-        reset();
+        reset()
     }
 
     const handleShowModal = (e) => {
-        e.preventDefault();
-        handleProductModal();
+        e.preventDefault()
+        handleProductModal()
     }
-
-    console.log(className)
 
     const classValue = `product-card${className ? ` ${className}` : ''}`
 
