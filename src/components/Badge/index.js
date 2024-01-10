@@ -1,21 +1,25 @@
 import React from 'react'
 
 const Badge = (props) => {
-    const { badges = [], className, classBadge, ...rest } = props
-
+    const { badges, className, children, classBadge, message, ...rest } = props
+    console.log(badges)
     return (
         <div className={className} {...rest}>
-            <div classBadge={className} className="badge__list">
-                {badges &&
+            <span className={`badge badge__${badges}`}>
+                {message}
+                {children}
+            </span>
+
+            {/* {badges &&
                     badges.map((badge, index) => (
                         <span
                             key={index}
                             className={`badge badge__${badge.status}`}
                         >
                             {badge.message}
+                            {children}
                         </span>
-                    ))}
-            </div>
+                    ))} */}
         </div>
     )
 }
