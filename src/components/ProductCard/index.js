@@ -3,7 +3,8 @@ import { useRef } from 'react'
 import Button from '../../components/Button'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
 const CardProduct = (props) => {
-    const { data, reset, className, handleProductModal, ...rest } = props
+    const { data, reset, className, handleProductModal, children, ...rest } =
+        props
 
     const { id, title, desc, category, weight, stock, price } = data
 
@@ -27,7 +28,7 @@ const CardProduct = (props) => {
     const classValue = `product-card${className ? ` ${className}` : ''}`
 
     return (
-        <div className={classValue}>
+        <div {...rest} className={classValue}>
             <a className="product-card__image" href="/">
                 <img src={demo} alt={title} />
                 <div className="product-card__overlay">
@@ -97,6 +98,7 @@ const CardProduct = (props) => {
                     </div>
                 </div>
             </div>
+            {children}
         </div>
     )
 }

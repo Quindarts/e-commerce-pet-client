@@ -15,6 +15,7 @@ import Accordin from '../../components/Accordin/Accordin'
 import { useSnackbar } from 'notistack'
 import QuantityTextField from '../../components/QuantityTextField'
 import InputText from '../../components/InputText'
+import Badge from '../../components/Badge'
 
 const data = {
     id: '1',
@@ -117,12 +118,15 @@ const TestComponents = () => {
 
     // UPDATE INPUT QUANTITY
 
-    // INPUT RADIO
-
-    const roles = [
-        { id: 'Method_1', value: 'Flat rate:', amount: 3000000 },
-        { id: 'Method_2', value: 'Free shipping' },
+    // BADGES
+    const badgeMessages = [
+        { message: 'Top', status: 'featured' },
+        { message: 'New', status: 'new' },
+        { message: '-11%', status: 'sale' },
+        { message: 'Out of stock', status: 'outofstock' },
     ]
+    // BADGES
+
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -231,6 +235,14 @@ const TestComponents = () => {
                 />
             </div>
 
+            <ProductCard
+                style={{ position: 'relative', margin: '0 auto' }}
+                data={data}
+                reset={reset}
+                handleProductModal={handleProductModal}
+            >
+                <Badge badges={badgeMessages} />
+            </ProductCard>
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
                     id="quantity"
@@ -306,6 +318,8 @@ const TestComponents = () => {
                 label="Description"
                 validate={{ require: 'This field can not empty' }}
             />
+
+            <div style={{ position: 'relative' }}></div>
         </>
     )
 }
