@@ -26,7 +26,7 @@ const Accordin = (props) => {
     return (
         <>
             <div className={className} {...res}>
-                <div className="cart__collaterals cart__color">
+                <div className="cart__color">
                     <div style={{ padding: '0' }}>
                         <div className="cart__coupon">
                             <Link
