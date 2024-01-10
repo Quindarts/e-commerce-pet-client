@@ -14,6 +14,7 @@ import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
 import QuantityTextField from '../../components/QuantityTextField'
+import Tab, { FirstTab, SecondTab } from '../../components/Tab'
 
 const data = {
     id: '1',
@@ -30,7 +31,7 @@ const TestComponents = () => {
 
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
-    const [showProductModal, setShowProductModal] = useState(false);
+    const [showProductModal, setShowProductModal] = useState(false)
     const refQuantity = useRef(data.quantity || 0)
 
     const handleChangeQuantity = (quantity) => {
@@ -39,7 +40,7 @@ const TestComponents = () => {
     }
 
     const handleProductModal = () => {
-        setShowProductModal(!showProductModal);
+        setShowProductModal(!showProductModal)
     }
 
     const [lang, setLang] = useState('')
@@ -115,6 +116,38 @@ const TestComponents = () => {
 
     // UPDATE INPUT QUANTITY
 
+    // TAB
+
+    const tabData = [
+        {
+            id: 1,
+            tab: 'Dogs',
+            path: 'dog',
+            title: 'Anh',
+        },
+        {
+            id: 2,
+            tab: 'Cats',
+            path: 'cat',
+            title: 'Yêu',
+        },
+
+        {
+            id: 3,
+            tab: 'Fish',
+            path: 'fish',
+            title: 'Em',
+        },
+
+        {
+            id: 4,
+            tab: 'Small Pets',
+            path: 'small-pet',
+            title: 'Lắm',
+        },
+    ]
+
+    // TAB
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -216,7 +249,11 @@ const TestComponents = () => {
             </div> */}
 
             <div className="container">
-                <ProductCard data={data} reset={reset} handleProductModal={handleProductModal}/>
+                <ProductCard
+                    data={data}
+                    reset={reset}
+                    handleProductModal={handleProductModal}
+                />
             </div>
 
             <div style={{ marginLeft: '500px' }}>
@@ -276,9 +313,24 @@ const TestComponents = () => {
                 size="large"
                 style={{ margin: '10px' }}
             />
-            <ProductModal showProductModal={showProductModal} data={data} handleChangeQuantity={handleChangeQuantity} value={refQuantity.current} errors={errors}
+            <ProductModal
+                showProductModal={showProductModal}
+                data={data}
+                handleChangeQuantity={handleChangeQuantity}
+                value={refQuantity.current}
+                errors={errors}
                 handleProductModal={handleProductModal}
             />
+
+            <Tab
+                data={tabData}
+                style={{
+                    margin: '0 auto 25px',
+                    maxWidth: '1160px',
+                    textAlign: 'center',
+                    lineHeight: 0,
+                }}
+            ></Tab>
         </>
     )
 }

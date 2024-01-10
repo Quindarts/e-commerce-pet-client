@@ -1,0 +1,48 @@
+.tabs {
+
+    &__menu {
+        &::before {
+            @include position(absolute, null, 0, 0, 0);
+            content: "";
+            display: block;
+            border-bottom: 2px solid $border-color-light;
+        }
+
+        max-width: 1160px;
+        display: inline-flex;
+        position: relative;
+        margin: 0;
+        padding: 0;
+
+        .active {
+            opacity: 1;
+            border-bottom-color: $blue-main;
+        }
+
+        &--item {
+            z-index: 1;
+            position: relative;
+            flex: 0 0 auto;
+            margin: 0;
+            padding-bottom: 23px;
+            border-bottom: 2px solid transparent;
+            opacity: .7;
+
+
+
+            &:not(:last-child) {
+                margin-right: 40px;
+            }
+
+            &-link {
+                font-style: normal;
+                @include text(2.2rem, 500, $blue-main, 1.27);
+            }
+        }
+    }
+
+    &__content {
+        transition: 5s;
+    }
+
+}
