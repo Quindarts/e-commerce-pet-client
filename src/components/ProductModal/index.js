@@ -174,6 +174,7 @@ const ProductModal = (props) => {
                             className="modal__product-btnClose"
                             htmlType="submit"
                             type="icon"
+                            border={false}
                         >
                             <Icon icon="ant-design:close-outlined" />
                         </Button>
