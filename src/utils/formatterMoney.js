@@ -7,18 +7,22 @@ const formatter = (number) => {
         //     style: 'currency',
         //     currency: 'VND',
         // }).format(number)
-        const formattedNumber = number.toLocaleString('en-US', {
-            style: 'decimal',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0,
-        })
+        const formattedNumber =
+            number &&
+            number.toLocaleString('en-US', {
+                style: 'decimal',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            })
         return formattedNumber + ' ' + 'Vnđ'
     } else {
-        const formattedNumber = number.toLocaleString('en-US', {
-            style: 'decimal',
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-        })
+        const formattedNumber =
+            number &&
+            number.toLocaleString('en-US', {
+                style: 'decimal',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            })
         return formattedNumber + '$'
     }
 }

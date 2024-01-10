@@ -60,6 +60,7 @@ const TestComponents = () => {
         formState: { errors },
         handleSubmit,
         reset,
+        setValue,
     } = useForm()
 
     const onSubmit = (value) => {
@@ -116,38 +117,6 @@ const TestComponents = () => {
 
     // UPDATE INPUT QUANTITY
 
-    // TAB
-
-    const tabData = [
-        {
-            id: 1,
-            tab: 'Dogs',
-            path: 'dog',
-            title: 'Anh',
-        },
-        {
-            id: 2,
-            tab: 'Cats',
-            path: 'cat',
-            title: 'Yêu',
-        },
-
-        {
-            id: 3,
-            tab: 'Fish',
-            path: 'fish',
-            title: 'Em',
-        },
-
-        {
-            id: 4,
-            tab: 'Small Pets',
-            path: 'small-pet',
-            title: 'Lắm',
-        },
-    ]
-
-    // TAB
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -256,6 +225,14 @@ const TestComponents = () => {
                 />
             </div>
 
+            <ProductCard
+                style={{ position: 'relative', margin: '0 auto' }}
+                data={data}
+                reset={reset}
+                handleProductModal={handleProductModal}
+            >
+                <Badge badges={badgeMessages} />
+            </ProductCard>
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
                     id="quantity"
