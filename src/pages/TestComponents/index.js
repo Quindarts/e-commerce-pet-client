@@ -127,6 +127,8 @@ const TestComponents = () => {
     ]
     // BADGES
 
+    console.log(badgeMessages.map((badge) => badge.status))
+
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -241,7 +243,12 @@ const TestComponents = () => {
                 reset={reset}
                 handleProductModal={handleProductModal}
             >
-                <Badge badges={badgeMessages} />
+                <div className="badge__list">
+                    <Badge badges={'new'} message="new"></Badge>
+                    <Badge badges={'sale'} message="-11%"></Badge>
+                    <Badge badges={'featured'} message="top"></Badge>
+                    <Badge badges={'outofstock'} message="out of stock"></Badge>
+                </div>
             </ProductCard>
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
