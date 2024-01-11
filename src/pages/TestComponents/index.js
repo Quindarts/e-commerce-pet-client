@@ -14,6 +14,8 @@ import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
 import QuantityTextField from '../../components/QuantityTextField'
+import InputText from '../../components/InputText'
+import Badge from '../../components/Badge'
 
 const data = {
     id: '1',
@@ -30,7 +32,7 @@ const TestComponents = () => {
 
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
-    const [showProductModal, setShowProductModal] = useState(false);
+    const [showProductModal, setShowProductModal] = useState(false)
     const refQuantity = useRef(data.quantity || 0)
 
     const handleChangeQuantity = (quantity) => {
@@ -39,7 +41,7 @@ const TestComponents = () => {
     }
 
     const handleProductModal = () => {
-        setShowProductModal(!showProductModal);
+        setShowProductModal(!showProductModal)
     }
 
     const [lang, setLang] = useState('')
@@ -59,6 +61,7 @@ const TestComponents = () => {
         formState: { errors },
         handleSubmit,
         reset,
+        setValue,
     } = useForm()
 
     const onSubmit = (value) => {
@@ -114,6 +117,17 @@ const TestComponents = () => {
     console.log(quantity)
 
     // UPDATE INPUT QUANTITY
+
+    // BADGES
+    const badgeMessages = [
+        { message: 'Top', status: 'featured' },
+        { message: 'New', status: 'new' },
+        { message: '-11%', status: 'sale' },
+        { message: 'Out of stock', status: 'outofstock' },
+    ]
+    // BADGES
+
+    console.log(badgeMessages.map((badge) => badge.status))
 
     return (
         <>
@@ -216,9 +230,26 @@ const TestComponents = () => {
             </div> */}
 
             <div className="container">
-                <ProductCard data={data} reset={reset} handleProductModal={handleProductModal}/>
+                <ProductCard
+                    data={data}
+                    reset={reset}
+                    handleProductModal={handleProductModal}
+                />
             </div>
 
+            <ProductCard
+                style={{ position: 'relative', margin: '0 auto' }}
+                data={data}
+                reset={reset}
+                handleProductModal={handleProductModal}
+            >
+                <div className="badge__list">
+                    <Badge badges={'new'} message="new"></Badge>
+                    <Badge badges={'sale'} message="-11%"></Badge>
+                    <Badge badges={'featured'} message="top"></Badge>
+                    <Badge badges={'outofstock'} message="out of stock"></Badge>
+                </div>
+            </ProductCard>
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
                     id="quantity"
@@ -276,9 +307,26 @@ const TestComponents = () => {
                 size="large"
                 style={{ margin: '10px' }}
             />
-            <ProductModal showProductModal={showProductModal} data={data} handleChangeQuantity={handleChangeQuantity} value={refQuantity.current} errors={errors}
+            <ProductModal
+                showProductModal={showProductModal}
+                data={data}
+                handleChangeQuantity={handleChangeQuantity}
+                value={refQuantity.current}
+                errors={errors}
                 handleProductModal={handleProductModal}
             />
+
+            <InputText
+                height={300}
+                id="description"
+                register={register}
+                errors={errors}
+                setValue={setValue}
+                label="Description"
+                validate={{ require: 'This field can not empty' }}
+            />
+
+            <div style={{ position: 'relative' }}></div>
         </>
     )
 }

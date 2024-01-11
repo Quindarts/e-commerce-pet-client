@@ -1,5 +1,11 @@
 $colorHover: #F63E04;
 
+@include respond(desktop) {
+    .menuui {
+        height: 0;
+    }
+}
+
 @include respond(tablet) {
     .menuui {
         height: 100%;

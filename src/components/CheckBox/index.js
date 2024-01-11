@@ -13,7 +13,7 @@ const Checkbox = (props) => {
         className,
         checked,
         label,
-        ...restProps
+        ...rest
     } = props
 
     const validColors = ['green', 'blue', 'black', 'brown', 'purple']
@@ -26,17 +26,18 @@ const Checkbox = (props) => {
 
     return (
         <>
-            <label htmlFor="custom-checkbox" className={labelClass}>
-                <input
-                    className={checkboxClass}
-                    type="checkbox"
-                    id="custom-checkbox"
-                    checked={checked}
-                    onChange={onChange}
-                    {...restProps}
-                />
-                {label}
-            </label>
+            <div className={className} {...rest}>
+                <label htmlFor="custom-checkbox" className={labelClass}>
+                    <input
+                        className={checkboxClass}
+                        type="checkbox"
+                        id="custom-checkbox"
+                        checked={checked}
+                        onChange={onChange}
+                    />
+                    {label}
+                </label>
+            </div>
         </>
     )
 }
