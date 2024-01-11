@@ -14,7 +14,12 @@ import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
 import QuantityTextField from '../../components/QuantityTextField'
-import Tab, { FirstTab, SecondTab } from '../../components/Tab'
+
+import Tab from '../../components/Tab'
+
+import InputText from '../../components/InputText'
+import Badge from '../../components/Badge'
+import TabContent from '../../components/Tab/TabContent'
 
 const data = {
     id: '1',
@@ -113,9 +118,41 @@ const TestComponents = () => {
     const handleQuantityChange = (newQuantity) => {
         setQuantity(newQuantity)
     }
-    console.log(quantity)
 
     // UPDATE INPUT QUANTITY
+
+    // TAB
+
+    const tabData = [
+        {
+            id: 1,
+            tab: 'Dogs',
+            path: 'dog',
+            title: 'Anh',
+        },
+        {
+            id: 2,
+            tab: 'Cats',
+            path: 'cat',
+            title: 'Yêu',
+        },
+
+        {
+            id: 3,
+            tab: 'Fish',
+            path: 'fish',
+            title: 'Em',
+        },
+
+        {
+            id: 4,
+            tab: 'Small Pets',
+            path: 'small-pet',
+            title: 'Lắm',
+        },
+    ]
+
+    // TAB
 
     return (
         <>
@@ -230,9 +267,7 @@ const TestComponents = () => {
                 data={data}
                 reset={reset}
                 handleProductModal={handleProductModal}
-            >
-                <Badge badges={badgeMessages} />
-            </ProductCard>
+            ></ProductCard>
             <div style={{ marginLeft: '500px' }}>
                 <InputQuantity
                     id="quantity"
@@ -307,7 +342,9 @@ const TestComponents = () => {
                     textAlign: 'center',
                     lineHeight: 0,
                 }}
-            ></Tab>
+            >
+                <TabContent />
+            </Tab>
         </>
     )
 }

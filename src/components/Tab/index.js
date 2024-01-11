@@ -1,24 +1,18 @@
-import React, { useState } from 'react'
+import React, { cloneElement, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
-export const TabChildren = ({ data }) => {
-    console.log(data)
-    return (
-        <div>
-            <h1 className="mt-2">{data.title}</h1>
-        </div>
-    )
-}
 const Tab = (props) => {
     const [activeTab, setActiveTab] = useState(1)
-    const { className, style, data, id, ...rest } = props
+    const { className, style, data, dataChildren, id, children, ...rest } =
+        props
 
     const handleActive = (tabId) => {
         setActiveTab(tabId === activeTab ? tabId : tabId)
     }
 
     const activeTabData = data.find((tab) => tab.id === activeTab)
-
+    // console.log(activeTabData)
+    // console.log(activeTab)
     return (
         <div style={style} className={className} {...rest}>
             <div className="tabs">
@@ -41,7 +35,10 @@ const Tab = (props) => {
                         ))}
                 </div>
                 <div className="tab__content">
-                    {activeTabData && <TabChildren data={activeTabData} />}
+                    {React.Children.map(children, (child) => {
+                        // Truyền dữ liệu xuống children
+                        return cloneElement(child, { activeTabData })
+                    })}
                 </div>
             </div>
         </div>
