@@ -8,15 +8,10 @@
     box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-    background-color: rgb(192, 216, 237);
-    height: 8px;
-    width: 8px;
-}
 @include respond(desktop) {
 
     ::-webkit-scrollbar {
-        background-color: $blue-main;
+        background-color: rgb(192, 216, 237);
         height: 8px;
         width: 8px;
     }
