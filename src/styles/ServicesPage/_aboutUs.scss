@@ -14,8 +14,8 @@
         }
 
         &__container {
+            margin-top: 45px;
             max-width: 1160px;
-            margin: 0 auto;
             display: flex;
 
             &--item {
@@ -35,6 +35,10 @@
                     padding: 0 25px;
                     flex: 0 0 25%;
                 }
+            }
+
+            .about__overlay {
+                height: 100%;
             }
 
         }
@@ -74,17 +78,20 @@
         }
 
         &__container {
-            margin: 0 30px 0 30px;
-            width: calc(100% - 60px);
+
+            margin: 25px 30px 0 30px;
 
             &--item {
+                flex: 0 0 50%;
+
                 p {
-                    @include text(1.5rem, 700, $text-color, 2.4rem);
+                    @include text(1.5rem, 400, $text-color, 2.4rem);
                     letter-spacing: 0.015em;
                 }
 
                 &:first-child {
-                    padding-bottom: 30px;
+                    padding: 0 30px 20px 0;
+
                 }
 
                 &-sign {
@@ -124,12 +131,19 @@
 @include respond(mobile) {
     .about {
         &__container {
-            margin-top: 25px;
-            margin: 0 20px 0 20px;
-            width: calc(100% - 40px);
+            margin: 25px 20px 0 20px;
 
             &--item {
                 flex: 0 0 100%;
+
+                &:first-child {
+                    padding: 0 0 20px 0;
+
+                }
+
+                &:last-child {
+                    padding-left: 0 !important;
+                }
 
                 &-sign {
                     margin: 15px 0px 20px 0px;
@@ -146,6 +160,7 @@
                     margin: 10px 0;
                     flex: 0 0 100%;
                 }
+
             }
         }
 
@@ -189,15 +204,14 @@
     }
 
     &__container {
-        margin-top: 45px;
+
 
         &--item {
             position: relative;
 
             p {
                 font-family: $font-outfit;
-                @include text(1.7rem, 400, $text-color, 2.6rem);
-                letter-spacing: 0.015em;
+                color: $text-color;
             }
 
             &-img {
@@ -253,7 +267,7 @@
         }
 
         .about__overlay {
-            height: 100%;
+
             @include flex(center, null, column, null);
 
             &--seo {
@@ -282,6 +296,7 @@
     &__instagram {
         width: 100%;
         position: relative;
+        overflow: hidden;
 
         &--wrapper {
             width: 100%;
