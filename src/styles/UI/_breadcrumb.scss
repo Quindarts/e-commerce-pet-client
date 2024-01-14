@@ -1,5 +1,7 @@
 .breadcrumbs {
 
+    color: currentColor;
+
     &__list {
         margin: 0 auto;
         max-width: 100%;
@@ -11,7 +13,6 @@
 
     &__item {
         @include flex(null, center, null, null);
-        color: $blue-main;
 
         a {
             letter-spacing: 0.015em;

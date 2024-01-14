@@ -10,7 +10,6 @@ function MainLayout() {
         <Fragment>
             <TopHeader color={'blue'} />
             <Navigation color={'blue'} />
-            MainLayout
             <Outlet />
             <Footer />
         </Fragment>
