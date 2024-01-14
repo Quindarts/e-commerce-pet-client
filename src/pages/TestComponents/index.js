@@ -152,8 +152,6 @@ const TestComponents = () => {
         },
     ]
 
-    console.log(badgeMessages.map((badge) => badge.status))
-
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
