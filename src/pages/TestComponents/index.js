@@ -14,8 +14,12 @@ import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
 import QuantityTextField from '../../components/QuantityTextField'
+
+import Tab from '../../components/Tab'
+
 import InputText from '../../components/InputText'
 import Badge from '../../components/Badge'
+import TabContent from '../../components/Tab/TabContent'
 
 const data = {
     id: '1',
@@ -114,18 +118,39 @@ const TestComponents = () => {
     const handleQuantityChange = (newQuantity) => {
         setQuantity(newQuantity)
     }
-    console.log(quantity)
 
     // UPDATE INPUT QUANTITY
 
-    // BADGES
-    const badgeMessages = [
-        { message: 'Top', status: 'featured' },
-        { message: 'New', status: 'new' },
-        { message: '-11%', status: 'sale' },
-        { message: 'Out of stock', status: 'outofstock' },
+    // TAB
+
+    const tabData = [
+        {
+            id: 1,
+            tab: 'Dogs',
+            path: 'dog',
+            title: 'Anh',
+        },
+        {
+            id: 2,
+            tab: 'Cats',
+            path: 'cat',
+            title: 'Yêu',
+        },
+
+        {
+            id: 3,
+            tab: 'Fish',
+            path: 'fish',
+            title: 'Em',
+        },
+
+        {
+            id: 4,
+            tab: 'Small Pets',
+            path: 'small-pet',
+            title: 'Lắm',
+        },
     ]
-    // BADGES
 
     console.log(badgeMessages.map((badge) => badge.status))
 
@@ -316,17 +341,17 @@ const TestComponents = () => {
                 handleProductModal={handleProductModal}
             />
 
-            <InputText
-                height={300}
-                id="description"
-                register={register}
-                errors={errors}
-                setValue={setValue}
-                label="Description"
-                validate={{ require: 'This field can not empty' }}
-            />
-
-            <div style={{ position: 'relative' }}></div>
+            <Tab
+                data={tabData}
+                style={{
+                    margin: '0 auto 25px',
+                    maxWidth: '1160px',
+                    textAlign: 'center',
+                    lineHeight: 0,
+                }}
+            >
+                <TabContent />
+            </Tab>
         </>
     )
 }

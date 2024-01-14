@@ -8,15 +8,18 @@
     box-sizing: border-box;
 }
 
-::-webkit-scrollbar {
-    background-color: $blue-main;
-    height: 8px;
-    width: 8px;
-}
+@include respond(desktop) {
 
-::-webkit-scrollbar-thumb {
-    background: $blue-main;
-    border-radius: 5px;
+    ::-webkit-scrollbar {
+        background-color: $blue-main;
+        height: 8px;
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $blue-main;
+        border-radius: 5px;
+    }
 }
 
 html {
