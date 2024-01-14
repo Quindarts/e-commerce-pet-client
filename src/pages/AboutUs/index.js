@@ -29,7 +29,7 @@ const AboutUs = () => {
     ]
     return (
         <>
-            <div className="about">
+            <div className="about" style={{ width: '100%' }}>
                 <header className="about__header">
                     <Breadcrumb
                         className="about__header--breadcrumb"
@@ -38,7 +38,7 @@ const AboutUs = () => {
                     />
                     <h1 className="about__header--title">About Us</h1>
                 </header>
-                <section className="about__container">
+                <section className="about__container mx-auto">
                     <div className="about__container--wrapper">
                         <div className="about__heading">
                             <h2>Our Mission</h2>
@@ -76,7 +76,7 @@ const AboutUs = () => {
                         </section>
                     </div>
                 </section>
-                <section className="about__container">
+                <section className="about__container  mx-auto">
                     <div className="about__container--wrapper">
                         <div className="about__container--item">
                             <img
@@ -110,7 +110,7 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </section>
-                <section className="about__container">
+                <section className="about__container  mx-auto">
                     <div className="about__container--wrapper">
                         <div className="about__container--item about__overlay">
                             <div className="about__overlay--ourshop"></div>
@@ -134,7 +134,10 @@ const AboutUs = () => {
                                 mauris id integer porta.
                             </p>
                         </div>
-                        <div className="about__container--item">
+                        <div
+                            style={{ paddingLeft: 60 }}
+                            className="about__container--item"
+                        >
                             <img
                                 alt=""
                                 src={images.about5}
@@ -144,7 +147,7 @@ const AboutUs = () => {
                         </div>
                     </div>
                 </section>
-                <section className="about__container">
+                <section className="about__container  mx-auto">
                     <div className="about__container--wrapper">
                         <div className="about__container--service">
                             {servicesData.map((service, index) => (

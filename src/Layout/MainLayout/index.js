@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { Outlet } from 'react-router-dom'
 import Footer from '../../components/Shared/Footer'
 
@@ -7,12 +6,12 @@ import TopHeader from '../../components/Shared/Header/TopHeader'
 
 function MainLayout() {
     return (
-        <Fragment>
+        <main style={{ maxWidth: '100vw' }}>
             <TopHeader color={'blue'} />
             <Navigation color={'blue'} />
             <Outlet />
             <Footer />
-        </Fragment>
+        </main>
     )
 }
 
