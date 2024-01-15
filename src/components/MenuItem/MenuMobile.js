@@ -1,12 +1,13 @@
 import { Icon } from '@iconify/react'
 import { useEffect, useState } from 'react'
 import { dataMenu, dataMenuC2, dataMenuC3 } from '../../utils/MenuItem'
+import { Link } from 'react-router-dom'
 
 const MenuMobile = ({ type, widthStyle, onclose, open }) => {
     const [typeStyle, setTypeStyle] = useState('left')
     const [step, setStep] = useState(0)
     const [widthEl, setWidthEl] = useState(
-        typeof window !== 'undefined' && window.innerWidth / 3
+        typeof window !== 'undefined' && window.innerWidth / 1
     )
     const [tagMenu, setTagMenu] = useState('')
     const [tagMenuC2, setTagMenuC2] = useState('')
@@ -295,8 +296,41 @@ const MenuMobile = ({ type, widthStyle, onclose, open }) => {
                         )}
                     </div>
                 </div>
-
-                <div className="menuui_footer"></div>
+                <div className="menuui_footer">
+                    <div
+                        style={{ display: 'block' }}
+                        className="navigation--right"
+                    >
+                        <div className="navigation--right-wrap">
+                            <div className="navigation--search-button">
+                                <Link>
+                                    <Icon icon="iconamoon:search-bold" />
+                                </Link>
+                            </div>
+                            <div className="navigation--auth-button">
+                                <Link>
+                                    <Icon icon="ph:user-bold" />
+                                </Link>
+                            </div>
+                            <div className="navigation--wishlist-button">
+                                <Link>
+                                    <Icon icon="iconamoon:heart-bold" />
+                                    <span className="count-info">
+                                        <span>99</span>
+                                    </span>
+                                </Link>
+                            </div>
+                            <div className="navigation--cart-button">
+                                <Link>
+                                    <Icon icon="pepicons-pop:cart" />
+                                    <span className="count-info">
+                                        <span>1</span>
+                                    </span>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     )
