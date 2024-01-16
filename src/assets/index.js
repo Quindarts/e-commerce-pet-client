@@ -20,6 +20,12 @@ import about8 from './images/about8.jpg'
 import about9 from './images/about9.jpg'
 import about10 from './images/about10.jpg'
 import about11 from './images/about11.jpg'
+import hero1 from './images/hero1.jpg'
+import hero2 from './images/hero2.jpg'
+import heroTablet1 from './images/heroTablet1.jpg'
+import heroTablet2 from './images/heroTablet2.jpg'
+import heroMobile1 from './images/heroMobile1.jpg'
+import heroMobile2 from './images/heroMobile2.jpg'
 
 const images = {
     logo: logo,
@@ -41,6 +47,12 @@ const images = {
     about9: about9,
     about10: about10,
     about11: about11,
+    hero1: hero1,
+    hero2: hero2,
+    heroTablet1: heroTablet1,
+    heroTablet2: heroTablet2,
+    heroMobile1: heroMobile1,
+    heroMobile2: heroMobile2,
 }
 
 export default images
