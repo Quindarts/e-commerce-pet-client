@@ -198,7 +198,7 @@
                 display: block;
                 margin-bottom: 2rem;
 
-                > tr {
+                >tr {
                     display: flex;
                 }
             }
@@ -301,7 +301,7 @@
             margin-bottom: 15px;
             border-bottom: solid 1px #dceaf6;
 
-            > * {
+            >* {
                 display: block;
                 width: 100%;
             }
@@ -413,12 +413,10 @@
 }
 
 //Base
-@mixin flex(
-    $justify-content: normal,
+@mixin flex($justify-content: normal,
     $align-items: normal,
     $direction: row,
-    $gap: 0
-) {
+    $gap: 0) {
     display: flex;
     justify-content: $justify-content;
     align-items: $align-items;
@@ -426,12 +424,10 @@
     gap: $gap;
 }
 
-@mixin text(
-    $font-size,
+@mixin text($font-size,
     $font-weight,
     $color: $text-primary,
-    $line-height: 1.5
-) {
+    $line-height: 1.5) {
     font-size: $font-size;
     font-weight: $font-weight;
     color: $color;
@@ -494,13 +490,11 @@
     padding-left: $x2;
 }
 
-@mixin color-scheme(
-    $text-color,
+@mixin color-scheme($text-color,
     $placeholder-color,
     $border-color,
     $background-color,
-    $outline-color
-) {
+    $outline-color) {
     color: $text-color;
 
     &::placeholder {
@@ -558,28 +552,28 @@
   large-desktop
   */
 
-@mixin respond($breakpoint) {
-    @if $breakpoint ==mobile {
-        @media only screen and (max-width: 767px) {
-            @content;
-        }
-    }
+// @mixin respond($breakpoint) {
+//     @if $breakpoint ==mobile {
+//         @media only screen and (max-width: 767px) {
+//             @content;
+//         }
+//     }
 
-    @if $breakpoint ==tablet {
-        @media only screen and (max-width: 1189px) {
-            @content;
-        }
-    }
+//     @if $breakpoint ==tablet {
+//         @media only screen and (max-width: 1189px) {
+//             @content;
+//         }
+//     }
 
-    @if $breakpoint ==desktop {
-        @media only screen and (min-width: 1190px) {
-            @content;
-        }
-    }
+//     @if $breakpoint ==desktop {
+//         @media only screen and (min-width: 1190px) {
+//             @content;
+//         }
+//     }
 
-    @if $breakpoint ==large-desktop {
-        @media only screen and (min-width: 1200px) {
-            @content;
-        }
-    }
-}
+//     @if $breakpoint ==large-desktop {
+//         @media only screen and (min-width: 1200px) {
+//             @content;
+//         }
+//     }
+// }
