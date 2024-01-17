@@ -20,6 +20,7 @@ import Tab from '../../components/Tab'
 import InputText from '../../components/InputText'
 import Badge from '../../components/Badge'
 import TabContent from '../../components/Tab/TabContent'
+import Pagination from '../../components/Pagination'
 
 const data = {
     id: '1',
@@ -31,7 +32,8 @@ const data = {
     price: [20, 30, 40],
 }
 
-const TestComponents = () => {
+const TestComponents = (currentItems) => {
+    console.log(currentItems)
     const { enqueueSnackbar } = useSnackbar()
 
     const [isChecked, setChecked] = useState(false)
@@ -152,6 +154,7 @@ const TestComponents = () => {
         },
     ]
 
+    const paginateData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -350,6 +353,7 @@ const TestComponents = () => {
             >
                 <TabContent />
             </Tab>
+            <Pagination data={paginateData}></Pagination>
         </>
     )
 }
