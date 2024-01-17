@@ -32,14 +32,23 @@ const data = {
     price: [20, 30, 40],
 }
 
-const TestComponents = (currentItems) => {
-    console.log(currentItems)
+const TestComponents = () => {
     const { enqueueSnackbar } = useSnackbar()
 
     const [isChecked, setChecked] = useState(false)
     const [dataCard, setDataCard] = useState(data)
     const [showProductModal, setShowProductModal] = useState(false)
     const refQuantity = useRef(data.quantity || 0)
+
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(0)
+
+    const handlePageChange = (newOffset) => {
+        setCurrentPage(newOffset)
+    }
+    console.log(currentPage)
+
+    // Pagination
 
     const handleChangeQuantity = (quantity) => {
         refQuantity.current = Number(quantity)
@@ -353,7 +362,10 @@ const TestComponents = (currentItems) => {
             >
                 <TabContent />
             </Tab>
-            <Pagination data={paginateData}></Pagination>
+            <Pagination
+                onPageChangeCallback={handlePageChange}
+                data={paginateData}
+            ></Pagination>
         </>
     )
 }

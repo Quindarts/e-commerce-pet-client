@@ -2,7 +2,7 @@ import React from 'react'
 
 const Badge = (props) => {
     const { badges, className, children, classBadge, message, ...rest } = props
-    console.log(badges)
+
     return (
         <div className={className} {...rest}>
             <span className={`badge badge__${badges}`}>

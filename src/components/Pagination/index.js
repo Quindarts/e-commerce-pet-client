@@ -1,31 +1,29 @@
 import { Icon } from '@iconify/react'
 import React, { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
+
 const Pagination = (props) => {
-    const { className, style, data, ...rest } = props
-    const [currentItems, setCurrentItems] = useState([])
+    const { className, style, data, onPageChangeCallback, ...rest } = props
     const [pageCount, setPageCount] = useState(0)
     const [itemOffset, setItemOffset] = useState(0)
     const itemsPerPage = 1
+
     useEffect(() => {
-        const endOffset = itemOffset + itemsPerPage
-        setCurrentItems(data.slice(itemOffset, endOffset))
         setPageCount(Math.ceil(data.length / itemsPerPage))
     }, [itemOffset, itemsPerPage, data])
+
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % data.length
+        const newOffset = +event.selected + 1
         setItemOffset(newOffset)
+
+        if (onPageChangeCallback) {
+            onPageChangeCallback(newOffset)
+        }
     }
 
-    console.log(currentItems)
     return (
         <>
-            <div
-                currentItems={currentItems}
-                className={className}
-                style={style}
-                {...rest}
-            >
+            <div className={className} style={style} {...rest}>
                 <nav className="pagination">
                     <ReactPaginate
                         onPageChange={handlePageClick}
