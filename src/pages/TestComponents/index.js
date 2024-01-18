@@ -20,6 +20,7 @@ import Tab from '../../components/Tab'
 import InputText from '../../components/InputText'
 import Badge from '../../components/Badge'
 import TabContent from '../../components/Tab/TabContent'
+import Pagination from '../../components/Pagination'
 
 const data = {
     id: '1',
@@ -38,6 +39,16 @@ const TestComponents = () => {
     const [dataCard, setDataCard] = useState(data)
     const [showProductModal, setShowProductModal] = useState(false)
     const refQuantity = useRef(data.quantity || 0)
+
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(0)
+
+    const handlePageChange = (newOffset) => {
+        setCurrentPage(newOffset)
+    }
+    console.log(currentPage)
+
+    // Pagination
 
     const handleChangeQuantity = (quantity) => {
         refQuantity.current = Number(quantity)
@@ -152,6 +163,7 @@ const TestComponents = () => {
         },
     ]
 
+    const paginateData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -350,6 +362,10 @@ const TestComponents = () => {
             >
                 <TabContent />
             </Tab>
+            <Pagination
+                onPageChangeCallback={handlePageChange}
+                data={paginateData}
+            ></Pagination>
         </>
     )
 }
