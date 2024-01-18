@@ -8,6 +8,7 @@
 
             &--wrapper {
                 transform: translateY(-50%);
+                top: 50%;
 
                 .hero__title {
                     span {
@@ -46,6 +47,7 @@
             padding: 80px 40px;
 
             &--wrapper {
+                top: 50%;
                 transform: translateY(-50%);
                 max-width: 350px;
 
@@ -80,7 +82,7 @@
 
 @include respond(mobile) {
     .hero {
-        min-height: 580px;
+        height: 600px;
 
         &__container {
             padding: 40px 20px 80px;
@@ -88,6 +90,8 @@
             &--wrapper {
                 transform: translateY(-100%);
                 max-width: 340px;
+                top: 30%;
+                padding-left: 15px;
 
                 .hero__title {
                     span {
@@ -101,6 +105,7 @@
 
                         &-inner {
                             @include text(2.6rem, 400, $blue-main, 1.43);
+                            display: none;
                         }
                     }
                 }
@@ -115,6 +120,12 @@
             transform: translateX(50%);
             @include position(absolute, 90%, 50%, 0, 0);
         }
+
+        // &__banner {
+        //     // &--img {
+        //     //     // opacity: 0.8;
+        //     // }
+        // }
     }
 
 }
@@ -156,7 +167,7 @@
 
     &__container {
         &--wrapper {
-            @include position(absolute, 50%, null, null, null);
+            @include position(absolute, null, null, null, null);
 
             .hero__title {
                 span {
