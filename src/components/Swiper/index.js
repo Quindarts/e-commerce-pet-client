@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Grid, Navigation, Pagination, Autoplay } from 'swiper/modules'
 
 import { Swiper } from 'swiper/react'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import 'swiper/css/grid'
+import 'swiper/css/autoplay'
 import { Icon } from '@iconify/react'
 
 const SwiperComponent = (props) => {
@@ -13,6 +15,7 @@ const SwiperComponent = (props) => {
         children,
         slidesPerView = 3,
         className,
+        grids,
         breakpoints = {
             320: {
                 slidesPerView: 1,
@@ -55,6 +58,10 @@ const SwiperComponent = (props) => {
             >
                 <Swiper
                     slidesPerView={slidesPerView}
+                    grid={{
+                        rows: grids,
+                        fill: 'row',
+                    }}
                     navigation={{
                         nextEl: '.swiper__btn--left',
                         prevEl: '.swiper__btn--right',
@@ -63,7 +70,7 @@ const SwiperComponent = (props) => {
                         clickable: true,
                     }}
                     className="mySwiper"
-                    modules={[Navigation, Pagination]}
+                    modules={[Navigation, Pagination, Grid, Autoplay]}
                     breakpoints={breakpoints}
                 >
                     {children}

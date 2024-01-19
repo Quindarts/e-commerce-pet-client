@@ -3,11 +3,22 @@ import { NavLink } from 'react-router-dom'
 
 const Tab = (props) => {
     const [activeTab, setActiveTab] = useState(1)
-    const { className, style, data, dataChildren, id, children, ...rest } =
-        props
+    const {
+        className,
+        style,
+        data,
+        dataChildren,
+        id,
+        children,
+        onChangeTab,
+        ...rest
+    } = props
 
     const handleActive = (tabId) => {
         setActiveTab(tabId === activeTab ? tabId : tabId)
+        if (onChangeTab) {
+            onChangeTab(tabId)
+        }
     }
 
     const activeTabData = data.find((tab) => tab.id === activeTab)
@@ -33,12 +44,6 @@ const Tab = (props) => {
                                 </NavLink>
                             </div>
                         ))}
-                </div>
-                <div className="tab__content">
-                    {React.Children.map(children, (child) => {
-                        // Truyền dữ liệu xuống children
-                        return cloneElement(child, { activeTabData })
-                    })}
                 </div>
             </div>
         </div>
