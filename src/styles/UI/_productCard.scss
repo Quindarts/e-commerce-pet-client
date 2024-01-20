@@ -1,9 +1,8 @@
 .product-card {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    background-color: #fff;
     border: 1px solid #DCEAF6;
     @include flex(_, _, column, _);
-    @include box(23.1rem, 51.5rem);
+    @include box(100%, 51.5rem);
 
     &__image {
         display: inline-flex;
