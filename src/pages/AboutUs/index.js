@@ -1,7 +1,7 @@
 import React from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 import images from '../../assets'
-import OurServices from '../../components/Shared/OurServices'
+import OurServices from '../../pages/Home/OurServices'
 import { Link } from 'react-router-dom'
 import { Icon } from '@iconify/react'
 const AboutUs = () => {

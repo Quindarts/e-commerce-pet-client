@@ -26,6 +26,7 @@ import heroTablet1 from './images/heroTablet1.jpg'
 import heroTablet2 from './images/heroTablet2.jpg'
 import heroMobile1 from './images/heroMobile1.jpg'
 import heroMobile2 from './images/heroMobile2.jpg'
+import cateTabDogs from './images/cateTabDogs.jpg'
 
 const images = {
     logo: logo,
@@ -53,6 +54,7 @@ const images = {
     heroTablet2: heroTablet2,
     heroMobile1: heroMobile1,
     heroMobile2: heroMobile2,
+    cateTabDogs: cateTabDogs,
 }
 
 export default images

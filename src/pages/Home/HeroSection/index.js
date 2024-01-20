@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import Button from '../../Button'
+import Button from '../../../components/Button'
 import images from '../../../assets'
 
 const HeroSection = () => {

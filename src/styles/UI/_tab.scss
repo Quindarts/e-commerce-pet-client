@@ -1,3 +1,41 @@
+@include respond(desktop) {
+    .tabs {
+        &__menu {
+            &--item {
+                padding-bottom: 23px;
+
+                &:not(:last-child) {
+                    margin-right: 40px;
+                }
+
+                &-link {
+                    font-style: normal;
+                    @include text(2.2rem, 500, $blue-main, 1.27);
+                }
+            }
+        }
+    }
+}
+
+@include respond(tablet) {
+    .tabs {
+        &__menu {
+            &--item {
+                padding-bottom: 23px;
+
+                &:not(:last-child) {
+                    margin-right: 40px;
+                }
+
+                &-link {
+                    font-style: normal;
+                    @include text(2.2rem, 500, $blue-main, 1.27);
+                }
+            }
+        }
+    }
+}
+
 @include respond(mobile) {
     .tabs {
         margin: 0 auto;
@@ -62,10 +100,6 @@
             margin: 0;
             border-bottom: 2px solid transparent;
             opacity: .7;
-
-
-
-
         }
     }
 
@@ -73,23 +107,4 @@
         transition: 5s;
     }
 
-}
-
-@include respond(desktop) {
-    .tabs {
-        &__menu {
-            &--item {
-                padding-bottom: 23px;
-
-                &:not(:last-child) {
-                    margin-right: 40px;
-                }
-
-                &-link {
-                    font-style: normal;
-                    @include text(2.2rem, 500, $blue-main, 1.27);
-                }
-            }
-        }
-    }
 }

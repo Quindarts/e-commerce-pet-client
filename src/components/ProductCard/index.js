@@ -13,9 +13,9 @@ const CardProduct = (props) => {
     const refWeight = useRef(0)
     var selectedWeight = refWeight.current
 
-    var selectedPrice = price.find((_, i) => i === selectedWeight)
+    var selectedPrice = price?.find((_, i) => i === selectedWeight)
 
-    var selectedStock = stock.find((_, i) => i === selectedWeight)
+    var selectedStock = stock?.find((_, i) => i === selectedWeight)
 
     const handleClick = (weight) => {
         refWeight.current = weight
@@ -59,7 +59,7 @@ const CardProduct = (props) => {
                     <div className="product-card__desc">{desc}</div>
                 </div>
                 <div className="product-card__category">
-                    {category.map((cate, i) => (
+                    {category?.map((cate, i) => (
                         <a key={i} className="product-card__tag" href="/">
                             {cate}
                         </a>
@@ -68,7 +68,7 @@ const CardProduct = (props) => {
             </div>
             <div className="product-card__bottom">
                 <div className="product-card__options">
-                    {weight.map((item, i) => (
+                    {weight?.map((item, i) => (
                         <span
                             key={i}
                             className={
