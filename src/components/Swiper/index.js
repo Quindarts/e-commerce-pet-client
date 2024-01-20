@@ -11,7 +11,7 @@ import { Icon } from '@iconify/react'
 const SwiperComponent = (props) => {
     const {
         children,
-        slidesPerView = 3,
+        slidesPerView,
         className,
         breakpoints = {
             320: {
@@ -54,10 +54,10 @@ const SwiperComponent = (props) => {
                 {...rest}
             >
                 <Swiper
-                    slidesPerView={slidesPerView}
+                    slidesPerView={slidesPerView || 3}
                     navigation={{
-                        nextEl: '.swiper__btn--left',
-                        prevEl: '.swiper__btn--right',
+                        nextEl: '.swiper__btn--right',
+                        prevEl: '.swiper__btn--left',
                     }}
                     pagination={{
                         clickable: true,

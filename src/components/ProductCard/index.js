@@ -2,11 +2,13 @@ import { Icon } from '@iconify/react'
 import { useRef } from 'react'
 import Button from '../../components/Button'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
+import { useForm } from 'react-hook-form'
 const CardProduct = (props) => {
-    const { data, reset, className, handleProductModal, children, ...rest } =
-        props
+    const { data, className, handleProductModal, children, ...rest } = props
 
     const { id, title, desc, category, weight, stock, price } = data
+
+    const { reset } = useForm();
 
     const refWeight = useRef(0)
     var selectedWeight = refWeight.current
