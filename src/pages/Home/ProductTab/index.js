@@ -38,14 +38,14 @@ const tabData = [
   },
 ]
 const data = {
-    id: '1',
-    title: 'American Journey Landmark Chicken',
-    desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
-    category: ['Whole', 'Hearted'],
-    weight: [8, 16, 32],
-    stock: [1, 0, 1],
-    price: [20, 30, 40],
-  }
+  id: '1',
+  title: 'American Journey Landmark Chicken',
+  desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+  category: ['Whole', 'Hearted'],
+  weight: [8, 16, 32],
+  stock: [1, 0, 1],
+  price: [20, 30, 40],
+}
 
 let arr = new Array(15).fill(0)
 
@@ -136,6 +136,8 @@ const ProductTab = () => {
                   </div>
                   <div className="productTabs__list--item-columns">
                     <SwiperComponent
+                      classNamePrev="prevProductTab"
+                      classNameNext="nextProductTab"
                       slidesPerView={3}
                       grids={2}
                       breakpoints={{
