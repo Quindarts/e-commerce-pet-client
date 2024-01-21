@@ -18,7 +18,7 @@ function Home() {
       <OurNews />
       <DailySales />
       <Populated />
-      <OurServices />
+      <OurServices id="widget__home" />
       <Testimonials />
       Home
       <Link to="component"> Go to component page</Link>

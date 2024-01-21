@@ -74,6 +74,8 @@ const OurNews = () => {
         </div>
         <div className="container--default">
           <SwiperComponent
+            classNamePrev="prevOurNews"
+            classNameNext="nextOurNews"
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -127,10 +129,10 @@ const OurNews = () => {
             ))}
           </SwiperComponent>
         </div>
-        <div style={{textAlign:"center", paddingTop:"52px"}}>
-            <Button htmlType="link" type="primary" url="/" size="medium">
-                view all
-            </Button>
+        <div style={{ textAlign: 'center', paddingTop: '52px' }}>
+          <Button htmlType="link" type="primary" url="/" size="medium">
+            view all
+          </Button>
         </div>
       </div>
     </>

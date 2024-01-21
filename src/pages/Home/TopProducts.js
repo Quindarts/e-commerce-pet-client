@@ -23,7 +23,11 @@ const TopProducts = () => {
         </div>
         <div className="container--default">
           <SwiperComponent
+            classNamePrev="prevTopProducts"
+            classNameNext="nextTopProducts"
+            type="product"
             slidesPerView={5}
+            className="cc"
             breakpoints={{
               0: {
                 slidesPerView: 1,
@@ -57,7 +61,7 @@ const TopProducts = () => {
                   el: '.hidden',
                   clickable: true,
                 },
-              }
+              },
             }}
           >
             {arr.map((item) => (

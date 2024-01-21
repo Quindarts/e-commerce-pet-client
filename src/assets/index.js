@@ -68,9 +68,8 @@ const images = {
   populatedBackground6: populatedBackground6,
   populated1: populated1,
   populated2: populated2,
-
-  reviewerAvt1: reviewerAvt1,
   cateTabDogs: cateTabDogs,
+  reviewerAvt1: reviewerAvt1,
 }
 
 export default images

@@ -1,6 +1,6 @@
-import { SwiperSlide } from "swiper/react"
-import SwiperComponent from "../../../components/Swiper"
-import ProductCard from '../../../components/ProductCard';
+import { SwiperSlide } from 'swiper/react'
+import SwiperComponent from '../../../components/Swiper'
+import ProductCard from '../../../components/ProductCard'
 
 const DailySales = () => {
   const data = {
@@ -21,6 +21,9 @@ const DailySales = () => {
         </div>
         <div className="container--default">
           <SwiperComponent
+            classNamePrev="prevDailySale"
+            classNameNext="nextDailySale"
+            type="product"
             slidesPerView={5}
             breakpoints={{
               0: {
@@ -55,7 +58,7 @@ const DailySales = () => {
           >
             {arr.map((item) => (
               <SwiperSlide>
-                <ProductCard data={data} sale/>
+                <ProductCard data={data} sale />
               </SwiperSlide>
             ))}
           </SwiperComponent>

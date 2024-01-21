@@ -86,6 +86,7 @@ ul {
 .swiper__wrap {
     position: relative;
     width: 100%;
+
 }
 
 @include respond(tablet) {
@@ -120,7 +121,6 @@ ul {
     transform: translateY(-50%);
 
     &:active {
-        // @include button-active()
         margin-top: 2px;
     }
 
@@ -194,6 +194,11 @@ ul {
     margin: auto 0;
 }
 
-// .swiper-pagination {
-//     display: none !important;
-// }
+.swiper__product {
+    background-color: #fff;
+    min-height: 51.5rem;
+}
+
+.swiper__product--two-row {
+    height: 100%;
+}

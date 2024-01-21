@@ -140,6 +140,7 @@ const ProductTab = () => {
                       classNameNext="nextProductTab"
                       slidesPerView={3}
                       grids={2}
+                      type={`product--two-row`}
                       breakpoints={{
                         320: {
                           slidesPerView: 2,
