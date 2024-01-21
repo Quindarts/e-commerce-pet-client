@@ -1,12 +1,14 @@
 @include respond(desktop) {
     .product-card {
-        @include box(23.1rem, 51.5rem);
+        width: 100%;
+        min-height: 51.5rem;
     }
 }
 
 @include respond(mobile) {
     .product-card {
-        @include box(100%, 51.5rem);
+        width: 100%;
+        min-height: 51.5rem;
     }
 }
 
@@ -14,8 +16,9 @@
 .product-card {
     background-color: #fff;
     border: 1px solid #DCEAF6;
+    width: 100%;
+    min-height: 51.5rem;
     @include flex(_, _, column, _);
-    @include box(100%, 51.5rem);
 
     &__image {
         display: inline-flex;
@@ -151,5 +154,38 @@
     &__price {
         @include text(1.8rem, 650, #F63E04, 1.5);
         letter-spacing: .02em;
+    }
+
+    &__progress {
+        &-text {
+            display: flex;
+            margin-top: 10px;
+            justify-content: space-between;
+            -moz-column-gap: 5px;
+            column-gap: 5px;
+            margin-bottom: 20px;
+        }
+        &-sold {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5;
+            letter-spacing: .02em;
+            color: #7F8D9D;
+
+            &--amount {
+                color: $blue-main;
+            }
+        }
+        &-available {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5;
+            letter-spacing: .02em;
+            color: #7F8D9D;
+
+            &--amount {
+                color: $blue-main;
+            }
+        }
     }
 }

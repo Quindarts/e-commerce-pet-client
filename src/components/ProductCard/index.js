@@ -4,8 +4,9 @@ import Button from '../../components/Button'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
 import { useForm } from 'react-hook-form'
 import Badge from '../Badge'
+import ProductProgress from '../ProductProgress'
 const CardProduct = (props) => {
-  const { data, className, handleProductModal, children, ...rest } = props
+  const { sale, data, className, handleProductModal, children, ...rest } = props
 
   const { id, title, desc, category, weight, stock, price } = data
 
@@ -30,6 +31,8 @@ const CardProduct = (props) => {
 
   const classValue = `product-card${className ? ` ${className}` : ''}`
 
+  console.log(sale);
+
   return (
     <div {...rest} className={classValue}>
       <a className="product-card__image" href="/">
@@ -51,6 +54,7 @@ const CardProduct = (props) => {
       </a>
       <div className="product-card__center">
         <div className="product-card__info">
+          {sale && <ProductProgress />}
           <a className="product-card__title" href="/">
             {title}
           </a>
