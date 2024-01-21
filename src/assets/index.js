@@ -27,6 +27,14 @@ import heroTablet2 from './images/heroTablet2.jpg'
 import heroMobile1 from './images/heroMobile1.jpg'
 import heroMobile2 from './images/heroMobile2.jpg'
 
+import populatedBackground from './images/populated_background2.jpg'
+import populatedBackground5 from './images/populated_background5.jpg'
+import populatedBackground6 from './images/populated_background6.jpg'
+
+import populated1 from './svg/populated1.svg'
+import populated2 from './svg/populated2.svg'
+
+import reviewerAvt1 from './images/review__avt1.jpg'
 const images = {
     logo: logo,
     widget1: widget1,
@@ -53,6 +61,14 @@ const images = {
     heroTablet2: heroTablet2,
     heroMobile1: heroMobile1,
     heroMobile2: heroMobile2,
+
+    populatedBackground: populatedBackground,
+    populatedBackground5: populatedBackground5,
+    populatedBackground6: populatedBackground6,
+    populated1: populated1,
+    populated2: populated2,
+
+    reviewerAvt1: reviewerAvt1,
 }
 
 export default images

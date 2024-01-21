@@ -177,6 +177,10 @@ ul {
     visibility: visible;
 }
 
+.none {
+    display: none;
+}
+
 ::selection {
     color: $white;
     background-color: $blue-main;
@@ -189,3 +193,7 @@ ul {
 .my-auto {
     margin: auto 0;
 }
+
+// .swiper-pagination {
+//     display: none !important;
+// }
