@@ -23,7 +23,9 @@ const TopProducts = () => {
         </div>
         <div className="container--default">
           <SwiperComponent
+            type="product"
             slidesPerView={5}
+            className="cc"
             breakpoints={{
               0: {
                 slidesPerView: 1,

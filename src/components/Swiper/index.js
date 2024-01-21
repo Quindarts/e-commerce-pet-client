@@ -12,6 +12,7 @@ import { Icon } from '@iconify/react'
 
 const SwiperComponent = (props) => {
     const {
+        type,
         children,
         slidesPerView = 3,
         className,
@@ -48,15 +49,18 @@ const SwiperComponent = (props) => {
 
     const [mouseHover, setMouseHover] = useState(false)
 
+    const classNameCustom = type !== undefined ? `swiper__wrap swiper__${type}` : `swiper__wrap`
+
     return (
         <>
             <div
                 onMouseMove={() => setMouseHover(true)}
                 onMouseLeave={() => setMouseHover(false)}
-                className="swiper__wrap"
+                className={classNameCustom}
                 {...rest}
             >
                 <Swiper
+                    style={{height: "100%"}}
                     slidesPerView={slidesPerView}
                     grid={{
                         rows: grids,

@@ -21,6 +21,7 @@ const DailySales = () => {
         </div>
         <div className="container--default">
           <SwiperComponent
+            type="product"
             slidesPerView={5}
             breakpoints={{
               0: {
