@@ -13,7 +13,6 @@ function Home() {
             <TopProducts />
             <ProductTab />
             <OurServices />
-            <Banners />
             Home
             <Link to="component"> Go to component page</Link>
         </div>
