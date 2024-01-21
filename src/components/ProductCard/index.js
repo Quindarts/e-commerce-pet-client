@@ -97,9 +97,9 @@ const CardProduct = (props) => {
         </div>
       </div>
       <div className="badge__list">
+        <Badge badges={'featured'} message="top"></Badge>
         <Badge badges={'new'} message="new"></Badge>
         <Badge badges={'sale'} message="-11%"></Badge>
-        <Badge badges={'featured'} message="top"></Badge>
         <Badge badges={'outofstock'} message="out of stock"></Badge>
       </div>
     </div>
