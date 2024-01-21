@@ -6,6 +6,8 @@ import ProductTab from './ProductTab'
 import TopProducts from './TopProducts'
 import DailySales from './DailySales'
 import OurNews from './OurNews'
+import Populated from './Populated'
+import Testimonials from './Testimonials'
 
 function Home() {
   return (
@@ -15,7 +17,9 @@ function Home() {
       <ProductTab />
       <OurNews />
       <DailySales />
+      <Populated />
       <OurServices />
+      <Testimonials />
       Home
       <Link to="component"> Go to component page</Link>
       <div style={{ width: '232px' }}></div>
