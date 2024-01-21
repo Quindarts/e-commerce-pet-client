@@ -45,16 +45,19 @@ const dataWidget = [
     },
 ]
 
-const OurServices = () => {
+const OurServices = (props) => {
+    const { id, style, ...rest } = props
     return (
         <>
-            <section className="widget">
+            <section id={id} className="widget" style={style} {...rest}>
                 <div className="widget__container">
                     <div className="widget__wrapper">
-                        <div className="widget__heading">
+                        {/* <div className="widget__heading">
                             <h2>Our Services</h2>
-                        </div>
+                        </div> */}
                         <SwiperComponent
+                            classNamePrev="prevOurServices"
+                            classNameNext="nextOurServices"
                             slidesPerView={3}
                             breakpoints={{
                                 320: {

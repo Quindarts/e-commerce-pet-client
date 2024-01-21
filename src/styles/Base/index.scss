@@ -177,6 +177,10 @@ ul {
     visibility: visible;
 }
 
+.none {
+    display: none;
+}
+
 ::selection {
     color: $white;
     background-color: $blue-main;

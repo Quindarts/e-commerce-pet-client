@@ -17,11 +17,13 @@ const SwiperComponent = (props) => {
         slidesPerView = 3,
         className,
         grids,
+        classNameNext,
+        classNamePrev,
         breakpoints = {
             320: {
                 slidesPerView: 1,
                 pagination: {
-                    el: '.swiper-pagination',
+                    el: '.none',
                     clickable: true,
                 },
             },
@@ -51,6 +53,10 @@ const SwiperComponent = (props) => {
 
     const classNameCustom = type !== undefined ? `swiper__wrap swiper__${type}` : `swiper__wrap`
 
+    // if (!classNamePrev || !classNameNext) {
+    //     return <></>
+    // }
+    const activeShowIcon = mouseHover === true
     return (
         <>
             <div
@@ -67,8 +73,8 @@ const SwiperComponent = (props) => {
                         fill: 'row',
                     }}
                     navigation={{
-                        nextEl: '.swiper__btn--right',
-                        prevEl: '.swiper__btn--left',
+                        nextEl: '.' + classNamePrev,
+                        prevEl: '.' + classNameNext,
                     }}
                     pagination={{
                         clickable: true,
@@ -83,9 +89,11 @@ const SwiperComponent = (props) => {
                     <button
                         type="button"
                         role="presentation"
-                        className={`swiper__btn swiper__btn--left ${
-                            mouseHover === true ? 'hidden' : ''
-                        }`}
+                        style={{
+                            opacity: activeShowIcon ? 1 : 0,
+                            visibility: activeShowIcon ? 'visible' : 'hidden',
+                        }}
+                        className={`${classNamePrev} swiper__btn swiper__btn--left`}
                     >
                         <Icon
                             width={24}
@@ -97,9 +105,11 @@ const SwiperComponent = (props) => {
                     <button
                         type="button"
                         role="presentation"
-                        className={`swiper__btn swiper__btn--right ${
-                            mouseHover === true ? 'hidden' : ''
-                        }`}
+                        style={{
+                            opacity: activeShowIcon ? 1 : 0,
+                            visibility: activeShowIcon ? 'visible' : 'hidden',
+                        }}
+                        className={`${classNameNext} swiper__btn swiper__btn--right`}
                     >
                         <Icon
                             width={24}
