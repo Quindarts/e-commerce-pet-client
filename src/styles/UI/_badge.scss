@@ -18,23 +18,23 @@
         letter-spacing: 0.045em;
 
         &__featured {
-            background-color: #73BE2F;
+            background-color: $blue-main;
             order: 1;
 
         }
 
         &__new {
-            background-color: $green-1;
+            background-color:  #73BE2F;
             order: 2;
         }
 
         &__sale {
-            background-color: $blue-main;
+            background-color: #F73E04;
             order: 3;
         }
 
         &__outofstock {
-            background-color: #F73E04;
+            background-color: #7a99c1;
             order: 4;
         }
     }
