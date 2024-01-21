@@ -5,6 +5,7 @@ import HeroSection from '../../pages/Home/HeroSection'
 import ProductTab from './ProductTab'
 import TopProducts from './TopProducts'
 import DailySales from './DailySales'
+import OurNews from './OurNews'
 
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
             <HeroSection />
             <TopProducts />
             <ProductTab />
+            <OurNews />
             <DailySales/>
             <OurServices />
             Home
