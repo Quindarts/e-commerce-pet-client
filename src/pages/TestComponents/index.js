@@ -46,9 +46,16 @@ const TestComponents = () => {
     const handlePageChange = (newOffset) => {
         setCurrentPage(newOffset)
     }
-    console.log(currentPage)
 
     // Pagination
+
+    // Tab
+    const [currentTab, setCurrentTab] = useState(1)
+    const handleTabChange = (tabId) => {
+        setCurrentTab(tabId)
+    }
+    console.log(currentTab)
+    // Tab
 
     const handleChangeQuantity = (quantity) => {
         refQuantity.current = Number(quantity)
@@ -353,6 +360,7 @@ const TestComponents = () => {
 
             <Tab
                 data={tabData}
+                onChangeTab={handleTabChange}
                 style={{
                     margin: '0 auto 25px',
                     maxWidth: '1160px',
