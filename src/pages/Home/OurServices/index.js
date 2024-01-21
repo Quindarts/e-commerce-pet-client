@@ -5,10 +5,10 @@ import { SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import Button from '../../Button'
+import Button from '../../../components/Button'
 import { Link } from 'react-router-dom'
 import images from '../../../assets'
-import SwiperComponent from '../../Swiper'
+import SwiperComponent from '../../../components/Swiper'
 
 const dataWidget = [
     {

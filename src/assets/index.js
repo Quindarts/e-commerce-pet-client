@@ -26,6 +26,7 @@ import heroTablet1 from './images/heroTablet1.jpg'
 import heroTablet2 from './images/heroTablet2.jpg'
 import heroMobile1 from './images/heroMobile1.jpg'
 import heroMobile2 from './images/heroMobile2.jpg'
+import cateTabDogs from './images/cateTabDogs.jpg'
 
 import populatedBackground from './images/populated_background2.jpg'
 import populatedBackground5 from './images/populated_background5.jpg'
@@ -36,39 +37,40 @@ import populated2 from './svg/populated2.svg'
 
 import reviewerAvt1 from './images/review__avt1.jpg'
 const images = {
-    logo: logo,
-    widget1: widget1,
-    services1: services1,
-    services2: services2,
-    services3: services3,
-    services4: services4,
-    services5: services5,
-    services6: services6,
-    services7: services7,
-    services8: services8,
-    about1: about1,
-    about2: about2,
-    about5: about5,
-    about6: about6,
-    about7: about7,
-    about8: about8,
-    about9: about9,
-    about10: about10,
-    about11: about11,
-    hero1: hero1,
-    hero2: hero2,
-    heroTablet1: heroTablet1,
-    heroTablet2: heroTablet2,
-    heroMobile1: heroMobile1,
-    heroMobile2: heroMobile2,
+  logo: logo,
+  widget1: widget1,
+  services1: services1,
+  services2: services2,
+  services3: services3,
+  services4: services4,
+  services5: services5,
+  services6: services6,
+  services7: services7,
+  services8: services8,
+  about1: about1,
+  about2: about2,
+  about5: about5,
+  about6: about6,
+  about7: about7,
+  about8: about8,
+  about9: about9,
+  about10: about10,
+  about11: about11,
+  hero1: hero1,
+  hero2: hero2,
+  heroTablet1: heroTablet1,
+  heroTablet2: heroTablet2,
+  heroMobile1: heroMobile1,
+  heroMobile2: heroMobile2,
 
-    populatedBackground: populatedBackground,
-    populatedBackground5: populatedBackground5,
-    populatedBackground6: populatedBackground6,
-    populated1: populated1,
-    populated2: populated2,
+  populatedBackground: populatedBackground,
+  populatedBackground5: populatedBackground5,
+  populatedBackground6: populatedBackground6,
+  populated1: populated1,
+  populated2: populated2,
 
-    reviewerAvt1: reviewerAvt1,
+  reviewerAvt1: reviewerAvt1,
+  cateTabDogs: cateTabDogs,
 }
 
 export default images
