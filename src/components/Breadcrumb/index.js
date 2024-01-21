@@ -11,7 +11,7 @@ const Breadcrumb = (props) => {
 
     const formatCrumb = (crumb, targetFormat) => {
         if (targetFormat === 'snake') {
-            return crumb.replace(/[-\s]/g, '_').toLowerCase()
+            return crumb.replace(/_/g, ' ').toLowerCase()
         } else if (targetFormat === 'camel') {
             return crumb.replace(/[-_\s]([a-zA-Z])/g, (match, group) =>
                 group.toUpperCase()
@@ -28,7 +28,6 @@ const Breadcrumb = (props) => {
         .filter((crumb) => crumb !== '')
         .map((crumb, index, array) => {
             currentLink += `/${crumb}`
-            // console.log(formatCrumb(crumb, targetFormat))
             return (
                 <li className="breadcrumbs__item" key={crumb}>
                     <Link to={currentLink}>

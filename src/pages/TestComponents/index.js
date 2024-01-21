@@ -14,8 +14,13 @@ import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
 import QuantityTextField from '../../components/QuantityTextField'
+
+import Tab from '../../components/Tab'
+
 import InputText from '../../components/InputText'
 import Badge from '../../components/Badge'
+import TabContent from '../../components/Tab/TabContent'
+import Pagination from '../../components/Pagination'
 
 const data = {
     id: '1',
@@ -34,6 +39,23 @@ const TestComponents = () => {
     const [dataCard, setDataCard] = useState(data)
     const [showProductModal, setShowProductModal] = useState(false)
     const refQuantity = useRef(data.quantity || 0)
+
+    // Pagination
+    const [currentPage, setCurrentPage] = useState(0)
+
+    const handlePageChange = (newOffset) => {
+        setCurrentPage(newOffset)
+    }
+
+    // Pagination
+
+    // Tab
+    const [currentTab, setCurrentTab] = useState(1)
+    const handleTabChange = (tabId) => {
+        setCurrentTab(tabId)
+    }
+    console.log(currentTab)
+    // Tab
 
     const handleChangeQuantity = (quantity) => {
         refQuantity.current = Number(quantity)
@@ -114,21 +136,41 @@ const TestComponents = () => {
     const handleQuantityChange = (newQuantity) => {
         setQuantity(newQuantity)
     }
-    console.log(quantity)
 
     // UPDATE INPUT QUANTITY
 
-    // BADGES
-    const badgeMessages = [
-        { message: 'Top', status: 'featured' },
-        { message: 'New', status: 'new' },
-        { message: '-11%', status: 'sale' },
-        { message: 'Out of stock', status: 'outofstock' },
+    // TAB
+
+    const tabData = [
+        {
+            id: 1,
+            tab: 'Dogs',
+            path: 'dog',
+            title: 'Anh',
+        },
+        {
+            id: 2,
+            tab: 'Cats',
+            path: 'cat',
+            title: 'Yêu',
+        },
+
+        {
+            id: 3,
+            tab: 'Fish',
+            path: 'fish',
+            title: 'Em',
+        },
+
+        {
+            id: 4,
+            tab: 'Small Pets',
+            path: 'small-pet',
+            title: 'Lắm',
+        },
     ]
-    // BADGES
 
-    console.log(badgeMessages.map((badge) => badge.status))
-
+    const paginateData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
     return (
         <>
             <div className="flex items-center gap-5 bg-gray p-20">
@@ -316,17 +358,22 @@ const TestComponents = () => {
                 handleProductModal={handleProductModal}
             />
 
-            <InputText
-                height={300}
-                id="description"
-                register={register}
-                errors={errors}
-                setValue={setValue}
-                label="Description"
-                validate={{ require: 'This field can not empty' }}
-            />
-
-            <div style={{ position: 'relative' }}></div>
+            <Tab
+                data={tabData}
+                onChangeTab={handleTabChange}
+                style={{
+                    margin: '0 auto 25px',
+                    maxWidth: '1160px',
+                    textAlign: 'center',
+                    lineHeight: 0,
+                }}
+            >
+                <TabContent />
+            </Tab>
+            <Pagination
+                onPageChangeCallback={handlePageChange}
+                data={paginateData}
+            ></Pagination>
         </>
     )
 }
