@@ -13,7 +13,7 @@ import { Icon } from '@iconify/react'
 const SwiperComponent = (props) => {
     const {
         children,
-        slidesPerView,
+        slidesPerView = 3,
         className,
         grids,
         breakpoints = {

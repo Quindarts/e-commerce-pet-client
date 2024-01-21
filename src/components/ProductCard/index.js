@@ -31,8 +31,6 @@ const CardProduct = (props) => {
 
   const classValue = `product-card${className ? ` ${className}` : ''}`
 
-  console.log(sale);
-
   return (
     <div {...rest} className={classValue}>
       <a className="product-card__image" href="/">
