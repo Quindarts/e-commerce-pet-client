@@ -9,7 +9,6 @@ import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatterMoney'
 import UseTranslate from '../../utils/translate'
 import Breadcrumb from '../../components/Breadcrumb'
-import ProductModal from '../../components/ProductModal'
 import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
@@ -21,6 +20,9 @@ import InputText from '../../components/InputText'
 import Badge from '../../components/Badge'
 import TabContent from '../../components/Tab/TabContent'
 import Pagination from '../../components/Pagination'
+import Modal from '../../components/Modal'
+import ProductContext from '../../components/ProductContext'
+import useModal from '../../hooks/useModal'
 
 const data = {
   id: '1',
@@ -37,7 +39,7 @@ const TestComponents = () => {
 
   const [isChecked, setChecked] = useState(false)
   const [dataCard, setDataCard] = useState(data)
-  const [showProductModal, setShowProductModal] = useState(false)
+  const { showProductModal, handleProductModal } = useModal();
   const refQuantity = useRef(data.quantity || 0)
 
   // Pagination
@@ -60,10 +62,6 @@ const TestComponents = () => {
   const handleChangeQuantity = (quantity) => {
     refQuantity.current = Number(quantity)
     console.log(quantity)
-  }
-
-  const handleProductModal = () => {
-    setShowProductModal(!showProductModal)
   }
 
   const [lang, setLang] = useState('')
@@ -273,7 +271,7 @@ const TestComponents = () => {
 
       <div className="container">
         <div style={{width:"232px"}}>
-            <ProductCard data={data}/>
+            <ProductCard data={data} handleProductModal={handleProductModal}/>
         </div>
       </div>
 
@@ -334,14 +332,16 @@ const TestComponents = () => {
         size="large"
         style={{ margin: '10px' }}
       />
-      <ProductModal
+      <Modal
         showProductModal={showProductModal}
-        data={data}
-        handleChangeQuantity={handleChangeQuantity}
-        value={refQuantity.current}
-        errors={errors}
         handleProductModal={handleProductModal}
-      />
+        full
+      >
+        <div style={{width: "800px", height: "400px", cursor:"pointer"}}>
+          cc
+        </div>
+      </Modal>
+      
 
       <Tab
         data={tabData}
