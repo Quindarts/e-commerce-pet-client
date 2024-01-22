@@ -46,8 +46,6 @@ const ProductModal = (props) => {
         reset()
     }
 
-    console.log(selectedWeight)
-
     return (
         <>
             {showProductModal && (
@@ -62,11 +60,9 @@ const ProductModal = (props) => {
                                 <img src={demo} alt="" />
                             </div>
                             <div className="modal__product-content">
-                                <a href='/' className="modal__product-category">
+                                <a href="/" className="modal__product-category">
                                     {category.map((cate, i) => (
-                                        <>
-                                            {cate + ' '} 
-                                        </>
+                                        <>{cate + ' '}</>
                                     ))}
                                 </a>
                                 <h1 className="modal__product-title">
@@ -178,6 +174,7 @@ const ProductModal = (props) => {
                             className="modal__product-btnClose"
                             htmlType="submit"
                             type="icon"
+                            border={false}
                         >
                             <Icon icon="ant-design:close-outlined" />
                         </Button>

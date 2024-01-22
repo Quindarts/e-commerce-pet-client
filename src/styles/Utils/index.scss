@@ -4,6 +4,7 @@
 .w-100 {
   width: 100%;
 }
+
 .text-center {
   display: inline-block;
   text-align: center;
@@ -45,4 +46,8 @@
   @include box(231px, 400px);
   border: 1px solid #ddd;
   padding: 15px 30px;
+}
+
+.mt-2 {
+  margin-top: 10px;
 }

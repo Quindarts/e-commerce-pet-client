@@ -107,6 +107,13 @@
     padding-bottom: $y;
 }
 
+@mixin padding($y1, $x1, $y2, $x2) {
+    padding-top: $y1;
+    padding-right: $x1;
+    padding-bottom: $y2;
+    padding-left: $x2;
+}
+
 @mixin color-scheme($text-color,
     $placeholder-color,
     $border-color,
@@ -122,7 +129,8 @@
     background-color: $background-color;
 
     &:focus {
-        outline: 1px solid $outline-color;
+        outline: none;
+        border-color: $outline-color !important;
     }
 }
 
@@ -171,8 +179,8 @@
   */
 
 @mixin respond($breakpoint) {
-    @if $breakpoint ==large-mobile {
-        @media only screen and (max-width: 640px) {
+    @if $breakpoint ==mobile {
+        @media only screen and (max-width: 767px) {
             @content;
         }
     }

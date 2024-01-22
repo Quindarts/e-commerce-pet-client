@@ -9,6 +9,7 @@
         }
 
         &--row {
+            padding: 0 25px;
             height: 60px;
             position: relative;
             transition: height 0.3s linear, box-shadow 0.3s linear;
@@ -16,12 +17,11 @@
         }
 
         &--left {
-            @include flex(null, center, null, null);
+            width: 100%;
+            @include flex(space-between, center, null, null);
             flex-wrap: nowrap;
 
             .navigation--menu-btn {
-                flex: 0 0 auto;
-                @include box(86px, 60px);
 
                 &:active {
                     @include button-active()
@@ -34,7 +34,6 @@
         }
 
         &--logo {
-            flex: 1 1 auto;
             height: 40px;
             @include flex(null, center, null, null);
 
@@ -50,15 +49,19 @@
         }
 
         &--right {
-            position: relative;
-            flex: 1 0 auto;
-            @include flex(flex-end, center, null, null);
-            @include text(2.1rem, null, null, 1);
-            margin: 0 13px;
-            padding-top: 5px;
+            display: none;
 
             &-wrap {
-                @include flex(flex-end, center, null, null);
+                @include flex(center, center, null, null);
+                @include text(2rem, null, $white, 0);
+
+                .count-info {
+                    background-color: $white;
+
+                    span {
+                        color: #0a2d56;
+                    }
+                }
 
             }
         }

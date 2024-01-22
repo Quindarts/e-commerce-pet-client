@@ -1,7 +1,9 @@
 import AuthLayout from '../Layout/AuthLayout'
 import MainLayout from '../Layout/MainLayout'
+import AboutUs from '../pages/AboutUs'
 import Login from '../pages/Auth/Login'
 import Register from '../pages/Auth/Register'
+import Cart from '../pages/Cart'
 import Home from '../pages/Home'
 import NoMatch from '../pages/NoMatch'
 import TestComponents from '../pages/TestComponents'
@@ -30,9 +32,10 @@ const router = createBrowserRouter(
                 // }}
                 element={<TestComponents />}
             />
-
+            <Route path="cart" element={<Cart />} />
+            <Route path="about_us" element={<AboutUs />} />
             <Route path="auth" element={<AuthLayout />}>
-                <Route index element={<Login />} />
+                <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
             </Route>
 

@@ -1,5 +1,11 @@
 $colorHover: #F63E04;
 
+@include respond(desktop) {
+    .menuui {
+        display: none;
+    }
+}
+
 @include respond(tablet) {
     .menuui {
         height: 100%;
@@ -8,6 +14,7 @@ $colorHover: #F63E04;
         z-index: 9999;
         overflow: hidden;
         transition: 0.5s;
+        overflow-y: auto;
 
         &_header {
             @include box(100%, 60px);
@@ -26,7 +33,7 @@ $colorHover: #F63E04;
                     transform: translateY(-50%);
 
                     &:active {
-                        @include button-active()
+                        margin-top: 4px;
                     }
 
                     svg {
@@ -44,7 +51,7 @@ $colorHover: #F63E04;
                     transform: translateY(-50%);
 
                     &:active {
-                        @include button-active()
+                        margin-top: 4px;
                     }
 
                     svg {
@@ -65,9 +72,10 @@ $colorHover: #F63E04;
         }
 
         &_content {
-            height: 100%;
+
             display: flex;
             transition: 0.5s;
+            height: 80%;
 
             &_item {
 
@@ -151,7 +159,15 @@ $colorHover: #F63E04;
         }
 
         &_footer {
-            height: 60px;
+            margin-bottom: 50px;
+        }
+    }
+}
+
+@include respond(mobile) {
+    .menuui {
+        &_content {
+            height: 80%;
         }
     }
 }

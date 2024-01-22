@@ -9,6 +9,7 @@ const Button = (props) => {
         htmlType,
         className,
         size,
+        border = true,
         ...restProps
     } = props
 
@@ -17,7 +18,7 @@ const Button = (props) => {
         type === 'primary' || type === 'icon' ? ` btn--${type}` : ''
 
     // Kiểm tra size hợp lệ
-    const sizeValue = size === 'small' ? ` btn--${size}` : ''
+    const sizeValue = size === 'small' || 'medium' ? ` btn--${size}` : ''
 
     // Danh sách màu hợp lệ
     const validColors = ['green', 'white']
@@ -25,9 +26,11 @@ const Button = (props) => {
     // Kiểm tra màu hợp lệ
     const colorValue = [...validColors].includes(color) ? ` btn--${color}` : ''
 
+    const unbordered = border ? "" : " btn--unbordered";
+
     const classValue = `btn${typeValue}${
         ghost ? ' btn--ghost' : ''
-    }${colorValue}${sizeValue}${className ? ` ${className}` : ''}`
+    }${colorValue}${unbordered}${sizeValue}${className ? ` ${className}` : ''}`
 
     return (
         <>

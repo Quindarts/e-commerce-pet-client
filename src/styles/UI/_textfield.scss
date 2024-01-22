@@ -1,18 +1,16 @@
-::selection {
-    color: white;
-    background-color: currentColor;
-}
-
 .textfield {
     width: 100%;
 
-    .label {
+    label {
         width: 100%;
         display: block;
         padding-bottom: 10px;
-        @include text(1.3rem, 400, color, 1.8rem);
+        @include text(1.3rem, 400, $blue-main, 1.8rem);
         letter-spacing: 0.02em;
+        background-color: transparent !important;
+        border: none !important;
     }
+
     .error {
         width: 100%;
         display: block;
@@ -20,6 +18,7 @@
         @include text(1.2rem, 400, #ff3333, 1.2rem);
         letter-spacing: 0.02em;
     }
+
     .input {
         margin: 0;
         padding: 0 70px 15px 0;
@@ -32,7 +31,8 @@
         letter-spacing: 0.01em;
         border-radius: 3px;
 
-        &--form {
+        &--form,
+        &--password {
             @include text(1.3rem, 700, color, 1.6rem);
             padding: 9px 12px;
             height: auto !important;
@@ -46,6 +46,7 @@
             border: none !important;
             border-bottom: solid 2px currentColor !important;
             background-color: transparent !important;
+
             &:focus {
                 outline: none !important;
             }
@@ -69,65 +70,55 @@
             // align-items: center;
             // justify-content: center;
             @include flex(center, center, row, 0) // &:checked + label::before {
-                //     content: "\2713";
-                //     font-size: 14px;
-                //     color: #00b894; /* Màu của dấu tích khi checkbox được chọn */
-                //     position: absolute;
-                //     top: 50%;
-                //     left: 50%;
-                //     transform: translate(-50%, -50%);
-                // }
-;
+            //     content: "\2713";
+            //     font-size: 14px;
+            //     color: #00b894; /* Màu của dấu tích khi checkbox được chọn */
+            //     position: absolute;
+            //     top: 50%;
+            //     left: 50%;
+            //     transform: translate(-50%, -50%);
+            // }
+            ;
         }
 
         &--green {
-            @include color-scheme(
-                $dark-green,
+            @include color-scheme($dark-green,
                 rgb(185, 204, 192),
                 rgb(185, 204, 192),
                 #f2fbf2,
-                $dark-green
-            );
+                $dark-green );
         }
 
         &--blue {
-            @include color-scheme(
-                $blue-main,
+            @include color-scheme($blue-main,
                 rgb(179, 203, 232),
                 rgb(179, 203, 232),
                 #f0f9fc,
-                $blue-main
-            );
+                $blue-main );
         }
 
         &--black {
-            @include color-scheme(
-                $black,
+            @include color-scheme($black,
                 rgb(181, 185, 190),
                 rgb(181, 185, 190),
                 #f1f4f4,
-                $black
-            );
+                $black );
         }
 
         &--brown {
-            @include color-scheme(
-                $brown,
+            @include color-scheme($brown,
                 rgb(198, 186, 183),
                 rgb(198, 186, 183),
                 #fcf9f7,
-                $brown
-            );
+                $brown );
         }
 
         &--purple {
-            @include color-scheme(
-                $purple,
+            @include color-scheme($purple,
                 rgb(203, 185, 222),
                 rgb(203, 185, 222),
                 #fcf3ff,
-                $purple
-            );
+                $purple );
         }
     }
 }

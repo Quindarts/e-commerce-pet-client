@@ -23,6 +23,7 @@ $brown: #401a0e;
 $purple: #531492;
 $icon-check: '\f108';
 $font-icon: 'Themify';
+$text-color: #7F8D9D;
 
 $border-color-light: #DCEAF6;
 
@@ -51,6 +52,7 @@ $hover-transition: opacity 0.3s linear,
 $opacity-transition: opacity 0.3s linear, visibility 0.3s linear;
 
 
+$background-hover-transition: background .3s, border .3s, border-radius .3s, box-shadow .3s, transform var(--e-transform-transition-duration, .4s);
 
 
 
