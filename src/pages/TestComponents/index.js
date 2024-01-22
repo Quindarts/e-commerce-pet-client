@@ -335,7 +335,7 @@ const TestComponents = () => {
       <Modal
         showProductModal={showProductModal}
         handleProductModal={handleProductModal}
-        full
+        // full
       >
         <div style={{width: "800px", height: "400px", cursor:"pointer"}}>
           cc
