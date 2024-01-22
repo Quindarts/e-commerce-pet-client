@@ -1,0 +1,45 @@
+.modal {
+    @include position(fixed, 0, null, null, 0);
+    @include box(100%, 100%);
+    opacity: 0;
+    z-index: 100;
+    display: none;
+    transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+    will-change: opacity;
+
+    &__overlay {
+        @include position(absolute, 0, null, null, 0);
+        @include box(100%, 100%);
+        background-color: rgb(255 255 255 / 95%);
+    }
+
+    &.open {
+        display: block;
+        opacity: 1;
+    }
+
+    &__button {
+        &--close {
+            @include position(absolute, 30px, 30px, null, null);
+            @include box(54px, 54px);
+            border-radius: 50%;
+            background-color: $white;
+            color: $blue-main;
+            cursor: pointer;
+            box-shadow: 0 1px 10px rgba(12, 44, 92, 0.07);
+
+            &:hover {
+                color: $white;
+                background-color: $blue-main;
+            }
+
+            &:active {
+                @include button-active()
+            }
+
+            svg {
+                @include box(25px, 25px);
+            }
+        }
+    }
+}
