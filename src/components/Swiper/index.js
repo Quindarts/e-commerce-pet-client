@@ -74,8 +74,8 @@ const SwiperComponent = (props) => {
             fill: 'row',
           }}
           navigation={{
-            nextEl: '.' + classNamePrev,
-            prevEl: '.' + classNameNext,
+            prevEl: '.' + classNamePrev,
+            nextEl: '.' + classNameNext,
           }}
           pagination={{
             clickable: true,
