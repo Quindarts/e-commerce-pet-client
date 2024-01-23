@@ -1,43 +1,28 @@
-import axios from 'axios';
-const url = "http://localhost:5000/api/v1";
+import axios from 'axios'
+const axiosConfig = axios.create({
+    baseURL: 'https://e-commerce-pet-server-quindarts.vercel.app',
+    headers: {
+        'Context-Type': 'application/json',
+    },
+})
 
-const api = axios.create({
-  baseURL: url,
-  timeout: 10000,
-  headers: {
-    "Content-type": "application/json",
-  },
-  withCredentials: true,
-});
-
-api.interceptors.request.use(
-  (config) => {
-    // Process config before sending
-    return config;
-  },
-  (error) => {
-    console.log(error);
-
-    // Handling requests related errors
-    return Promise.reject(error);
-  }
-);
-api.interceptors.response.use(
-  function (response) {
-    return response.data;
-  },
-  function (error) {
-    if (error?.response.data && !error.response?.data?.success) {
-      if (error?.response?.status === 401) {
-        //handle
-      } else {
-        //handle
-      }
-      return error;
+axiosConfig.interceptors.request.use(
+    (config) => {
+        return config
+    },
+    (error) => {
+        return Promise.reject(error)
     }
+)
+axiosConfig.interceptors.response.use(
+    function (response) {
+        return response.data
+    },
+    function (error) {
+        // return về reject để có thể dùng catch bên api
+        // fix ----------------fix
+        return Promise.reject(error)
+    }
+)
 
-    return error;
-  }
-);
-
-export default api;
+export default axiosConfig
