@@ -337,9 +337,13 @@ const TestComponents = () => {
         handleProductModal={handleProductModal}
         // full
       >
-        <div style={{width: "800px", height: "400px", cursor:"pointer"}}>
-          cc
-        </div>
+        <ProductContext 
+          data={data}
+          handleChangeQuantity={handleChangeQuantity}
+          value={refQuantity.current}
+          errors={errors}
+          handleProductModal={handleProductModal}
+        />
       </Modal>
       
 
