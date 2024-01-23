@@ -21,8 +21,10 @@ import Badge from '../../components/Badge'
 import TabContent from '../../components/Tab/TabContent'
 import Pagination from '../../components/Pagination'
 import Modal from '../../components/Modal'
-import ProductContext from '../../components/ProductContext'
 import useModal from '../../hooks/useModal'
+import ProductQuickview from '../../components/Product/ProductQuickview'
+import demo from "../../assets/img/ricky-118-460x373.jpg"
+import ProductContext from "../../components/Product/ProductContext"
 
 const data = {
   id: '1',
@@ -39,7 +41,7 @@ const TestComponents = () => {
 
   const [isChecked, setChecked] = useState(false)
   const [dataCard, setDataCard] = useState(data)
-  const { showProductModal, handleProductModal } = useModal();
+  const { showProductModal, handleProductModal } = useModal()
   const refQuantity = useRef(data.quantity || 0)
 
   // Pagination
@@ -270,8 +272,31 @@ const TestComponents = () => {
             </div> */}
 
       <div className="container">
-        <div style={{width:"232px"}}>
-            <ProductCard data={data} handleProductModal={handleProductModal}/>
+        <div className="row">
+          <div className="col-12 g-0">
+            <div style={{ width: '232px' }}>
+              <ProductCard
+                data={data}
+                handleProductModal={handleProductModal}
+              />
+            </div>
+          </div>
+          <div className="col-12 g-0">
+            <div className='mt-2 flex' style={{background: "#fff"}}>
+              <div style={{width:"50%"}}>
+                <img src={demo} alt="" style={{width: "100%", objectFit:"cover"}}/>
+              </div>
+              <div style={{width:"50%", padding: "35px 50px"}}>
+              <ProductContext 
+                data={data}
+                handleChangeQuantity={handleChangeQuantity}
+                value={refQuantity.current}
+                errors={errors}
+                type="page"
+              />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -337,7 +362,7 @@ const TestComponents = () => {
         handleProductModal={handleProductModal}
         // full
       >
-        <ProductContext 
+        <ProductQuickview
           data={data}
           handleChangeQuantity={handleChangeQuantity}
           value={refQuantity.current}
@@ -345,7 +370,6 @@ const TestComponents = () => {
           handleProductModal={handleProductModal}
         />
       </Modal>
-      
 
       <Tab
         data={tabData}

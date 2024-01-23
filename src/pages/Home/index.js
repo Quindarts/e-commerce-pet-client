@@ -9,9 +9,9 @@ import OurNews from './OurNews'
 import Populated from './Populated'
 import Testimonials from './Testimonials'
 import Modal from '../../components/Modal'
-import ProductContext from '../../components/ProductContext'
 import useModal from '../../hooks/useModal'
 import { useForm } from 'react-hook-form'
+import ProductQuickview from '../../components/Product/ProductQuickview'
 
 const data = {
   id: '1',
@@ -54,12 +54,12 @@ function Home() {
         showProductModal={showProductModal}
         handleProductModal={handleProductModal}
       >
-        <ProductContext 
+        <ProductQuickview 
           data={data}
           handleChangeQuantity={handleChangeQuantity}
-          handleProductModal={handleProductModal}
           value={refQuantity.current}
           errors={errors}
+          handleProductModal={handleProductModal}
         />
       </Modal>
       Home
