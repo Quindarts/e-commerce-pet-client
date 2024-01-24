@@ -7,27 +7,31 @@ import { SnackbarProvider } from 'notistack'
 import StyledMaterialDesignContent from '../src/components/Snackbar/style'
 
 import CustomVariantSnackbar from '../src/components/Snackbar/Snackbar'
+import { store } from './store'
+import { Provider } from 'react-redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 const themeSnackbar = {
-    customVariant: CustomVariantSnackbar,
-    warning: StyledMaterialDesignContent,
-    info: StyledMaterialDesignContent,
-    success: StyledMaterialDesignContent,
-    error: StyledMaterialDesignContent,
+  customVariant: CustomVariantSnackbar,
+  warning: StyledMaterialDesignContent,
+  info: StyledMaterialDesignContent,
+  success: StyledMaterialDesignContent,
+  error: StyledMaterialDesignContent,
 }
 
 root.render(
+  <Provider store={store}>
     <SnackbarProvider
-        // TransitionComponent={Zoom}
-        Components={themeSnackbar}
-        maxSnack={5}
-        persist={false}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        timeOut={3000}
+      // TransitionComponent={Zoom}
+      Components={themeSnackbar}
+      maxSnack={5}
+      persist={false}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      timeOut={3000}
     >
-        <App />
+      <App />
     </SnackbarProvider>
+  </Provider>
 )
 
 // If you want to start measuring performance in your app, pass a function

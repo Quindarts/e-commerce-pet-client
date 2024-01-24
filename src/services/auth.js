@@ -1,11 +1,11 @@
-import axiosConfig from './axiosConfig'
+// import axiosConfig from './axiosConfig'
 
-export const apiRegister = (data) => {
-    return axiosConfig({
-        url: '/auth/register',
-        method: 'post',
-        data,
-    })
+// export const apiRegister = (data) => {
+//     return axiosConfig({
+//         url: '/auth/register',
+//         method: 'post',
+//         data,
+//     })
     // có 2 kiểu dùng catch
     //  kiểu thứ nhất không dùng async await
     // return new Promise((resolve, reject) => {
@@ -38,15 +38,15 @@ export const apiRegister = (data) => {
     //         reject(error.response)
     //     }
     // })
-}
+// }
 
-export const apiLogin = (data, token) => {
-    return axiosConfig({
-        url: '/auth/login',
-        method: 'post',
-        data,
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    })
-}
+// export const apiLogin = (data, token) => {
+//     return axiosConfig({
+//         url: '/auth/login',
+//         method: 'post',
+//         data,
+//         headers: {
+//             Authorization: `Bearer ${token}`,
+//         },
+//     })
+// }
