@@ -23,8 +23,10 @@ import Pagination from '../../components/Pagination'
 import Modal from '../../components/Modal'
 import useModal from '../../hooks/useModal'
 import ProductQuickview from '../../components/Product/ProductQuickview'
-import demo from "../../assets/img/ricky-118-460x373.jpg"
-import ProductContext from "../../components/Product/ProductContext"
+import demo from '../../assets/img/ricky-118-460x373.jpg'
+import ProductContext from '../../components/Product/ProductContext'
+import { useDispatch } from 'react-redux'
+import { authSlice } from '../../slice/userSlice'
 
 const data = {
   id: '1',
@@ -171,10 +173,19 @@ const TestComponents = () => {
   ]
 
   const paginateData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+  const dispatch = useDispatch()
+
   return (
     <>
       <div className="flex items-center gap-5 bg-gray p-20">
-        <Button htmlType="link" type="primary" url="/">
+        <Button
+          htmlType="submit"
+          type="primary"
+          onClick={() => {
+            dispatch(authSlice.actions.takeUser())
+          }}
+        >
           Click me!
         </Button>
         <Button
@@ -282,18 +293,22 @@ const TestComponents = () => {
             </div>
           </div>
           <div className="col-12 g-0">
-            <div className='mt-2 flex' style={{background: "#fff"}}>
-              <div style={{width:"50%"}}>
-                <img src={demo} alt="" style={{width: "100%", objectFit:"cover"}}/>
+            <div className="mt-2 flex" style={{ background: '#fff' }}>
+              <div style={{ width: '50%' }}>
+                <img
+                  src={demo}
+                  alt=""
+                  style={{ width: '100%', objectFit: 'cover' }}
+                />
               </div>
-              <div style={{width:"50%", padding: "35px 50px"}}>
-              <ProductContext 
-                data={data}
-                handleChangeQuantity={handleChangeQuantity}
-                value={refQuantity.current}
-                errors={errors}
-                type="page"
-              />
+              <div style={{ width: '50%', padding: '35px 50px' }}>
+                <ProductContext
+                  data={data}
+                  handleChangeQuantity={handleChangeQuantity}
+                  value={refQuantity.current}
+                  errors={errors}
+                  type="page"
+                />
               </div>
             </div>
           </div>

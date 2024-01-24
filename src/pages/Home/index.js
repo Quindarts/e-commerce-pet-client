@@ -12,6 +12,10 @@ import Modal from '../../components/Modal'
 import useModal from '../../hooks/useModal'
 import { useForm } from 'react-hook-form'
 import ProductQuickview from '../../components/Product/ProductQuickview'
+import { useDispatch } from 'react-redux'
+import Button from '../../components/Button'
+import { loginUser } from '../../slice/userSlice'
+import { authSlice } from '../../slice/userSlice';
 
 const data = {
   id: '1',
@@ -40,8 +44,23 @@ function Home() {
     console.log(quantity)
   }
 
+  const dispatch = useDispatch();
+
+  const handleLogin = () => {
+    dispatch(loginUser({
+      "userName":"ownerPet123",
+      "password":"123456Aa@"
+      }));
+  }
+
+  const handleUser = () => {
+    dispatch(authSlice.actions.takeUser())
+  }
+
   return (
     <div>
+      <Button type="primary" onClick={handleLogin}>Login</Button>
+      <Button type="primary" onClick={handleUser}>User</Button>
       <HeroSection />
       <TopProducts/>
       <ProductTab />
