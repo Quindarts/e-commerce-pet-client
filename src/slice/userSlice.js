@@ -33,7 +33,7 @@ export const authSlice = createSlice({
             if (!state.user) {
                 alert("Not logged in yet")
             } else {
-                alert(state.user)
+                alert(state.user.userName)
             }    
         }
     },
@@ -62,9 +62,11 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.isError = false;
             state.isSuccess = true;
-            state.user = action.payload.user.userName;
+            state.user = action.payload.user;
             if (state.isSuccess === true) {
                 alert("Logged in successfully");
+                console.log(action)
+                localStorage.setItem("token", action.payload.tokenList.accessToken)
             }
         }).addCase(loginUser.rejected,(state, action) => {
             state.isLoading = false;

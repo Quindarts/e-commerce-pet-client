@@ -12,7 +12,7 @@ import Modal from '../../components/Modal'
 import useModal from '../../hooks/useModal'
 import { useForm } from 'react-hook-form'
 import ProductQuickview from '../../components/Product/ProductQuickview'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../components/Button'
 import { loginUser } from '../../slice/userSlice'
 import { authSlice } from '../../slice/userSlice';
@@ -57,10 +57,17 @@ function Home() {
     dispatch(authSlice.actions.takeUser())
   }
 
+  const state = useSelector(state => state);
+
+  const handleState = () => {
+    console.log(state);
+  }
+
   return (
     <div>
       <Button type="primary" onClick={handleLogin}>Login</Button>
       <Button type="primary" onClick={handleUser}>User</Button>
+      <Button type="primary" onClick={handleState}>State</Button>
       <HeroSection />
       <TopProducts/>
       <ProductTab />
