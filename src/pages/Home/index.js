@@ -12,10 +12,10 @@ import Modal from '../../components/Modal'
 import useModal from '../../hooks/useModal'
 import { useForm } from 'react-hook-form'
 import ProductQuickview from '../../components/Product/ProductQuickview'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../components/Button'
-import { loginUser } from '../../slice/userSlice'
-import { authSlice } from '../../slice/userSlice';
+import { loginUser } from '../../slice/authSlice'
+import { authSlice } from '../../slice/authSlice';
 
 const data = {
   id: '1',
@@ -48,8 +48,8 @@ function Home() {
 
   const handleLogin = () => {
     dispatch(loginUser({
-      "userName":"ownerPet123",
-      "password":"123456Aa@"
+      "userName":"vunontay23311",
+      "password":"Hoangvu200202@"
       }));
   }
 
@@ -57,10 +57,18 @@ function Home() {
     dispatch(authSlice.actions.takeUser())
   }
 
+  const state = useSelector(state => state.auth);
+  const handleState = () => {
+    console.log(state);
+  }
+
+  console.log("cc");
+
   return (
     <div>
       <Button type="primary" onClick={handleLogin}>Login</Button>
       <Button type="primary" onClick={handleUser}>User</Button>
+      <Button type="primary" onClick={handleState}>State</Button>
       <HeroSection />
       <TopProducts/>
       <ProductTab />

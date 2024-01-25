@@ -1,5 +1,5 @@
-import AuthLayout from '../Layout/AuthLayout'
-import MainLayout from '../Layout/MainLayout'
+import AuthLayout from '../layout/AuthLayout'
+import MainLayout from '../layout/MainLayout'
 import AboutUs from '../pages/AboutUs'
 import Login from '../pages/Auth/Login'
 import Register from '../pages/Auth/Register'
