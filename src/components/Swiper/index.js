@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { Grid, Navigation, Pagination, Autoplay, Thumbs } from 'swiper/modules'
 
 import { Swiper } from 'swiper/react'
 
@@ -8,6 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/grid'
 import 'swiper/css/autoplay'
+import 'swiper/css/thumbs'
 import { Icon } from '@iconify/react'
 
 const SwiperComponent = (props) => {
@@ -19,6 +20,7 @@ const SwiperComponent = (props) => {
     grids,
     classNameNext,
     classNamePrev,
+    thumbs,
     breakpoints = {
       320: {
         slidesPerView: 1,
@@ -57,6 +59,7 @@ const SwiperComponent = (props) => {
   // if (!classNamePrev || !classNameNext) {
   //     return <></>
   // }
+
   const activeShowIcon = mouseHover === true
   return (
     <>
@@ -67,6 +70,7 @@ const SwiperComponent = (props) => {
         {...rest}
       >
         <Swiper
+          thumbs={thumbs}
           style={{ height: '100%' }}
           slidesPerView={slidesPerView}
           grid={{
@@ -81,7 +85,7 @@ const SwiperComponent = (props) => {
             clickable: true,
           }}
           className="mySwiper"
-          modules={[Navigation, Pagination, Grid, Autoplay]}
+          modules={[Navigation, Pagination, Grid, Autoplay, Thumbs]}
           breakpoints={breakpoints}
         >
           {children}
