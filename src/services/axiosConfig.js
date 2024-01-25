@@ -1,4 +1,17 @@
-export const baseUrl = "https://e-commerce-pet-server-quindarts.vercel.app";
+export const baseUrl = 'https://e-commerce-pet-server-quindarts.vercel.app/'
+
+export const getTokenFromLocalStorage = localStorage.getItem('user')
+  ? JSON.parse(localStorage.getItem('user'))
+  : null
+
+export const config = {
+  headers: {
+    Authorization: `Bearer ${
+      getTokenFromLocalStorage !== null ? getTokenFromLocalStorage.token : ""
+    }`,
+    Accept: 'application/json',
+  },
+}
 // export const baseURL = 'https://e-commerce-pet-server-quindarts.vercel.app/';
 // import axios from 'axios'
 // const axiosConfig = axios.create({

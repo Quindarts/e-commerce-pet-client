@@ -26,7 +26,6 @@ import ProductQuickview from '../../components/Product/ProductQuickview'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
 import ProductContext from '../../components/Product/ProductContext'
 import { useDispatch } from 'react-redux'
-import { authSlice } from '../../slice/userSlice'
 
 const data = {
   id: '1',
@@ -182,9 +181,6 @@ const TestComponents = () => {
         <Button
           htmlType="submit"
           type="primary"
-          onClick={() => {
-            dispatch(authSlice.actions.takeUser())
-          }}
         >
           Click me!
         </Button>
