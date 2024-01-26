@@ -1,17 +1,20 @@
 .modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     &__layout {
-        background: rgba(255,255,255,0.95);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 1000;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+
     }
 
     &__mask {
@@ -25,13 +28,13 @@
     }
 
     &__wrap {
-        position: relative;;
+        position: relative;
         z-index: 2;
         background: #fff;
         border: solid 1px #DCEAF6;
-        box-shadow: 0 1px 8px rgba(0,82,177,0.1);
+        box-shadow: 0 1px 8px rgba(0, 82, 177, 0.1);
         border-radius: 4px;
-        overflow: auto;
+        // overflow: auto;
         min-width: 50%;
         min-height: 50%;
         max-height: calc(100% - 50px);
@@ -44,12 +47,22 @@
             border-radius: unset;
         }
 
-        @media (max-width: 880px) {
-            max-width: calc(100% - 30px);
-        }
+        // @media (max-width: 880px) {
+        //     max-width: calc(100% - 30px);
+        // }
 
         @media (max-width: 576px) {
             max-width: 100%;
+        }
+    }
+}
+
+@include respond(desktop) {
+    .modal {
+        &__layout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }
