@@ -48,27 +48,14 @@ function Home() {
 
   const handleLogin = () => {
     dispatch(loginUser({
-      "userName":"vunontay23311",
-      "password":"Hoangvu200202@"
+      "userName":"ownerPet123",
+      "password":"123456Aa@"
       }));
   }
-
-  const handleUser = () => {
-    dispatch(authSlice.actions.takeUser())
-  }
-
-  const state = useSelector(state => state.auth);
-  const handleState = () => {
-    console.log(state);
-  }
-
-  console.log("cc");
 
   return (
     <div>
       <Button type="primary" onClick={handleLogin}>Login</Button>
-      <Button type="primary" onClick={handleUser}>User</Button>
-      <Button type="primary" onClick={handleState}>State</Button>
       <HeroSection />
       <TopProducts/>
       <ProductTab />
