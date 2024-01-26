@@ -5,9 +5,11 @@ import Login from '../pages/Auth/Login'
 import Register from '../pages/Auth/Register'
 import Cart from '../pages/Cart'
 import Home from '../pages/Home'
+import MyProfile from '../pages/MyProfile'
 import NoMatch from '../pages/NoMatch'
 import ProductDetail from '../pages/ProductDetail'
 import TestComponents from '../pages/TestComponents'
+import PrivateRoutes from './PrivateRoute'
 
 const {
   createBrowserRouter,
@@ -21,16 +23,6 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route
         path="component"
-        // loader={async ({ request }) => {
-        //     const res = await fetch(
-        //         'https://api-kaito-music.vercel.app/api/music/get-by-id?_id=6438cbb5aa9627ecf4936532',
-        //         {
-        //             signal: request.signal,
-        //         }
-        //     )
-        //     const music = await res.json()
-        //     return music
-        // }}
         element={<TestComponents />}
       />
       <Route path="product_detail" element={<ProductDetail />} />
@@ -39,6 +31,9 @@ const router = createBrowserRouter(
       <Route path="auth" element={<AuthLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
+      </Route>
+      <Route element={<PrivateRoutes />}>
+        <Route path='my-account' element={<MyProfile />}></Route>
       </Route>
 
       <Route path="*" element={<NoMatch />} />
