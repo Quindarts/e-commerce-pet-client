@@ -9,11 +9,12 @@ import MenuMobile from '../../MenuItem/MenuMobile'
 import { colorNavigationDecor } from '../../../utils/Color'
 import Modal from '../../Modal'
 import useModal from '../../../hooks/useModal'
+import Search from '../../Search'
 
 const Navigation = ({ color }) => {
   const [isSticky, setSticky] = useState(false)
   const [openNav, setOpenNav] = useState(false)
-  const { isModalOpen, handleOpenModal, handleCloseModal } = useModal()
+  const { showProductModal, handleProductModal } = useModal()
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY
@@ -34,7 +35,13 @@ const Navigation = ({ color }) => {
 
   return (
     <>
-      <Modal open={isModalOpen} onClose={handleCloseModal}></Modal>
+      <Modal
+        showProductModal={showProductModal}
+        handleProductModal={handleProductModal}
+        full
+      >
+        <Search />
+      </Modal>
       <div
         className={`navigation navigation--decor ${colorClass} ${
           isSticky ? 'sticky' : ''
@@ -78,7 +85,7 @@ const Navigation = ({ color }) => {
             <div className="navigation--right">
               <div className="navigation--right-wrap">
                 <div className="navigation--search-button">
-                  <Link onClick={handleOpenModal}>
+                  <Link onClick={handleProductModal}>
                     <Icon icon="iconamoon:search-bold" />
                   </Link>
                 </div>

@@ -1,13 +1,12 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-const  useModal = () => {
-    const [showProductModal, setShowProductModal] = useState(false);
+const useModal = () => {
+  const [showProductModal, setShowProductModal] = useState(false)
 
-    const handleProductModal = () => {
-        setShowProductModal(!showProductModal)
-      }
+  const handleProductModal = () => {
+    setShowProductModal(!showProductModal)
+  }
 
-    return { showProductModal, handleProductModal };
-};
-export default useModal;
-
+  return { showProductModal, handleProductModal }
+}
+export default useModal
