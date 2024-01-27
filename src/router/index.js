@@ -1,5 +1,3 @@
-import AuthLayout from '../layout/AuthLayout'
-import MainLayout from '../layout/MainLayout'
 import AboutUs from '../pages/AboutUs'
 import Login from '../pages/Auth/Login'
 import Register from '../pages/Auth/Register'
@@ -10,7 +8,8 @@ import NoMatch from '../pages/NoMatch'
 import ProductDetail from '../pages/ProductDetail'
 import TestComponents from '../pages/TestComponents'
 import PrivateRoutes from './PrivateRoute'
-
+import AuthLayout from '../Layout/AuthLayout'
+import MainLayout from '../Layout/MainLayout'
 const {
   createBrowserRouter,
   createRoutesFromElements,
@@ -21,10 +20,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<Home />} />
-      <Route
-        path="component"
-        element={<TestComponents />}
-      />
+      <Route path="component" element={<TestComponents />} />
       <Route path="product_detail" element={<ProductDetail />} />
       <Route path="cart" element={<Cart />} />
       <Route path="about_us" element={<AboutUs />} />
@@ -33,7 +29,7 @@ const router = createBrowserRouter(
         <Route path="register" element={<Register />} />
       </Route>
       <Route element={<PrivateRoutes />}>
-        <Route path='my-account' element={<MyProfile />}></Route>
+        <Route path="my-account" element={<MyProfile />}></Route>
       </Route>
 
       <Route path="*" element={<NoMatch />} />
