@@ -1,43 +1,66 @@
-export const baseUrl = 'https://e-commerce-pet-server-quindarts.vercel.app/'
+import axios from 'axios'
 
-export const getTokenFromLocalStorage = localStorage.getItem('user')
-  ? JSON.parse(localStorage.getItem('user'))
-  : null
+export const baseURL = 'https://e-commerce-pet-server-quindarts.vercel.app/'
 
-export const config = {
+const axiosConfig = axios.create({
+  baseURL,
   headers: {
-    Authorization: `Bearer ${
-      getTokenFromLocalStorage !== null ? getTokenFromLocalStorage.token : ""
-    }`,
-    Accept: 'application/json',
+    'Content-Type': 'application/json',
   },
-}
-// export const baseURL = 'https://e-commerce-pet-server-quindarts.vercel.app/';
-// import axios from 'axios'
-// const axiosConfig = axios.create({
-//     baseURL: 'https://e-commerce-pet-server-quindarts.vercel.app',
-//     headers: {
-//         'Context-Type': 'application/json',
-//     },
-// })
+})
 
-// axiosConfig.interceptors.request.use(
-//     (config) => {
-//         return config
-//     },
-//     (error) => {
-//         return Promise.reject(error)
-//     }
-// )
-// axiosConfig.interceptors.response.use(
-//     function (response) {
-//         return response.data
-//     },
-//     function (error) {
-//         // return về reject để có thể dùng catch bên api
-//         // fix ----------------fix
-//         return Promise.reject(error)
-//     }
-// )
+axiosConfig.interceptors.request.use(
+  (config) => {
+    const userToken = JSON.parse(localStorage.getItem('user') || '{}')
+    const accessToken = userToken.tokenList?.accessToken
 
-// export default axiosConfig
+    if (accessToken) {
+      config.headers.Authorization = `Bearer ${accessToken}`
+    }
+
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
+
+axiosConfig.interceptors.response.use(
+  (response) => {
+    if (response) {
+      return response.data
+    }
+  },
+  async (error) => {
+    const userToken = JSON.parse(localStorage.getItem('user') || '{}')
+    const originalRequest = error.config
+
+    if (error.response.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true
+
+      try {
+        const refreshToken = userToken.tokenList?.refreshToken
+        const response = await axiosConfig.post('auth/accessToken-generate', {
+          refreshToken,
+        })
+
+        const { accessToken } = response.data
+        userToken.tokenList = {
+          accessToken,
+          refreshToken,
+        }
+
+        localStorage.setItem('user', JSON.stringify(userToken))
+        originalRequest.headers.Authorization = `Bearer ${accessToken}`
+
+        return axiosConfig(originalRequest)
+      } catch (error) {
+        return Promise.reject(error)
+      }
+    }
+
+    return Promise.reject(error.response.data)
+  }
+)
+
+export default axiosConfig
