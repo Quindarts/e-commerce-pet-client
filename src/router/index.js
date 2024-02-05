@@ -3,13 +3,14 @@ import Login from '../pages/Auth/Login'
 import Register from '../pages/Auth/Register'
 import Cart from '../pages/Cart'
 import Home from '../pages/Home'
-import MyProfile from '../pages/MyProfile'
 import NoMatch from '../pages/NoMatch'
 import ProductDetail from '../pages/ProductDetail'
 import TestComponents from '../pages/TestComponents'
 import PrivateRoutes from './PrivateRoute'
 import AuthLayout from '../Layout/AuthLayout'
 import MainLayout from '../Layout/MainLayout'
+import AccountPage from '../pages/AccountPage'
+import EditAccount from '../pages/AccountPage/EditAccount'
 const {
   createBrowserRouter,
   createRoutesFromElements,
@@ -29,7 +30,9 @@ const router = createBrowserRouter(
         <Route path="register" element={<Register />} />
       </Route>
       <Route element={<PrivateRoutes />}>
-        <Route path="my-account" element={<MyProfile />}></Route>
+        <Route path="my_account" element={<AccountPage />}>
+          <Route path="edit_account" element={<EditAccount />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<NoMatch />} />
