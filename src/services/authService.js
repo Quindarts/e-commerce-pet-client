@@ -1,26 +1,34 @@
-import axios from "axios"
-import { baseUrl } from "./axiosConfig";
-
-const register = async (userData) => {
-    const response = await axios.post(`${baseUrl}auth/register`, userData);
-    if (response.data) {
-        localStorage.setItem("user", JSON.stringify(response.data))
-    }
-    return response.data;
-};
-
-const login = async (userData) => {
-    const response = await axios.post(`${baseUrl}auth/login`, userData);
-    if (response) {
-        const user = response.data.user;
-        const tokenList = response.data.tokenList
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", JSON.stringify(tokenList.accessToken));
-        return user;
-    }
-};
-
-export const authService = {
-    register,
-    login,
+import axiosConfig from './axiosConfig'
+// api register
+const apiRegister = async (data) => {
+  const response = await axiosConfig.post('/auth/register', data)
+  if (response) {
+    localStorage.setItem('user', JSON.stringify(response))
+  }
+  return response
 }
+// api login
+
+const apiLogin = async (data, token) => {
+  const headers = {
+    Authorization: `Bearer ${token || ''}`,
+    'Content-Type': 'application/json',
+  }
+  const response = await axiosConfig.post('/auth/login', data, { headers })
+  if (response) {
+    localStorage.setItem('user', JSON.stringify(response))
+  }
+  return response
+}
+
+// api logout
+const logout = () => {
+  localStorage.removeItem('user')
+}
+
+const authService = {
+  apiRegister,
+  logout,
+  apiLogin,
+}
+export default authService
