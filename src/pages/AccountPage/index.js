@@ -2,6 +2,9 @@ import React from 'react'
 import Breadcrumb from '../../components/Breadcrumb'
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { Icon } from '@iconify/react'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout, reset } from '../../store/auth/authSlice'
+import { useSnackbar } from 'notistack'
 
 const categoryAccount = [
   {
@@ -46,6 +49,16 @@ const AccountPage = () => {
   const location = useLocation()
   const path = location.pathname.split('/')
   const title = path[path.length - 1].split('_').join(' ')
+  const user = useSelector((state) => state?.auth?.user?.user)
+  const dispatch = useDispatch()
+  const { enqueueSnackbar } = useSnackbar()
+  const handleLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    enqueueSnackbar('You have been logged out successfully!', {
+      variant: 'success',
+    })
+  }
 
   return (
     <div className="account">
@@ -76,21 +89,19 @@ const AccountPage = () => {
                 <div className="account__content--user-text">
                   Hello,
                   <div className="account__content--user-name">
-                    hoangvu200202
+                    {user && user.userName}
                   </div>
                 </div>
               </div>
               <nav>
                 <ul className="account__content--navigation">
                   {categoryAccount.map((item) => (
-                    <li style={{ lineHeight: 1 }}>
-                      <NavLink
-                        className={({ isActive }) =>
-                          [isActive ? 'active' : ''].join(' ')
-                        }
-                        to={item.path}
-                      >
-                        {item.type === 'log_out' && (
+                    <li key={item.title} style={{ lineHeight: 1 }}>
+                      {item.type === 'log_out' ? (
+                        <NavLink
+                          onClick={handleLogout}
+                          style={{ cursor: 'pointer' }}
+                        >
                           <Icon
                             style={{
                               marginRight: 6,
@@ -98,9 +109,18 @@ const AccountPage = () => {
                             }}
                             icon="material-symbols:logout-rounded"
                           />
-                        )}
-                        {item.title}
-                      </NavLink>
+                          {item.title}
+                        </NavLink>
+                      ) : (
+                        <NavLink
+                          className={({ isActive }) =>
+                            [isActive ? 'active' : ''].join(' ')
+                          }
+                          to={item.path}
+                        >
+                          {item.title}
+                        </NavLink>
+                      )}
                     </li>
                   ))}
                 </ul>

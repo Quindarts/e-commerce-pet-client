@@ -7,16 +7,28 @@ import NoMatch from '../pages/NoMatch'
 import ProductDetail from '../pages/ProductDetail'
 import TestComponents from '../pages/TestComponents'
 import PrivateRoutes from './PrivateRoute'
-import AuthLayout from '../layout/AuthLayout'
-import MainLayout from '../layout/MainLayout'
+import AuthLayout from '../Layout/AuthLayout'
+import MainLayout from '../Layout/MainLayout'
 import AccountPage from '../pages/AccountPage'
 import EditAccount from '../pages/AccountPage/EditAccount'
+import { useSelector } from 'react-redux'
 const {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
+  Navigate,
 } = require('react-router-dom')
 
+const ProtectedRoute = ({ element: Component, ...rest }) => {
+  const user = useSelector((state) => state?.auth?.user?.user)
+  console.log(user)
+  return (
+    <Route
+      {...rest}
+      element={user ? <Component /> : <Navigate to="/login" />}
+    />
+  )
+}
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
@@ -25,7 +37,7 @@ const router = createBrowserRouter(
       <Route path="product_detail" element={<ProductDetail />} />
       <Route path="cart" element={<Cart />} />
       <Route path="about_us" element={<AboutUs />} />
-      <Route path="auth" element={<AuthLayout />}>
+      <Route path="/" element={<AuthLayout />}>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>

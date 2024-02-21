@@ -10,11 +10,13 @@ import { colorNavigationDecor } from '../../../utils/Color'
 import Modal from '../../Modal'
 import useModal from '../../../hooks/useModal'
 import Search from '../../Search'
+import { useSelector } from 'react-redux'
 
 const Navigation = ({ color }) => {
   const [isSticky, setSticky] = useState(false)
   const [openNav, setOpenNav] = useState(false)
   const { showProductModal, handleProductModal } = useModal()
+  const user = useSelector((state) => state?.auth?.user?.user)
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY
@@ -90,7 +92,7 @@ const Navigation = ({ color }) => {
                   </Link>
                 </div>
                 <div className="navigation--auth-button">
-                  <Link>
+                  <Link to={`${user ? 'my_account' : 'login'}`}>
                     <Icon icon="ph:user-bold" />
                   </Link>
                 </div>

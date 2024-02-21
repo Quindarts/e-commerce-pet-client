@@ -15,7 +15,7 @@ import ProductQuickview from '../../components/Product/ProductQuickview'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../components/Button'
 import { loginUser } from '../../slice/authSlice'
-import { authSlice } from '../../slice/authSlice';
+import { authSlice } from '../../slice/authSlice'
 
 const data = {
   id: '1',
@@ -28,7 +28,7 @@ const data = {
 }
 
 function Home() {
-  const { showProductModal, handleProductModal } = useModal();
+  const { showProductModal, handleProductModal } = useModal()
   const refQuantity = useRef(data.quantity || 0)
 
   const {
@@ -44,20 +44,10 @@ function Home() {
     console.log(quantity)
   }
 
-  const dispatch = useDispatch();
-
-  const handleLogin = () => {
-    dispatch(loginUser({
-      "userName":"ownerPet123",
-      "password":"123456Aa@"
-      }));
-  }
-
   return (
     <div>
-      <Button type="primary" onClick={handleLogin}>Login</Button>
       <HeroSection />
-      <TopProducts/>
+      <TopProducts />
       <ProductTab />
       <OurNews />
       <DailySales />
@@ -68,7 +58,7 @@ function Home() {
         showProductModal={showProductModal}
         handleProductModal={handleProductModal}
       >
-        <ProductQuickview 
+        <ProductQuickview
           data={data}
           handleChangeQuantity={handleChangeQuantity}
           value={refQuantity.current}

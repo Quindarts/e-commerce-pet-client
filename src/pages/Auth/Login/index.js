@@ -10,6 +10,7 @@ import { useSnackbar } from 'notistack'
 import { useSelector, useDispatch } from 'react-redux'
 import Loading from '../../../components/Loading'
 import { login, reset } from '../../../store/auth/authSlice'
+import Breadcrumb from '../../../components/Breadcrumb'
 function Login() {
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
@@ -50,52 +51,66 @@ function Login() {
 
   return (
     <>
+      <header className="account__header">
+        <Breadcrumb
+          className="account__header--breadcrumb"
+          targetFormat="snake"
+        />
+        <h1
+          style={{ textTransform: 'capitalize' }}
+          className="account__header--title mx-auto"
+        >
+          My account
+        </h1>
+      </header>
       <div className="login">
-        <div className="login__form">
-          <div className="login__header">Login</div>
-          <form className="login__content">
-            <TextField
-              className="mt-2"
-              label="User name *"
-              type="form"
-              disabled={false}
-              color="blue"
-              id="userName"
-              register={register}
-              errors={errors}
-              name="username"
-              autocomplete="user-name"
-            />
-            <TextField
-              hidden
-              className="mt-2"
-              label="Password *"
-              type="password"
-              disabled={false}
-              color="blue"
-              id="password"
-              register={register}
-              errors={errors}
-              autoComplete="user-password"
-            />
-          </form>
-          <div className="login__remember">
-            <Checkbox label="Remember Me" color="blue" size="c-form" />
-            <div className="login__remember--lost-password">
-              <Link>Lost Your Password?</Link>
+        <div className="login__content">
+          <div className="login__form">
+            <div className="login__header">Login</div>
+            <form className="login__content">
+              <TextField
+                className="mt-2"
+                label="User name *"
+                type="form"
+                disabled={false}
+                color="blue"
+                id="userName"
+                register={register}
+                errors={errors}
+                name="username"
+                autocomplete="user-name"
+              />
+              <TextField
+                hidden
+                className="mt-2"
+                label="Password *"
+                type="password"
+                disabled={false}
+                color="blue"
+                id="password"
+                register={register}
+                errors={errors}
+                autoComplete="user-password"
+              />
+            </form>
+            <div className="login__remember">
+              <Checkbox label="Remember Me" color="blue" size="c-form" />
+              <div className="login__remember--lost-password">
+                <Link>Lost Your Password?</Link>
+              </div>
             </div>
-          </div>
-          <Button
-            onClick={handleSubmit(onSubmit)}
-            htmlType="submit"
-            type="primary"
-            className="w-100 text-center"
-          >
-            Login
-          </Button>
-          <div className="login__bottom">
-            Not A Member?
-            <Link to="/auth/register">Register</Link>
+            <Button
+              onClick={handleSubmit(onSubmit)}
+              htmlType="submit"
+              type="primary"
+              className="w-100 text-center"
+            >
+              Login
+            </Button>
+            <div className="login__bottom">
+              Not A Member?
+              <Link to="/register">Register</Link>
+            </div>
           </div>
         </div>
       </div>
