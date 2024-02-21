@@ -11,24 +11,13 @@ import AuthLayout from '../Layout/AuthLayout'
 import MainLayout from '../Layout/MainLayout'
 import AccountPage from '../pages/AccountPage'
 import EditAccount from '../pages/AccountPage/EditAccount'
-import { useSelector } from 'react-redux'
+
 const {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  Navigate,
 } = require('react-router-dom')
 
-const ProtectedRoute = ({ element: Component, ...rest }) => {
-  const user = useSelector((state) => state?.auth?.user?.user)
-  console.log(user)
-  return (
-    <Route
-      {...rest}
-      element={user ? <Component /> : <Navigate to="/login" />}
-    />
-  )
-}
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>

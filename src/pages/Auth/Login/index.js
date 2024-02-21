@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Loading from '../../../components/Loading'
 import { login, reset } from '../../../store/auth/authSlice'
 import Breadcrumb from '../../../components/Breadcrumb'
+import useAuthRedirect from '../../../hooks/useAuthRedirect '
 function Login() {
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
@@ -23,11 +24,12 @@ function Login() {
     mode: 'onBlur',
   })
 
+  useAuthRedirect()
   const dispatch = useDispatch()
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   )
-  console.log(message)
+
   useEffect(() => {
     if (isError) {
       enqueueSnackbar(message, {
