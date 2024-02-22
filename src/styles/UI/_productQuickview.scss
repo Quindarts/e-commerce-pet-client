@@ -1,12 +1,14 @@
 .modal {
     &__product {
         height: 100%;
+        overflow: hidden;
         padding: 35px;
         padding-right: 40px;
         display: flex;
-        overflow: auto;
+        overflow-x: hidden;
         max-width: 750px;
         gap: 35px;
+        margin-bottom: 20px;
         min-width: 840px;
         min-height: 510px;
 
@@ -47,6 +49,87 @@
             @media (max-width: 768px) {
                 width: 100%;
             }
+        }
+
+        &-category {
+            display: block;
+            font-weight: 500;
+            font-size: 1.6rem;
+            line-height: 1;
+            letter-spacing: 0.015em;
+            color: $blue-main;
+
+            &:hover {
+                color: #F63E04;
+            }
+        }
+
+        &-title {
+            font-size: 2.8rem;
+            letter-spacing: -0.015em;
+            font-weight: 700;
+            line-height: 1.15;
+            color: $blue-main;
+            margin-top: 15px;
+        }
+
+        &-description {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            color: #7F8D9D;
+            margin-top: 20px;
+            font-family: "Outfit", sans-serif;
+        }
+
+        &-label {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &-weight {
+            display: block;
+            font-weight: 600;
+            font-size: 10px;
+            line-height: 15px;
+            letter-spacing: 0.02em;
+            margin-bottom: 10px;
+            color: #7F8D9D;
+        }
+
+        &-reset {
+            font-weight: 600;
+            font-size: 10px;
+            line-height: 15px;
+            letter-spacing: 0.02em;
+            color: $blue-main;
+            display: inline-flex;
+            cursor: pointer;
+        }
+
+        &-price {
+            font-size: 23px;
+            font-weight: 700;
+            font-family: "Quicksand",sans-serif;
+            margin-bottom: 10px;
+        }
+
+        &-stockless {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 15px;
+            letter-spacing: 0.02em;
+            color: #D1333C;
+            margin-bottom: 10px;
+        }
+
+        &-wrap {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         &-btnClose {

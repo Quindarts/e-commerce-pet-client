@@ -55,7 +55,6 @@ function Home() {
 
   return (
     <div>
-      <Button type="primary" onClick={handleLogin}>Login</Button>
       <HeroSection />
       <TopProducts/>
       <ProductTab />
@@ -65,10 +64,11 @@ function Home() {
       <OurServices id="widget__home" />
       <Testimonials />
       <Modal
-        showProductModal={showProductModal}
-        handleProductModal={handleProductModal}
+        showModal={showProductModal}
+        handleModal={handleProductModal}
+        // full
       >
-        <ProductQuickview 
+        <ProductQuickview
           data={data}
           handleChangeQuantity={handleChangeQuantity}
           value={refQuantity.current}

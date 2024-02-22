@@ -369,8 +369,8 @@ const TestComponents = () => {
         style={{ margin: '10px' }}
       />
       <Modal
-        showProductModal={showProductModal}
-        handleProductModal={handleProductModal}
+        showModal={showProductModal}
+        handleModal={handleProductModal}
         // full
       >
         <ProductQuickview
