@@ -23,7 +23,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<Home />} />
       <Route path="component" element={<TestComponents />} />
-      <Route path="product_detail" element={<ProductDetail />} />
+      <Route path="product_detail/:product_id" element={<ProductDetail />} />
       <Route path="cart" element={<Cart />} />
       <Route path="about_us" element={<AboutUs />} />
       <Route path="/" element={<AuthLayout />}>
