@@ -1,44 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TextField from '../TextField'
 import { useForm } from 'react-hook-form'
 import useDebounce from '../../hooks/useDebounce'
 import { Link } from 'react-router-dom'
 import formatter from '../../utils/formatterMoney'
 import { Icon } from '@iconify/react'
-const dataSearch = [
-  {
-    img: '/ricky-139-115x115.jpg',
-    desc: 'If your furry friend loves beef, then wait until he gets his paws on this Lumabone Bulkster Beef Dog Toy!',
-    title: 'Lumabone Bulkster Beef Flavor',
-    price: 150.0,
-  },
-  {
-    img: '/ricky-139-115x115.jpg',
-    desc: 'If your furry friend loves beef, then wait until he gets his paws on this Lumabone Bulkster Beef Dog Toy!',
-    title: 'Lumabone Bulkster Beef Flavor',
-    price: 150.0,
-  },
-]
+import { apiSearch } from '../../services/api'
+
 const Search = () => {
-  //   const [searchResults, setSearchResults] = useState('')
+  const [searchResults, setSearchResults] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const { register, reset, watch } = useForm()
   const searchValue = watch('search', '')
   const debouncedSearchValue = useDebounce(searchValue, 500)
-  //   useEffect(() => {
-  //     const fetchResults = async () => {
-  //       if (debouncedSearchValue === '') {
-  //         setSearchResults('');
-  //       } else {
-  //         const results = await fetchSearchResults(debouncedSearchValue);
-  //         setSearchResults(results);
-  //       }
-  //       reset();
-  //     };
 
-  //     fetchResults();
-  //   }, [debouncedSearchValue, reset]);
+  useEffect(() => {
+    const fetchResults = async () => {
+      if (debouncedSearchValue === '') {
+        setSearchResults('')
+        setIsLoading(false)
+      } else {
+        setIsLoading(true)
+        const results = await apiSearch(debouncedSearchValue)
+        setSearchResults(results.list_product)
+        setIsLoading(false)
+      }
+    }
 
-  console.log(debouncedSearchValue)
+    fetchResults()
+  }, [debouncedSearchValue])
+
   return (
     <div
       style={{
@@ -60,12 +51,14 @@ const Search = () => {
         >
           <div style={{ position: 'relative' }}>
             <div>
-              <Icon
-                className="search__loading"
-                width={20}
-                height={20}
-                icon="eos-icons:loading"
-              />
+              {isLoading === true ? (
+                <Icon
+                  className="search__loading"
+                  width={20}
+                  height={20}
+                  icon="eos-icons:loading"
+                />
+              ) : null}
             </div>
             <TextField
               placeholder="Start typing..."
@@ -86,18 +79,22 @@ const Search = () => {
           </div>
         </form>
       </div>
-      {searchValue !== '' && dataSearch ? (
+      {searchValue !== '' && searchResults ? (
         <div className="search__result" style={{ width: '100%' }}>
-          {dataSearch.map((item, index) => (
-            <Link key={index} className="search__result--link">
+          {searchResults.map((item, index) => (
+            <Link
+              key={index}
+              to={`/product_detail/${item._id}`}
+              className="search__result--link"
+            >
               <div className="search__result--row">
                 <div className="search__result--thumb">
-                  <img src={item.img} alt="" />
+                  <img className="img-fluid" src={item.images[0].url} alt="" />
                 </div>
                 <div className="search__result--col">
-                  <div className="search__result--col-title">{item.title}</div>
+                  <div className="search__result--col-title">{item.name}</div>
                   <div className="search__result--col-desc">
-                    <p>{item.desc}</p>
+                    <p>{item.description}</p>
                   </div>
                   <div className="search__result--col-price">
                     <span>{formatter(item.price)}</span>
@@ -108,6 +105,9 @@ const Search = () => {
           ))}
         </div>
       ) : null}
+      {searchResults && searchResults.length === 0 && (
+        <div className="no-result">No results found</div>
+      )}
     </div>
   )
 }

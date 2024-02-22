@@ -26,7 +26,7 @@ const Modal = (props) => {
     return () => {
       html.removeAttribute('style', 'overflow: hidden')
     }
-  }, [showProductModal])
+  }, [showProductModal, html])
 
   return (
     <>
