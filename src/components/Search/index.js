@@ -84,7 +84,7 @@ const Search = () => {
           {searchResults.map((item, index) => (
             <Link
               key={index}
-              to={`/product_detail/${item._id}`}
+              to={`/product-detail/${item._id}`}
               className="search__result--link"
             >
               <div className="search__result--row">
