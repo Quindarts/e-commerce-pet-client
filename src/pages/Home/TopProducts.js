@@ -66,7 +66,7 @@ const TopProducts = () => {
           >
             {arr.map((item) => (
               <SwiperSlide>
-                <ProductCard data={data} />
+                <ProductCard data={data}/>
               </SwiperSlide>
             ))}
           </SwiperComponent>

@@ -9,7 +9,6 @@ import InputQuantity from '../../components/InputQuantity'
 import formatter from '../../utils/formatterMoney'
 import UseTranslate from '../../utils/translate'
 import Breadcrumb from '../../components/Breadcrumb'
-import ProductModal from '../../components/ProductModal'
 import Accordin from '../../components/Accordin/Accordin'
 
 import { useSnackbar } from 'notistack'
@@ -21,6 +20,12 @@ import InputText from '../../components/InputText'
 import Badge from '../../components/Badge'
 import TabContent from '../../components/Tab/TabContent'
 import Pagination from '../../components/Pagination'
+import Modal from '../../components/Modal'
+import useModal from '../../hooks/useModal'
+import ProductQuickview from '../../components/Product/ProductQuickview'
+import demo from '../../assets/img/ricky-118-460x373.jpg'
+import ProductContext from '../../components/Product/ProductContext'
+import { useDispatch } from 'react-redux'
 
 const data = {
   id: '1',
@@ -37,7 +42,7 @@ const TestComponents = () => {
 
   const [isChecked, setChecked] = useState(false)
   const [dataCard, setDataCard] = useState(data)
-  const [showProductModal, setShowProductModal] = useState(false)
+  const { showProductModal, handleProductModal } = useModal()
   const refQuantity = useRef(data.quantity || 0)
 
   // Pagination
@@ -60,10 +65,6 @@ const TestComponents = () => {
   const handleChangeQuantity = (quantity) => {
     refQuantity.current = Number(quantity)
     console.log(quantity)
-  }
-
-  const handleProductModal = () => {
-    setShowProductModal(!showProductModal)
   }
 
   const [lang, setLang] = useState('')
@@ -171,10 +172,16 @@ const TestComponents = () => {
   ]
 
   const paginateData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+
+  const dispatch = useDispatch()
+
   return (
     <>
       <div className="flex items-center gap-5 bg-gray p-20">
-        <Button htmlType="link" type="primary" url="/">
+        <Button
+          htmlType="submit"
+          type="primary"
+        >
           Click me!
         </Button>
         <Button
@@ -272,8 +279,35 @@ const TestComponents = () => {
             </div> */}
 
       <div className="container">
-        <div style={{width:"232px"}}>
-            <ProductCard data={data}/>
+        <div className="row">
+          <div className="col-12 g-0">
+            <div style={{ width: '232px' }}>
+              <ProductCard
+                data={data}
+                handleProductModal={handleProductModal}
+              />
+            </div>
+          </div>
+          <div className="col-12 g-0">
+            <div className="mt-2 flex" style={{ background: '#fff' }}>
+              <div style={{ width: '50%' }}>
+                <img
+                  src={demo}
+                  alt=""
+                  style={{ width: '100%', objectFit: 'cover' }}
+                />
+              </div>
+              <div style={{ width: '50%', padding: '35px 50px' }}>
+                <ProductContext
+                  data={data}
+                  handleChangeQuantity={handleChangeQuantity}
+                  value={refQuantity.current}
+                  errors={errors}
+                  type="page"
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -334,14 +368,19 @@ const TestComponents = () => {
         size="large"
         style={{ margin: '10px' }}
       />
-      <ProductModal
+      <Modal
         showProductModal={showProductModal}
-        data={data}
-        handleChangeQuantity={handleChangeQuantity}
-        value={refQuantity.current}
-        errors={errors}
         handleProductModal={handleProductModal}
-      />
+        // full
+      >
+        <ProductQuickview
+          data={data}
+          handleChangeQuantity={handleChangeQuantity}
+          value={refQuantity.current}
+          errors={errors}
+          handleProductModal={handleProductModal}
+        />
+      </Modal>
 
       <Tab
         data={tabData}
