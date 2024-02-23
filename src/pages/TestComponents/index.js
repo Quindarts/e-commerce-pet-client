@@ -333,40 +333,14 @@ const TestComponents = () => {
         </div>
       </div>
 
-      <div style={{ marginLeft: '500px' }}>
-        <InputQuantity
-          id="quantity"
-          validate={{
-            required: 'This field cannot be empty.',
-            pattern: {
-              value: /^[0-9]+$/,
-              message: 'Value must be greater than or equal to 1',
-            },
-          }}
-          value={refQuantity.current}
-          onChangeQuantity={handleChangeQuantity}
-          errors={errors}
-          register={register}
-          data={data && data}
-          size="large"
-        />
-
-        <Button
-          onClick={() => {
-            console.log({ quantity: refQuantity.current })
-          }}
-          htmlType="submit"
-          type="primary"
-          size="small"
-          ghost
-          className="cc"
-        >
-          <UseTranslate
-            data={{ useUI: true, text: 'submit', lang }}
-          ></UseTranslate>
-        </Button>
-      </div>
-
+            <QuantityTextField
+                className="mt-2"
+                value={quantity}
+                onChange={handleQuantityChange}
+                size="large"
+                max={10}
+                style={{ margin: '10px' }}
+            />
       <span>{formatter(100000)}</span>
       <div>
         <Breadcrumb targetFormat="snake" className="cc"></Breadcrumb>
@@ -383,13 +357,6 @@ const TestComponents = () => {
         </Accordin>
       </div>
 
-      <QuantityTextField
-        className="mt-2"
-        quantity={quantity}
-        onChange={handleQuantityChange}
-        size="large"
-        style={{ margin: '10px' }}
-      />
       <Modal
         showProductModal={showProductModal}
         handleProductModal={handleProductModal}

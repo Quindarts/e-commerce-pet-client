@@ -1,6 +1,5 @@
 import { Icon } from '@iconify/react'
 import { useSnackbar } from 'notistack'
-import React, { useState, useEffect } from 'react'
 
 function QuantityTextField(props) {
     const { enqueueSnackbar } = useSnackbar()
@@ -13,44 +12,58 @@ function QuantityTextField(props) {
         label,
         errors,
         id,
+        value,
+        max,
         ...rest
     } = props
-    const [value, setValue] = useState(0)
 
-    const updateQuantityByClickOnIcons = (value) => {
-        if (quantity + value >= 0) {
-            onChange(quantity + value)
-        } else {
-            enqueueSnackbar('Must be a positive number', {
+    const handleClick = (change) => {
+        const newQuantity = change + value
+        if (max && newQuantity > max) {
+            onChange(max)
+            enqueueSnackbar('Maximum number reached.', {
                 variant: 'warning',
             })
-        }
-    }
-
-    const entryQuantity = (value) => {
-        if (value < 0) {
-            setValue(0)
             return
         }
-        if (!containsOnlyNumbers(value)) {
-            setValue(quantity)
+        if (newQuantity < 0) {
+            onChange(0)
+            enqueueSnackbar('The smallest number is 0.', {
+                variant: 'warning',
+            })
             return
         }
-        onChange(Number(value))
+        onChange(newQuantity)
     }
 
-    useEffect(() => {
-        setValue(quantity)
-    }, [quantity])
+    const entryQuantity = (newValue) => {
+        if (max && newValue > max) {
+            onChange(max)
+            enqueueSnackbar('Maximum number reached.', {
+                variant: 'warning',
+            })
+            return
+        }
+        if (newValue < 0) {
+            onChange(0)
+            enqueueSnackbar('he smallest number is 0.', {
+                variant: 'warning',
+            })
+            return
+        }
+        onChange(newValue)
+    }
 
     const handleInputChange = (e) => {
-        const inputValue = parseInt(e.target.value, 10) || 0
-        setValue(inputValue)
-        entryQuantity(inputValue)
-    }
-
-    function containsOnlyNumbers(str) {
-        return /^\d+$/.test(str)
+        const inputValue = e.target.value
+        if (inputValue === '' || inputValue === '0') {
+            onChange(0)
+            return
+        }
+        if (!isNaN(parseFloat(inputValue))) {
+            const roundedValue = Math.round(parseFloat(inputValue))
+            entryQuantity(roundedValue)
+        }
     }
 
     return (
@@ -60,12 +73,7 @@ function QuantityTextField(props) {
                 style={style}
             >
                 {label && <label htmlFor={id}>{label}</label>}
-                <button
-                    className="minus h-cb"
-                    onClick={() => {
-                        updateQuantityByClickOnIcons(-1)
-                    }}
-                >
+                <button className="minus h-cb" onClick={() => handleClick(-1)}>
                     <Icon icon="typcn:minus" />
                 </button>
                 <input
@@ -75,12 +83,7 @@ function QuantityTextField(props) {
                     onChange={handleInputChange}
                     value={value}
                 />
-                <button
-                    className="plus h-cb "
-                    onClick={() => {
-                        updateQuantityByClickOnIcons(1)
-                    }}
-                >
+                <button className="plus h-cb " onClick={() => handleClick(1)}>
                     <Icon icon="typcn:plus" />
                 </button>
                 {/* {errors && errors[id] && <small>{errors[id]?.message}</small>} */}
