@@ -200,6 +200,7 @@
 
             a {
                 color: $blue-main !important;
+                @include text(1.2rem, 400, $text-color, 1.25);
 
                 &:hover {
                     color: $green-1-hover-text !important;

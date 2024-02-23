@@ -28,13 +28,38 @@ import ProductContext from '../../components/Product/ProductContext'
 import { useDispatch } from 'react-redux'
 
 const data = {
-  id: '1',
-  title: 'American Journey Landmark Chicken',
-  desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
-  category: ['Whole', 'Hearted'],
-  weight: [8, 16, 32],
-  stock: [1, 0, 1],
-  price: [20, 30, 40],
+  _id: '1',
+  name: 'American Journey Landmark Chicken',
+  description: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+  brand: "Whole Hearted",
+  price: 20,
+  code: 2316548235,
+  avaiable: 10,
+  dimensions: {
+    height: 8,
+    weight: 8,
+    length: 8,
+    width: 8,
+  },
+}
+
+const data1 = {
+  avaiable: 8,
+  brand: "no brand",
+  category: {
+    _id: "658c2b67bc44f84fa60347b7", 
+    code: "FS296L", 
+    name: "fish aquariums & decor", 
+    total: 200,
+  },
+  code: "AHKCFPDL",
+  description: "Wonder and joy await you with this fin-tastic biOrb Classic LED Fish Aquarium! The natural beauty of the aquatic world is on full display with this 360-degree dish bowl. You’ll receive a low voltage pump, LED lighting, filtration, a manual and the aquarium itself.",
+  dimensions: {length: 20, width: 20, weight: 900, height: 22},
+  isActive: true,
+  name: "Classic LED Fish Aquarium",
+  price: 350000,
+  tags: ["Fish Aquariums & Decor", "Aquariums & Decor", "Aquariums", "Decor"],
+  _id: "659e5172e74f7eb4d88a2a54",
 }
 
 const TestComponents = () => {
@@ -282,10 +307,10 @@ const TestComponents = () => {
         <div className="row">
           <div className="col-12 g-0">
             <div style={{ width: '232px' }}>
-              <ProductCard
+              {/* <ProductCard
                 data={data}
                 handleProductModal={handleProductModal}
-              />
+              /> */}
             </div>
           </div>
           <div className="col-12 g-0">
@@ -300,9 +325,6 @@ const TestComponents = () => {
               <div style={{ width: '50%', padding: '35px 50px' }}>
                 <ProductContext
                   data={data}
-                  handleChangeQuantity={handleChangeQuantity}
-                  value={refQuantity.current}
-                  errors={errors}
                   type="page"
                 />
               </div>
@@ -311,40 +333,14 @@ const TestComponents = () => {
         </div>
       </div>
 
-      <div style={{ marginLeft: '500px' }}>
-        <InputQuantity
-          id="quantity"
-          validate={{
-            required: 'This field cannot be empty.',
-            pattern: {
-              value: /^[0-9]+$/,
-              message: 'Value must be greater than or equal to 1',
-            },
-          }}
-          value={refQuantity.current}
-          onChangeQuantity={handleChangeQuantity}
-          errors={errors}
-          register={register}
-          data={data && data}
-          size="large"
-        />
-
-        <Button
-          onClick={() => {
-            console.log({ quantity: refQuantity.current })
-          }}
-          htmlType="submit"
-          type="primary"
-          size="small"
-          ghost
-          className="cc"
-        >
-          <UseTranslate
-            data={{ useUI: true, text: 'submit', lang }}
-          ></UseTranslate>
-        </Button>
-      </div>
-
+            <QuantityTextField
+                className="mt-2"
+                value={quantity}
+                onChange={handleQuantityChange}
+                size="large"
+                max={10}
+                style={{ margin: '10px' }}
+            />
       <span>{formatter(100000)}</span>
       <div>
         <Breadcrumb targetFormat="snake" className="cc"></Breadcrumb>
@@ -361,13 +357,6 @@ const TestComponents = () => {
         </Accordin>
       </div>
 
-      <QuantityTextField
-        className="mt-2"
-        quantity={quantity}
-        onChange={handleQuantityChange}
-        size="large"
-        style={{ margin: '10px' }}
-      />
       <Modal
         showProductModal={showProductModal}
         handleProductModal={handleProductModal}
