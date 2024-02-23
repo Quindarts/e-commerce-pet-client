@@ -1,34 +1,12 @@
 import { Icon } from '@iconify/react'
 import Button from '../Button'
-import InputQuantity from '../InputQuantity'
-import { useForm } from 'react-hook-form'
-import { useRef } from 'react'
-
+import formatter from '../../utils/formatterMoney'
+import QuantityTextField from '../QuantityTextField'
+import { useState } from 'react'
 const ProductContext = (props) => {
   const { data, type } = props
-
-  const {
-    _id,
-    name,
-    description,
-    price,
-    brand,
-    code,
-    available,
-    dimensions,
-  } = data
-
-  const { weight } = dimensions;
-
-  const {
-    formState: { errors },
-    register,
-    reset,
-  } = useForm()
-
-  const refQuantity = useRef(0)
-
-  var value = refQuantity.current
+  console.log(data)
+  const { name, description, price, brand, code, avaiable, dimensions } = data
 
   // const refWeight = useRef(0)
 
@@ -48,11 +26,11 @@ const ProductContext = (props) => {
   //   reset()
   // }
 
-  const handleChangeQuantity = (quantity) => {
-    refQuantity.current = Number(quantity)
-    console.log(quantity)
+  const [quantity, setQuantity] = useState(1)
+  const handleQuantityChange = (newQuantity) => {
+    setQuantity(newQuantity)
   }
-
+  const totalPrice = formatter(price * quantity)
   return (
     <>
       <div className="context-product">
@@ -92,7 +70,7 @@ const ProductContext = (props) => {
             </span>
           ))} */}
           <span className="product-card__weight product-card__weight--active">
-            {weight} lbs
+            {dimensions?.weight} lbs
           </span>
         </div>
         {/* {selectedPrice && (
@@ -101,28 +79,18 @@ const ProductContext = (props) => {
           </div>
         )} */}
         <div className="context-product__price product-card__price">
-          ${price}.00
+          {totalPrice}
         </div>
         {/* {selectedStock < 1 && (
           <div className="context-product__stockless">Out of stock</div>
         )} */}
         <div style={{ display: 'inline-block' }}>
           <div className="context-product__wrap">
-            <InputQuantity
-              id="quantity"
-              validate={{
-                required: 'This field cannot be empty.',
-                pattern: {
-                  value: /^[0-9]+$/,
-                  message: 'Value must be greater than or equal to 1',
-                },
-              }}
-              register={register}
-              value={value}
-              onChangeQuantity={handleChangeQuantity}
-              errors={errors}
-              data={data && data}
+            <QuantityTextField
+              value={quantity}
+              onChange={handleQuantityChange}
               size="large"
+              max={avaiable}
             />
             <Button
               style={{ fontSize: '11px' }}
