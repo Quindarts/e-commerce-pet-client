@@ -265,9 +265,10 @@ const TestComponents = () => {
 
             <QuantityTextField
                 className="mt-2"
-                quantity={quantity}
+                value={quantity}
                 onChange={handleQuantityChange}
                 size="large"
+                max={10}
                 style={{ margin: '10px' }}
             />
         </>
