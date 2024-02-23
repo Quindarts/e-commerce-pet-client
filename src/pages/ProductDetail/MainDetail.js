@@ -15,6 +15,7 @@ import { Navigation, Thumbs } from 'swiper/modules'
 import Tab from '../../components/Tab'
 import { apiGetProductById } from '../../services/api'
 import formatter from '../../utils/formatterMoney'
+import ProductContext from '../../components/Product/ProductContext'
 
 const tabData = [
   {
@@ -31,6 +32,22 @@ const tabData = [
     tab: 'Reviews (0)',
   },
 ]
+
+const data = {
+  _id: '1',
+  name: 'American Journey Landmark Chicken',
+  description: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+  brand: "Whole Hearted",
+  price: 20,
+  code: 2316548235,
+  avaiable: 10,
+  dimensions: {
+    height: 8,
+    weight: 8,
+    length: 8,
+    width: 8,
+  },
+}
 
 const MainDetail = () => {
   const [activeThumb, setActiveThumb] = useState()
@@ -150,117 +167,10 @@ const MainDetail = () => {
             </div>
           </div>
           <div className="detail__container--wrapper-item right">
-            <>
-              <div className="detail__share">
-                <div className="detail__share--inner">
-                  <Link>{detailProduct?.brand}</Link>
-                </div>
-                <div className="detail__share--btn">
-                  <Icon icon="fe:share" />
-                </div>
-              </div>
-              <h1 className="detail__title">{detailProduct?.name}</h1>
-              <span className="detail__sku">
-                SKU: <span>{detailProduct?.code}</span>
-              </span>
-              <div className="detail__description">
-                <p>{detailProduct?.description}</p>
-              </div>
-              <form>
-                <div>
-                  <table className="detail__variations">
-                    <tbody style={{ width: '100%', display: 'block' }}>
-                      <tr style={{ width: '100%', display: 'block' }}>
-                        <th className="detail__variations--label">
-                          <label>Weight</label>
-                        </th>
-                        <td style={{ width: '100%', display: 'block' }}>
-                          <ul className="detail__variations--value ">
-                            <li>
-                              <span className="active">
-                                {detailProduct?.dimensions?.weight} kg
-                              </span>
-                            </li>
-                          </ul>
-                          <Link className="detail__variations--value-clear">
-                            <Icon
-                              width={12}
-                              height={12}
-                              icon="pajamas:close-xs"
-                            />
-                            Clear
-                          </Link>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div style={{ marginTop: 35 }}>
-                    <div>
-                      <span className="detail__variations--price">
-                        {formatter(detailProduct?.price)}
-                      </span>
-                      {detailProduct?.avaiable > 0 ? null : (
-                        <p className="detail__variations--availability">
-                          Out of stock
-                        </p>
-                      )}
-                    </div>
-                    <div className="detail__atc">
-                      <div className="detail__atc--wrapper">
-                        <div className="detail__atc--row-1">
-                          <QuantityTextField />
-                          <Button htmlType="link" type="primary" url="/">
-                            <span>
-                              <Icon icon="pepicons-pop:cart" hFlip={true} />
-                            </span>
-                            <div className="detail__atc--btn">ADD TO CART</div>
-                          </Button>
-                          <Button size="large" htmlType="submit" type="icon">
-                            <Icon icon="fa-regular:heart" />
-                          </Button>
-                        </div>
-                        <div className="detail__atc--row-2">
-                          <Button
-                            htmlType="link"
-                            type="primary"
-                            url="/"
-                            color="white"
-                            style={{ width: '100%', textAlign: 'center' }}
-                          >
-                            Buy Now
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
-              <div className="detail__features">
-                <div className="detail__features--item">
-                  <Icon width={20} height={20} icon="eva:car-outline" />
-                  <span>
-                    Free delivery for first order and every next over $100
-                  </span>
-                </div>
-              </div>
-              <div className="detail__custom">
-                <ul>
-                  <li>
-                    <Icon icon="bi:check" /> 100% Money Back Warranty
-                  </li>
-                  <li>
-                    <Icon icon="bi:check" /> All Items Top Best Quality
-                  </li>
-                  <li>
-                    <Icon icon="bi:check" />
-                    Free and Fast Delivery
-                  </li>
-                  <li>
-                    <Icon icon="bi:check" /> 24/7 Support
-                  </li>
-                </ul>
-              </div>
-            </>
+            <ProductContext 
+              data = {data}
+              type = "page"
+            />
           </div>
         </div>
         <div className="detail__tab">

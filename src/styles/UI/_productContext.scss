@@ -5,7 +5,7 @@
         padding: 20px 20px 35px 20px;
     }
 
-    &__category {
+    &__brand {
         display: block;
         font-weight: 500;
         font-size: 1.8rem;
@@ -39,6 +39,17 @@
         @media (max-width: 1189px) {
             font-size: $font-size-desktop-small;
             letter-spacing: -0.005em;
+        }
+    }
+
+    &__sku {
+        display: block;
+        margin-top: 20px;
+        @include text(1.2rem, 600, $text-color, 1.25);
+        letter-spacing: 0.02em;
+
+        :first-child {
+            @include text(1.2rem, 400, $text-color, 1.25);
         }
     }
 
@@ -100,5 +111,53 @@
         align-items: center;
         gap: 10px;
         margin-bottom: 10px;
+    }
+
+    &__features {
+        margin-top: 25px;
+        border-radius: 4px;
+        padding: 8px 0;
+        border: dashed 1px #DCEAF6;
+        background-color: #F0F9FC;
+        display: inline-flex;
+        flex-direction: column;
+
+        &--item {
+            @include flex(null, center, null, null);
+            -moz-column-gap: 15px;
+            column-gap: 15px;
+            margin: 8px 20px;
+
+            svg {
+                color: $green-1;
+            }
+
+            span {
+                @include text(1.4rem, 400, $blue-main, 1.4);
+                display: block;
+                font-style: normal;
+                letter-spacing: 0.02em;
+            }
+        }
+    }
+
+    &__custom {
+        margin-top: 20px;
+
+        ul {
+            columns: 2;
+
+            li {
+                @include flex(null, center, null, null);
+                @include text(1.4rem, 400, $text-color, 1.5);
+                margin-bottom: 5px;
+                letter-spacing: 0.02em;
+
+                svg {
+                    padding-right: 5px;
+                    color: $green-1;
+                }
+            }
+        }
     }
 }
