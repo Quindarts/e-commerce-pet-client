@@ -5,8 +5,109 @@
             width: 1160px;
             margin: 30px auto 40px;
         }
+
+        &__col {
+            &-left {
+                flex: 1 1 auto;
+                padding: 35px 40px;
+            }
+
+            &-right {
+                flex: 0 0 auto;
+                margin: 20px;
+                margin-left: 0;
+                width: 400px;
+                max-width: 100%;
+            }
+        }
+
+        &__billing-fields {
+
+            &-name {
+                float: left;
+                width: 50%;
+                padding-right: 10px;
+            }
+
+            &-email {
+                float: right;
+                width: 50%;
+                padding-left: 10px;
+            }
+
+        }
+
+        &__collaterals {
+            padding: 25px 35px 30px 35px;
+        }
+
     }
 }
+
+@include respond(tablet) {
+    .checkout {
+        &__container {
+            padding: auto 0;
+            margin: 15px 30px 30px;
+            width: calc(100% - 60px);
+        }
+
+        &__col {
+            &-left {
+                width: 50%;
+                padding: 35px 30px;
+            }
+
+            &-right {
+                flex: 0 0 auto;
+                margin: 20px;
+                margin-left: 0;
+                width: 50%;
+                max-width: 100%;
+            }
+        }
+
+        &__collaterals {
+            padding: 20px 25px 25px 25px;
+        }
+    }
+}
+
+@include respond(mobile) {
+    .checkout {
+        &__container {
+            padding: auto 0;
+            margin: 10px 0 20px;
+            width: 100%;
+        }
+
+        &__wrap {
+            @include flex(null, center, column, null);
+            padding: 0 20px 20px 20px;
+        }
+
+        &__col {
+            &-left {
+                max-width: 400px;
+                width: 100%;
+                padding: 35px 0;
+            }
+
+            &-right {
+                flex: 0 0 auto;
+                margin: 0;
+                margin-left: 0;
+                width: 400px;
+                max-width: 100%;
+            }
+        }
+
+        &__collaterals {
+            padding: 20px 15px;
+        }
+    }
+}
+
 
 .checkout {
     &__container {
@@ -30,25 +131,19 @@
         display: flex;
     }
 
-    &__col {
-        &-left {
-            flex: 1 1 auto;
-            padding: 35px 40px;
-        }
+    &__billing-fields {
+        margin-top: 15px;
 
-        &-right {
-            flex: 0 0 auto;
-            margin: 20px;
-            margin-left: 0;
-            width: 400px;
-            max-width: 100%;
+        .form-row {
+            margin-top: 0;
+            margin-bottom: 20px;
+            clear: right;
         }
     }
 
     &__collaterals {
         border: solid 1px $blue-main;
         border-radius: 4px;
-        padding: 25px 35px 30px 35px;
     }
 
     &__sub-header {
@@ -77,6 +172,10 @@
         &-name {
             @include text(1.4rem, 400, $blue-main-hover, 1.27);
             letter-spacing: 0.02em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 1rem;
+            white-space: nowrap;
         }
 
         &-price {

@@ -37,6 +37,64 @@ const CheckoutPage = () => {
           <div className="checkout__wrap">
             <div className="checkout__col-left">
               <div className="checkout__sub-header">Billing details</div>
+              <div className="checkout__billing-fields">
+                <TextField
+                  className="checkout__billing-fields-name form-row"
+                  label="Full name *"
+                  type="form"
+                  disabled={false}
+                  color="blue"
+                  id="fullName"
+                  register={register}
+                  validate={{
+                    required: 'This field can not empty.',
+                  }}
+                  errors={errors}
+                />
+                <TextField
+                  className="checkout__billing-fields-email form-row"
+                  label="Email address *"
+                  type="form"
+                  disabled={false}
+                  color="blue"
+                  id="emailAddress"
+                  register={register}
+                  validate={{
+                    required: 'This field can not empty.',
+                  }}
+                  errors={errors}
+                />
+                <TextField
+                  className="form-row"
+                  label="Your phone number *"
+                  type="form"
+                  disabled={false}
+                  color="blue"
+                  id="phone"
+                  register={register}
+                  validate={{
+                    required: 'This field can not empty.',
+                    pattern: {
+                      value: /(0[3|5|7|8|9])+([0-9]{8})\b/,
+                      message: 'Phone number is valid',
+                    },
+                  }}
+                  errors={errors}
+                />
+                <TextField
+                  className="form-row"
+                  label="Your address *"
+                  type="form"
+                  disabled={false}
+                  color="blue"
+                  id="address"
+                  register={register}
+                  validate={{
+                    required: 'This field can not empty.',
+                  }}
+                  errors={errors}
+                />
+              </div>
             </div>
             <div className="checkout__col-right">
               <div className="checkout__collaterals">
