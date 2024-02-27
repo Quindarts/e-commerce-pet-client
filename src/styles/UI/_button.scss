@@ -38,12 +38,6 @@
     &--green {
         background-color: $green-1;
         border-color: $green-1;
-
-        &:hover {
-            background-color: #fff !important;
-            border-color: #fff !important;
-            color: $green-1-hover-text;
-        }
     }
 
     &--white {
@@ -111,4 +105,10 @@
         cursor: unset;
         pointer-events: none;
     }
+}
+
+.btn.btn--primary.btn--green:hover {
+    background-color: #fff !important;
+    border-color: #fff !important;
+    color: $green-1-hover-text !important;
 }
