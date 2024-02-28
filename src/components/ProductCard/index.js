@@ -5,6 +5,7 @@ import demo from '../../assets/img/ricky-118-460x373.jpg'
 import { useForm } from 'react-hook-form'
 import Badge from '../Badge'
 import ProductProgress from '../ProductProgress'
+import { Link } from 'react-router-dom'
 const CardProduct = (props) => {
   const { sale, data, className, handleProductModal, children, ...rest } = props
 
@@ -33,7 +34,7 @@ const CardProduct = (props) => {
 
   return (
     <div {...rest} className={classValue}>
-      <a className="product-card__image" href="/">
+      <Link className="product-card__image" href="/">
         <img src={demo} alt={title} />
         <div className="product-card__overlay">
           <div className="product-card__overlay-btn-list">
@@ -49,20 +50,20 @@ const CardProduct = (props) => {
             </Button>
           </div>
         </div>
-      </a>
+      </Link>
       <div className="product-card__center">
         <div className="product-card__info">
           {sale && <ProductProgress />}
-          <a className="product-card__title" href="/">
+          <Link className="product-card__title" href="/">
             {title}
-          </a>
+          </Link>
           <div className="product-card__desc">{desc}</div>
         </div>
         <div className="product-card__category">
           {category.map((cate, i) => (
-            <a key={i} className="product-card__tag" href="/">
+            <Link key={i} className="product-card__tag" href="/">
               {cate}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

@@ -3,15 +3,16 @@ import Button from '../Button'
 import InputQuantity from '../InputQuantity'
 import { useForm } from 'react-hook-form'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 const ProductContext = (props) => {
-  const { data, handleChangeQuantity, value, errors, type = "modal" } = props;
-  const { id, title, desc, category, weight, stock, price } = data;
+  const { data, handleChangeQuantity, value, errors, type = 'modal' } = props
+  const { id, title, desc, category, weight, stock, price } = data
 
-  const { register, reset } = useForm();
-  const refWeight = useRef(0);
+  const { register, reset } = useForm()
+  const refWeight = useRef(0)
 
-  var selectedWeight = refWeight.current;
+  var selectedWeight = refWeight.current
 
   var selectedPrice = price.find((_, i) => i === selectedWeight)
 
@@ -30,26 +31,20 @@ const ProductContext = (props) => {
   return (
     <>
       <div className="context-product">
-        <a
-          href="/"
-          className="context-product__category"
-        >
+        <Link href="/" className="context-product__category">
           {category.map((cate, i) => (
             <>{cate + ' '}</>
           ))}
-        </a>
-        <h1 className={`context-product__title context-product__title--${type}`}>{title}</h1>
-        <p className="context-product__description">
-          {desc}
-        </p>
+        </Link>
+        <h1
+          className={`context-product__title context-product__title--${type}`}
+        >
+          {title}
+        </h1>
+        <p className="context-product__description">{desc}</p>
         <div className="context-product__label">
-          <span className="context-product__weight">
-            Weight
-          </span>
-          <span
-            className="context-product__reset"
-            onClick={handleReset}
-          >
+          <span className="context-product__weight">Weight</span>
+          <span className="context-product__reset" onClick={handleReset}>
             x Clear
           </span>
         </div>
@@ -74,9 +69,7 @@ const ProductContext = (props) => {
           </div>
         )}
         {selectedStock < 1 && (
-          <div className="context-product__stockless">
-            Out of stock
-          </div>
+          <div className="context-product__stockless">Out of stock</div>
         )}
         <div style={{ display: 'inline-block' }}>
           <div className="context-product__wrap">

@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { menuItems } from '../../utils/MenuItem'
 import Button from '../Button'
 
-const renderMenuItem = (item) => {
+const renderMenuItem = (item, index) => {
   const isRightType = item.type === 'right'
   const isNavigationType = item.type === 'navigation'
   const hasSubMenu = item.submenu && item.submenu.length > 0
@@ -12,10 +12,10 @@ const renderMenuItem = (item) => {
 
   return (
     <li
+      key={index}
       className={`header--menu-item ${isRightType ? 'header--item' : ''} ${
         isNavigationType ? 'navigation--menu-item' : ''
       }`}
-      key={item.id}
     >
       {isRightType && <Icon icon={item.icon} />}
       {isNavigationType ? (
@@ -45,8 +45,8 @@ const renderMenuItem = (item) => {
             <div className="large--left">
               <div className="large--title">Dogs</div>
               <ul className="menu--submenu-large">
-                {item.submenu.map((subItem) => (
-                  <li key={subItem.id} className="submenu--item">
+                {item.submenu.map((subItem, index) => (
+                  <li key={index} className="submenu--item">
                     <Link to={subItem.path} className="submenu--item-link">
                       {subItem.text}
                     </Link>
@@ -57,8 +57,8 @@ const renderMenuItem = (item) => {
             <div className="large--center">
               <div>
                 <div className="product--grid-list">
-                  {item.products.map((product) => (
-                    <div className="product--grid-item" key={product.id}>
+                  {item.products.map((product, index) => (
+                    <div className="product--grid-item" key={index}>
                       <div className="product--grid-thumb">
                         <Link className="thumb-link">
                           <img
@@ -118,12 +118,12 @@ const renderMenuItem = (item) => {
               item.text === 'English' ? 'language' : 'menu--submenu'
             }`}
           >
-            {item.submenu.map((subItem) => {
+            {item.submenu.map((subItem, index) => {
               const hasInnerSubMenu =
                 subItem.subMenu && subItem.subMenu.length > 0
 
               return (
-                <li key={subItem.id} className="submenu--item">
+                <li key={index} className="submenu--item">
                   <Link to={subItem.path} className="submenu--item-link">
                     {subItem.text}
                     {hasInnerSubMenu && (
@@ -138,8 +138,8 @@ const renderMenuItem = (item) => {
                     <ul
                       className={`menu--submenu-inner menu--submenu--last menu--submenu`}
                     >
-                      {subItem.subMenu.map((innerSubItem) => (
-                        <li key={innerSubItem.id} className={`menu--item`}>
+                      {subItem.subMenu.map((innerSubItem, index) => (
+                        <li key={index} className={`menu--item`}>
                           <Link
                             to={innerSubItem.path}
                             className="menu--item-link"
@@ -169,7 +169,7 @@ const MenuItem = (props) => {
         <ul className={`header--menu-list`}>
           {menuItems
             .filter((item) => item.type === type)
-            .map((item) => renderMenuItem(item))}
+            .map((item, index) => renderMenuItem(item, index))}
         </ul>
       </nav>
     </div>
