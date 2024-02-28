@@ -26,12 +26,15 @@ import ProductQuickview from '../../components/Product/ProductQuickview'
 import demo from '../../assets/img/ricky-118-460x373.jpg'
 import ProductContext from '../../components/Product/ProductContext'
 import { useDispatch } from 'react-redux'
+import Dropdown from '../../components/Dropdown'
+import SelectFilter from '../Product/SelectFilter'
 
 const data = {
   _id: '1',
   name: 'American Journey Landmark Chicken',
-  description: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
-  brand: "Whole Hearted",
+  description:
+    'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+  brand: 'Whole Hearted',
   price: 20,
   code: 2316548235,
   avaiable: 10,
@@ -45,21 +48,22 @@ const data = {
 
 const data1 = {
   avaiable: 8,
-  brand: "no brand",
+  brand: 'no brand',
   category: {
-    _id: "658c2b67bc44f84fa60347b7", 
-    code: "FS296L", 
-    name: "fish aquariums & decor", 
+    _id: '658c2b67bc44f84fa60347b7',
+    code: 'FS296L',
+    name: 'fish aquariums & decor',
     total: 200,
   },
-  code: "AHKCFPDL",
-  description: "Wonder and joy await you with this fin-tastic biOrb Classic LED Fish Aquarium! The natural beauty of the aquatic world is on full display with this 360-degree dish bowl. You’ll receive a low voltage pump, LED lighting, filtration, a manual and the aquarium itself.",
-  dimensions: {length: 20, width: 20, weight: 900, height: 22},
+  code: 'AHKCFPDL',
+  description:
+    'Wonder and joy await you with this fin-tastic biOrb Classic LED Fish Aquarium! The natural beauty of the aquatic world is on full display with this 360-degree dish bowl. You’ll receive a low voltage pump, LED lighting, filtration, a manual and the aquarium itself.',
+  dimensions: { length: 20, width: 20, weight: 900, height: 22 },
   isActive: true,
-  name: "Classic LED Fish Aquarium",
+  name: 'Classic LED Fish Aquarium',
   price: 350000,
-  tags: ["Fish Aquariums & Decor", "Aquariums & Decor", "Aquariums", "Decor"],
-  _id: "659e5172e74f7eb4d88a2a54",
+  tags: ['Fish Aquariums & Decor', 'Aquariums & Decor', 'Aquariums', 'Decor'],
+  _id: '659e5172e74f7eb4d88a2a54',
 }
 
 const TestComponents = () => {
@@ -202,11 +206,22 @@ const TestComponents = () => {
 
   return (
     <>
+      <div
+        style={{
+          width: '200px',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          padding: '20px',
+        }}
+      >
+        <Button type="primary" size="small" ghost>
+          <Icon icon="fa-solid:angle-left" />
+          filter
+        </Button>
+      </div>
+      <SelectFilter />
       <div className="flex items-center gap-5 bg-gray p-20">
-        <Button
-          htmlType="submit"
-          type="primary"
-        >
+        <Button htmlType="submit" type="primary">
           Click me!
         </Button>
         <Button
@@ -323,24 +338,21 @@ const TestComponents = () => {
                 />
               </div>
               <div style={{ width: '50%', padding: '35px 50px' }}>
-                <ProductContext
-                  data={data}
-                  type="page"
-                />
+                <ProductContext data={data} type="page" />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-            <QuantityTextField
-                className="mt-2"
-                value={quantity}
-                onChange={handleQuantityChange}
-                size="large"
-                max={10}
-                style={{ margin: '10px' }}
-            />
+      <QuantityTextField
+        className="mt-2"
+        value={quantity}
+        onChange={handleQuantityChange}
+        size="large"
+        max={10}
+        style={{ margin: '10px' }}
+      />
       <span>{formatter(100000)}</span>
       <div>
         <Breadcrumb targetFormat="snake" className="cc"></Breadcrumb>

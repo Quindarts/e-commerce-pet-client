@@ -1,3 +1,5 @@
+@import "./SelectFilter.scss";
+
 .section-shop {
     // &__container {
     //     max-width: 1160px;
@@ -21,6 +23,24 @@
 
         @media (max-width: 1189px) {
             display: none;
+        }
+
+        &--mobile {
+            width: 360px;
+            border: 1px solid #ddd;
+            position: fixed;
+            top: 0;
+            right: 0;
+            display: none;
+            z-index: 999;
+            background: #fff;
+            color: #000;
+            height: 100vh;
+            overflow: auto;
+            
+            @media (min-width: 1189px) {
+                display: none !important;
+            }
         }
     }
 
@@ -60,7 +80,14 @@
             font-size: 14px;
             color: #7F8D9D;
             display: inline-block;
-            line-height: 1.23;
+            line-height: 1.23;        
+        }  
+        
+        &:hover {
+            .sidebar-filter__link--title {
+                color: #F63E04;
+            }
+            
         }   
     }
 
@@ -71,6 +98,33 @@
 
     li:not(:last-child) {
         margin-bottom: 13px;
+    }
+
+    &-price {
+        &__slider {
+            .range-slider {
+                height: 2px;
+
+                &__range {
+                    background-color: $blue-main;
+                }
+
+                &__thumb {
+                    width: 10px;
+                    height: 10px;
+                    background-color: $blue-main;
+                }
+            }
+
+            &--label {
+                margin-top: 15px;
+                margin-bottom: 15px;
+                font-size: 12px;
+                line-height: 18px;
+                letter-spacing: 0.025em;
+                color: #7F8D9D;
+            }
+        }
     }
 
     &-color {
@@ -136,6 +190,26 @@
             }
         }
     }
+
+    &-mobile {
+        margin-left: 15px;
+
+        .btn {
+            svg {
+                width: 10px;
+                height: 10px;
+                margin-right: 4px;
+            }
+            
+            &:hover {
+                
+            }
+        }
+
+        @media (min-width: 1189px) {
+            display: none;
+        }
+    }
 }
 
 .shop-main {
@@ -158,9 +232,9 @@
         }
     }
 
-    .product-card {
-        border: none;
-        
+    &-option {
+        display: flex;
+        align-items: center;
     }
 }
 
@@ -168,4 +242,16 @@
     border: none;
     border-right: 1px solid #DCEAF6;
     border-bottom: 1px solid #DCEAF6;
+}
+
+.filter-mobile__button {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.filter-mobile__button .btn {
+    background-color: #fff;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
 }

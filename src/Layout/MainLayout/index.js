@@ -6,7 +6,7 @@ import TopHeader from '../../components/Shared/Header/TopHeader'
 
 function MainLayout() {
     return (
-        <main style={{ maxWidth: '100vw' }}>
+        <main style={{ maxWidth: '100vw', position:"relative"}}>
             <TopHeader color={'blue'} />
             <Navigation color={'blue'} />
             <Outlet />
