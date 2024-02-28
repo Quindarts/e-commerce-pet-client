@@ -29,7 +29,7 @@
             margin-right: 0.5rem;
         }
 
-        &:hover {
+        &:hover{
             background-color: $blue-main-hover !important;
             border-color: $blue-main-hover;
         }
@@ -105,10 +105,18 @@
         cursor: unset;
         pointer-events: none;
     }
+<<<<<<< HEAD
 }
 
 .btn.btn--primary.btn--green:hover {
     background-color: #fff !important;
     border-color: #fff !important;
     color: $green-1-hover-text !important;
+=======
+
+    &:active {
+        transition: translate 0s;
+        transform: translateY(2px);
+    }
+>>>>>>> PageProduct
 }
