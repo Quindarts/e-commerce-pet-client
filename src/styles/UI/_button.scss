@@ -111,9 +111,10 @@
         cursor: unset;
         pointer-events: none;
     }
+}
 
-    &:active {
-        transition: translate 0s;
-        transform: translateY(2px);
-    }
+.btn.btn--primary.btn--green:hover {
+    background-color: #fff !important;
+    border-color: #fff !important;
+    color: $green-1-hover-text !important;
 }
