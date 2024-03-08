@@ -82,7 +82,7 @@ const ProductTab = () => {
   const handleTabChange = (tabId) => {
     setCurrentTab(tabId)
   }
-  console.log(currentTab)
+  // console.log(currentTab)
   // Tab
   return (
     <>
