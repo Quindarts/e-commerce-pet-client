@@ -36,6 +36,7 @@ import populated1 from './svg/populated1.svg'
 import populated2 from './svg/populated2.svg'
 
 import reviewerAvt1 from './images/review__avt1.jpg'
+
 const images = {
   logo: logo,
   widget1: widget1,
