@@ -104,6 +104,7 @@
         &__slider {
             .range-slider {
                 height: 2px;
+                background-color: #F0F9FC;
 
                 &__range {
                     background-color: $blue-main;
@@ -170,7 +171,7 @@
                 width: fit-content
             }
             
-            .input {
+            .checkbox {
                 margin-right: 0;
             }
         }
@@ -254,4 +255,21 @@
     border: none;
     font-size: 17px;
     font-weight: 600;
+}
+
+.sidebar-filter-color {
+    &__item--selected {
+        .sidebar-filter-color__icon::before {
+            border-color: #0052b1;
+        }
+    }
+}
+
+.sidebar-filter-brand {
+    &__item--selected {
+        .input::before {
+            content: "\f108";
+            font-family: theme-icons;
+        }
+    }
 }
