@@ -14,8 +14,6 @@ import { useForm } from 'react-hook-form'
 import ProductQuickview from '../../components/Product/ProductQuickview'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../components/Button'
-import { loginUser } from '../../slice/authSlice'
-import { authSlice } from '../../slice/authSlice'
 
 const data = {
   id: '1',

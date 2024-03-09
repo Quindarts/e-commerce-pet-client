@@ -214,10 +214,7 @@ const TestComponents = () => {
           padding: '20px',
         }}
       >
-        <Button type="primary" size="small" ghost>
-          <Icon icon="fa-solid:angle-left" />
-          filter
-        </Button>
+        <Checkbox label="Remember Me" color="blue" size="c-form" />
       </div>
       <SelectFilter />
       <div className="flex items-center gap-5 bg-gray p-20">
