@@ -261,7 +261,7 @@ const Product = () => {
             x
           </Button>
         </div>
-        <div className="sidebar-filter">
+        {/* <div className="sidebar-filter">
           <div className="sidebar-filter__item sidebar-filter-price">
             <div className="sidebar-filter__title">Price</div>
             <div className="sidebar-filter-price__content">
@@ -438,7 +438,7 @@ const Product = () => {
               </ul>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   )
