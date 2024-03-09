@@ -5,51 +5,43 @@ import { Link } from 'react-router-dom'
 // import Button from '../Button'
 // import { useForm } from 'react-hook-form'
 
-const Accordin = (props) => {
-    const { className, color, message, children, ...res } = props
-    const [isOpen, setIsOpen] = useState(false)
-    // const {
-    //     register,
-    //     formState: { errors },
-    //     handleSubmit,
-    //     reset,
-    // } = useForm()
+const Accordion = (props) => {
+  const { className, color, message, children, ...res } = props
+  const [isOpen, setIsOpen] = useState(false)
+  // const {
+  //     register,
+  //     formState: { errors },
+  //     handleSubmit,
+  //     reset,
+  // } = useForm()
 
-    // const onSubmit = (value) => {
-    //     console.log(value)
-    //     reset()
-    // }
+  // const onSubmit = (value) => {
+  //     console.log(value)
+  //     reset()
+  // }
 
-    const handleOpen = () => {
-        setIsOpen(!isOpen)
-    }
-    return (
-        <>
-            <div className={className} {...res}>
-                <div className="cart__color">
-                    <div style={{ padding: '0' }}>
-                        <div className="cart__coupon">
-                            <Link
-                                onClick={() => handleOpen()}
-                                className="cart__coupon-header"
-                            >
-                                <div className="cart__coupon-title">
-                                    {message}
-                                </div>
-                                <Icon
-                                    className={`icon${
-                                        isOpen ? '--active' : ''
-                                    } `}
-                                    icon="mingcute:down-fill"
-                                />
-                            </Link>
-                            <div
-                                className={`cart__coupon-form ${
-                                    isOpen ? 'open' : ''
-                                }`}
-                            >
-                                {children}
-                                {/* <form
+  const handleOpen = () => {
+    setIsOpen(!isOpen)
+  }
+  return (
+    <>
+      <div className={className} {...res}>
+        <div className="cart__color">
+          <div style={{ padding: '0' }}>
+            <div className="cart__coupon">
+              <Link
+                onClick={() => handleOpen()}
+                className="cart__coupon-header"
+              >
+                <div className="cart__coupon-title">{message}</div>
+                <Icon
+                  className={`icon${isOpen ? '--active' : ''} `}
+                  icon="mingcute:down-fill"
+                />
+              </Link>
+              <div className={`cart__coupon-form ${isOpen ? 'open' : ''}`}>
+                {children}
+                {/* <form
                                     className="cart__coupon-content"
                                     style={{ width: '100%' }}
                                 >
@@ -82,13 +74,13 @@ const Accordin = (props) => {
                                         Apply
                                     </Button>
                                 </form> */}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
-        </>
-    )
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
 
-export default Accordin
+export default Accordion

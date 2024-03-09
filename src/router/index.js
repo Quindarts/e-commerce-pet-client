@@ -12,6 +12,7 @@ import MainLayout from '../Layout/MainLayout'
 import AccountPage from '../pages/AccountPage'
 import EditAccount from '../pages/AccountPage/EditAccount'
 import Product from '../pages/Product'
+import CheckoutPage from '../pages/CheckoutPage'
 
 const {
   createBrowserRouter,
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
         <Route path="register" element={<Register />} />
       </Route>
       <Route element={<PrivateRoutes />}>
+        <Route path="checkout" element={<CheckoutPage />} />
         <Route path="my_account" element={<AccountPage />}>
           <Route path="edit_account" element={<EditAccount />} />
         </Route>
