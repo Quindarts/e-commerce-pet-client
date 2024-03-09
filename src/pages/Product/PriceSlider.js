@@ -3,6 +3,7 @@ import RangeSlider from 'react-range-slider-input'
 import 'react-range-slider-input/dist/style.css'
 import Button from '../../components/Button'
 import { getNewUrlByParams } from '../../utils/url'
+import { PARAMS_FILTER } from '../../utils/constants'
 
 const PriceSlider = (props) => {
   const { params, priceRange, priceRangeParams } = props;
@@ -14,19 +15,11 @@ const PriceSlider = (props) => {
 
   const showPriceRange = () => {
     let priceParams = {
-      min_price: Math.min(...price),
-      max_price: Math.max(...price),
+      [PARAMS_FILTER.minPrice]: Math.min(...price),
+      [PARAMS_FILTER.maxPrice]: Math.max(...price),
     }
-    // let paramPriceRange = {...params, ...priceRange}
-    // params.min_price = Math.min(...price);
-    // params.max_price = Math.max(...price)
-    // let paramSearch = new URLSearchParams(params);
-    // const currentUrl = window.location.pathname;
-    // const minPrice = {"min_price": Math.min(...price)};
-    // const maxPrice = {"max_price": Math.max(...price)}
     const newUrl = getNewUrlByParams(params, priceParams)
     window.location.href = newUrl;
-    
   }
 
   return (

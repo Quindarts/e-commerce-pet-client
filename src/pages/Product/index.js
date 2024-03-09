@@ -8,10 +8,11 @@ import { Icon } from '@iconify/react'
 import SelectFilter from './SelectFilter'
 import PriceSlider from './PriceSlider'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts, reset } from '../../store/slice/productSlice'
-import { useParamsFilter } from '../../hooks/useParams';
+import { useParamsFilter } from '../../hooks/useParams'
 import { getNewUrlByParams } from '../../utils/url'
+import { PARAMS_FILTER } from '../../utils/constants'
 
 const data = {
   id: '1',
@@ -28,38 +29,88 @@ const PRICE_RANGE = [10, 480]
 const COLOR_LIST = [
   {
     id: 1,
-    name: "green",
-    code: "#73BE2F",
+    colorName: 'Green',
+    colorValue: 'green',
+    hex: '#73BE2F',
   },
   {
     id: 2,
-    name: "grey",
-    code: "#969696",
+    colorName: 'Grey',
+    colorValue: 'grey',
+    hex: '#969696',
   },
   {
     id: 3,
-    name: "red",
-    code: "#DC464F",
+    colorName: 'Red',
+    colorValue: 'red',
+    hex: '#DC464F',
+  },
+  {
+    id: 4,
+    colorName: 'White',
+    colorValue: 'white',
+    hex: '#FFFFFF',
+  },
+]
+
+const BRAND_LIST = [
+  {
+    id: 1,
+    brandName: 'Greenies',
+    brandValue: 'greenies',
+  },
+  {
+    id: 2,
+    brandName: 'Hills Science Diet',
+    brandValue: 'hills',
+  },
+  {
+    id: 1,
+    brandName: 'Nutro',
+    brandValue: 'nutro',
+  },
+  {
+    id: 1,
+    brandName: 'Royal Canin',
+    brandValue: 'royal',
+  },
+  {
+    id: 1,
+    brandName: 'Sophresh',
+    brandValue: 'sophresh',
+  },
+  {
+    id: 1,
+    brandName: 'Taste of the Wild',
+    brandValue: 'taste',
+  },
+  {
+    id: 1,
+    brandName: 'Whole Hearted',
+    brandValue: 'wholehearted',
   },
 ]
 
 const Product = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   // const productState = useSelector(state => state.product);
 
-  const params = useParamsFilter();
+  const params = useParamsFilter()
 
-  const PRICE_RANGE_PARAMS = [parseInt(params.min_price) || PRICE_RANGE[0], parseInt(params.max_price) || PRICE_RANGE[1]];
+  const PRICE_RANGE_PARAMS = [
+    parseInt(params.min_price) || PRICE_RANGE[0],
+    parseInt(params.max_price) || PRICE_RANGE[1],
+  ]
 
   const { pageIndex } = useParams()
 
   useEffect(() => {
-    getProducts();
-  }, []);
+    getProducts()
+  }, [])
 
   const getProducts = () => {
-    dispatch(getAllProducts());
+    dispatch(getAllProducts())
   }
 
   const openFilterMobile = () => {
@@ -75,11 +126,11 @@ const Product = () => {
   }
 
   const handleClickFilter = (e) => {
-    const filter = e.currentTarget.dataset.filter;
-    const value = e.currentTarget.dataset.value;
+    const filter = e.currentTarget.dataset.filter
+    const value = e.currentTarget.dataset.value
     const valueParam = { [filter]: value }
-    const newUrl = getNewUrlByParams(params, valueParam);
-    window.location.href = newUrl;
+    const newUrl = getNewUrlByParams(params, valueParam)
+    window.location.href = newUrl
   }
 
   return (
@@ -93,74 +144,53 @@ const Product = () => {
           <div className="section-shop__content">
             <div className="section-shop__sidebar">
               <div className="sidebar-filter">
+                {/* <div className="sidebar-filter__item sidebar-filter-active">
+                  <div className="sidebar-filter__title">Active filters</div>
+                  <div className="sidebar-filter-price__content">
+                    Green
+                  </div>
+                </div> */}
                 <div className="sidebar-filter__item sidebar-filter-price">
                   <div className="sidebar-filter__title">Price</div>
                   <div className="sidebar-filter-price__content">
-                    <PriceSlider priceRange={PRICE_RANGE} priceRangeParams={PRICE_RANGE_PARAMS} params={params}/>
+                    <PriceSlider
+                      priceRange={PRICE_RANGE}
+                      priceRangeParams={PRICE_RANGE_PARAMS}
+                      params={params}
+                    />
                   </div>
                 </div>
                 <div className="sidebar-filter__item sidebar-filter-color">
                   <div className="sidebar-filter__title">Color</div>
                   <div className="sidebar-filter-color__content">
                     <ul>
-                      <li className={`sidebar-filter-color__item${"green" === params?.color ? " sidebar-filter-color__item--selected" : ""}`}
-                      >
-                        <Link
-                          className="sidebar-filter__link sidebar-filter-color__link"
-                          onClick={handleClickFilter}
-                          data-filter="color"
-                          data-value="green"
-                        >
-                          <span
-                            className="sidebar-filter-color__icon"
-                            style={{ background: '#73BE2F' }}
-                          ></span>
-                          <span className="sidebar-filter__link--title">
-                            Green
-                          </span>
-                        </Link>
-                      </li>
-                      <li className={`sidebar-filter-color__item${"grey" === params?.color ? " sidebar-filter-color__item--selected" : ""}`}>
-                        <Link
-                          className="sidebar-filter__link sidebar-filter-color__link"
-                          onClick={handleClickFilter}
-                          data-filter="color"
-                          data-value="grey"
-                        >
-                          <span
-                            className="sidebar-filter-color__icon"
-                            style={{ background: '#969696' }}
-                          ></span>
-                          <span className="sidebar-filter__link--title">
-                            Grey
-                          </span>
-                        </Link>
-                      </li>
-                      <li className="sidebar-filter-color__item">
-                        <Link
-                          className="sidebar-filter__link sidebar-filter-color__link"
-                          to={'?color=red'}
-                        >
-                          <span
-                            className="sidebar-filter-color__icon"
-                            style={{ background: '#DC464F' }}
-                          ></span>
-                          <span className="sidebar-filter__link--title">
-                            Red
-                          </span>
-                        </Link>
-                      </li>
-                      <li className="sidebar-filter-color__item">
-                        <Link
-                          className="sidebar-filter__link sidebar-filter-color__link"
-                          to={'?color=white'}
-                        >
-                          <span className="sidebar-filter-color__icon"></span>
-                          <span className="sidebar-filter__link--title">
-                            White
-                          </span>
-                        </Link>
-                      </li>
+                      {COLOR_LIST.map((item) => (
+                        <>
+                          <li
+                            id={item.id}
+                            className={`sidebar-filter-color__item${
+                              item.colorValue === params?.color
+                                ? ' sidebar-filter-color__item--selected'
+                                : ''
+                            }`}
+                          >
+                            <Link
+                              className="sidebar-filter__link sidebar-filter-color__link"
+                              onClick={handleClickFilter}
+                              data-filter={PARAMS_FILTER.color}
+                              data-value={item.colorValue}
+                            >
+                              <span
+                                className="sidebar-filter-color__icon"
+                                style={{ background: item.hex }}
+                              ></span>
+                              <span className="sidebar-filter__link--title">
+                                {item.colorName}
+                              </span>
+                            </Link>
+                          </li>
+                        </>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -168,36 +198,40 @@ const Product = () => {
                   <div className="sidebar-filter__title">Brand</div>
                   <div className="sidebar-filter-brand__content">
                     <ul>
-                      <li className='sidebar-filter-brand__item sidebar-filter-brand__item--selected'>
-                        <Link className="sidebar-filter__link sidebar-filter-size__link" 
-                          onClick={handleClickFilter}
-                          data-filter="brand"
-                          data-value="greenies"
-                        >
-                          <Checkbox checked={true} color="blue" size="c-form" />
-                          <span className="sidebar-filter__link--title">
-                            Greenies{' '}
-                            <span className="sidebar-filter-brand__link--count">
-                              10
-                            </span>
-                          </span>
-                        </Link>
-                      </li>
-                      <li className='sidebar-filter-brand__item sidebar-filter-brand__item--selected'>
-                        <Link className="sidebar-filter__link sidebar-filter-size__link"
-                          onClick={handleClickFilter}
-                          data-filter="brand"
-                          data-value="hills-science-diet"
-                        >
-                          <Checkbox checked={true} color="blue" size="c-form" />
-                          <span className="sidebar-filter__link--title">
-                            Hills Science Diet{' '}
-                            <span className="sidebar-filter-brand__link--count">
-                              9
-                            </span>
-                          </span>
-                        </Link>
-                      </li>
+                      {BRAND_LIST.map((item) => (
+                        <>
+                          <li
+                            className={`sidebar-filter-brand__item${
+                              params?.brand === item.brandValue
+                                ? ' sidebar-filter-brand__item--selected'
+                                : ''
+                            }`}
+                          >
+                            <Link
+                              className="sidebar-filter__link sidebar-filter-size__link"
+                              onClick={handleClickFilter}
+                              data-filter={PARAMS_FILTER.brand}
+                              data-value={item.brandValue}
+                            >
+                              <Checkbox
+                                checked={
+                                  params?.brand === item.brandValue
+                                    ? true
+                                    : false
+                                }
+                                color="blue"
+                                size="c-form"
+                              />
+                              <span className="sidebar-filter__link--title">
+                                {item.brandName}{' '}
+                                <span className="sidebar-filter-brand__link--count">
+                                  10
+                                </span>
+                              </span>
+                            </Link>
+                          </li>
+                        </>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -209,7 +243,7 @@ const Product = () => {
                   Showing 1-20 of 65 results
                 </div>
                 <div className="shop-main-option">
-                  <SelectFilter params={params}/>
+                  <SelectFilter params={params} />
                   <div className="sidebar-filter-mobile">
                     <Button
                       type="primary"
@@ -256,189 +290,11 @@ const Product = () => {
         </div>
       </section>
       <div className="section-shop__sidebar--mobile">
-        <div className="filter-mobile__button" >
+        <div className="filter-mobile__button">
           <Button type="primary" ghost size="small" onClick={openFilterMobile}>
             x
           </Button>
         </div>
-        {/* <div className="sidebar-filter">
-          <div className="sidebar-filter__item sidebar-filter-price">
-            <div className="sidebar-filter__title">Price</div>
-            <div className="sidebar-filter-price__content">
-              <PriceSlider priceRange={PRICE_RANGE} priceRangeParams={PRICE_RANGE_PARAMS} params={params}/>
-            </div>
-          </div>
-          <div className="sidebar-filter__item sidebar-filter-color">
-            <div className="sidebar-filter__title">Color</div>
-            <div className="sidebar-filter-color__content">
-              <ul>
-                <li className="sidebar-filter-color__item">
-                  <Link
-                    className="sidebar-filter__link sidebar-filter-color__link"
-                    to={'/'}
-                  >
-                    <span
-                      className="sidebar-filter-color__icon"
-                      style={{ background: '#73BE2F' }}
-                    ></span>
-                    <span className="sidebar-filter__link--title">Green</span>
-                  </Link>
-                </li>
-                <li className="sidebar-filter-color__item">
-                  <Link
-                    className="sidebar-filter__link sidebar-filter-color__link"
-                    to={'/'}
-                  >
-                    <span
-                      className="sidebar-filter-color__icon"
-                      style={{ background: '#969696' }}
-                    ></span>
-                    <span className="sidebar-filter__link--title">Grey</span>
-                  </Link>
-                </li>
-                <li className="sidebar-filter-color__item">
-                  <Link
-                    className="sidebar-filter__link sidebar-filter-color__link"
-                    to={'/'}
-                  >
-                    <span
-                      className="sidebar-filter-color__icon"
-                      style={{ background: '#DC464F' }}
-                    ></span>
-                    <span className="sidebar-filter__link--title">Red</span>
-                  </Link>
-                </li>
-                <li className="sidebar-filter-color__item">
-                  <Link
-                    className="sidebar-filter__link sidebar-filter-color__link"
-                    to={'/'}
-                  >
-                    <span className="sidebar-filter-color__icon"></span>
-                    <span className="sidebar-filter__link--title">White</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="sidebar-filter__item sidebar-filter-size">
-            <div className="sidebar-filter__title">Size</div>
-            <div className="sidebar-filter-size__content">
-              <ul>
-                <li>
-                  <Link className="sidebar-filter__link sidebar-filter-size__link">
-                    <TextField
-                      type="checkbox"
-                      name=""
-                      placeholder=""
-                      value=""
-                      onChange=""
-                      disabled={false}
-                      color="blue"
-                      checked={true}
-                    />
-                    <span className="sidebar-filter__link--title">Big</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link className="sidebar-filter__link sidebar-filter-size__link">
-                    <TextField
-                      type="checkbox"
-                      name=""
-                      placeholder=""
-                      value=""
-                      onChange=""
-                      disabled={false}
-                      color="blue"
-                      checked={true}
-                    />
-                    <span className="sidebar-filter__link--title">Medium</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link className="sidebar-filter__link sidebar-filter-size__link">
-                    <TextField
-                      type="checkbox"
-                      name=""
-                      placeholder=""
-                      value=""
-                      onChange=""
-                      disabled={false}
-                      color="blue"
-                      checked={true}
-                    />
-                    <span className="sidebar-filter__link--title">Small</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="sidebar-filter__item sidebar-filter-meat">
-            <div className="sidebar-filter__title">Meat</div>
-            <div className="sidebar-filter-meat__content">
-              <ul>
-                <li>
-                  <Link className="sidebar-filter__link">
-                    <Icon icon="healthicons:animal-cow" color="#BFDCF7" />
-                    <span className="sidebar-filter__link--title">Beef</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link className="sidebar-filter__link">
-                    <Icon icon="cbi:chicken" color="#BFDCF7" />
-                    <span className="sidebar-filter__link--title">Chicken</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="sidebar-filter__item sidebar-filter-brand">
-            <div className="sidebar-filter__title">Brand</div>
-            <div className="sidebar-filter-brand__content">
-              <ul>
-                <li>
-                  <Link className="sidebar-filter__link sidebar-filter-size__link">
-                    <TextField
-                      type="checkbox"
-                      name=""
-                      placeholder=""
-                      value=""
-                      onChange=""
-                      disabled={false}
-                      color="blue"
-                      checked={true}
-                    />
-                    <span className="sidebar-filter__link--title">
-                      Greenies{' '}
-                      <span className="sidebar-filter-brand__link--count">
-                        10
-                      </span>
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link className="sidebar-filter__link sidebar-filter-size__link">
-                    <TextField
-                      type="checkbox"
-                      name=""
-                      placeholder=""
-                      value=""
-                      onChange=""
-                      disabled={false}
-                      color="blue"
-                      checked={true}
-                    />
-                    <span className="sidebar-filter__link--title">
-                      Hills Science Diet{' '}
-                      <span className="sidebar-filter-brand__link--count">
-                        9
-                      </span>
-                    </span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div> */}
       </div>
     </>
   )
