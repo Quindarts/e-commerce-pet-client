@@ -16,12 +16,13 @@ import { PARAMS_FILTER } from '../../utils/constants'
 
 const data = {
   id: '1',
-  title: 'American Journey Landmark Chicken',
-  desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
-  category: ['Whole', 'Hearted'],
-  weight: [8, 16, 32],
-  stock: [1, 0, 1],
-  price: [20, 30, 40],
+  name: 'American Journey Landmark Chicken',
+  description: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+  category: {name: "Food"},
+  brand: "Whole Hearted",
+  dimensions: {weight: 8},
+  available: 200,
+  price: 20,
 }
 
 const PRICE_RANGE = [10, 480]
@@ -94,7 +95,7 @@ const BRAND_LIST = [
 const Product = () => {
   const dispatch = useDispatch()
 
-  // const productState = useSelector(state => state.product);
+  const productState = useSelector(state => state.product);
 
   const params = useParamsFilter()
 
@@ -133,6 +134,8 @@ const Product = () => {
     window.location.href = newUrl
   }
 
+  console.log(productState.product);
+
   return (
     <>
       <div className="page-header">
@@ -144,12 +147,20 @@ const Product = () => {
           <div className="section-shop__content">
             <div className="section-shop__sidebar">
               <div className="sidebar-filter">
-                {/* <div className="sidebar-filter__item sidebar-filter-active">
+                <div className="sidebar-filter__item sidebar-filter-active">
                   <div className="sidebar-filter__title">Active filters</div>
-                  <div className="sidebar-filter-price__content">
-                    Green
+                  <div className="sidebar-filter-active__content">
+                    <ul>
+                      <li className="sidebar-filter-active__item">
+                        <Icon
+                          className="sidebar-filter-active__button"
+                          icon="iconoir:cancel"
+                        />
+                        <span className="sidebar-filter-active__title">Grey</span>
+                      </li>
+                    </ul>
                   </div>
-                </div> */}
+                </div>
                 <div className="sidebar-filter__item sidebar-filter-price">
                   <div className="sidebar-filter__title">Price</div>
                   <div className="sidebar-filter-price__content">

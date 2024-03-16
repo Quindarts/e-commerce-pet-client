@@ -211,6 +211,29 @@
             display: none;
         }
     }
+    &-active {
+        &__item {
+            display: flex;
+            align-items: center;
+        }
+
+        &__button {
+            width: 14px !important;
+            height: 100% !important;
+            color:  $blue-main;
+            margin-right: 6px;
+
+            path {
+                stroke-width: 2.9;
+            }
+        }
+
+        &__title {
+            line-height: 1.23;
+            color: #7F8D9D;
+            font-size: 14px;
+        }
+    }
 }
 
 .shop-main {

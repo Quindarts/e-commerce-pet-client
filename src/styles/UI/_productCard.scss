@@ -96,16 +96,24 @@
         letter-spacing: 0.02em;
         @include text(1.3rem, 400, $blue-main, 1.6rem);
 
-        &+.product-card__tag {
-            padding-left: 0.5rem;
+        &.product-card__tag {
+            padding-right: 0.5rem;
 
-            &::before {
+            &:not(:last-child)::after {
                 content: ".";
                 font-weight: 550;
                 color: #73BE2F;
                 font-size: 20px;
-                padding-right: 0.5rem;
+                padding-left: 0.5rem;
             }
+
+            // &::after {
+            //     content: ".";
+            //     font-weight: 550;
+            //     color: #73BE2F;
+            //     font-size: 20px;
+            //     padding-right: 0.5rem;
+            // }
         }
 
         &:hover {

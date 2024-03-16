@@ -8,39 +8,45 @@ import ProductProgress from '../ProductProgress'
 const CardProduct = (props) => {
   const { sale, data, className, handleProductModal, children, ...rest } = props
 
-  const { id, title, desc, category, weight, stock, price } = data
+  const { id, name, description, category, brand, dimensions, available, price, ...restData } = data
 
-  const { reset } = useForm()
+  // const { reset } = useForm()
 
-  const refWeight = useRef(0)
-  var selectedWeight = refWeight.current
+  // const refWeight = useRef(0)
+  // var selectedWeight = refWeight.current
 
-  var selectedPrice = price.find((_, i) => i === selectedWeight)
+  // var selectedPrice = price.find((_, i) => i === selectedWeight)
 
-  var selectedStock = stock.find((_, i) => i === selectedWeight)
+  // var selectedStock = stock.find((_, i) => i === selectedWeight)
 
-  const handleClick = (weight) => {
-    refWeight.current = weight
-    reset()
-  }
+  // const handleClick = (weight) => {
+  //   refWeight.current = weight
+  //   reset()
+  // }
 
-  const handleShowModal = (e) => {
-    e.preventDefault()
-    handleProductModal()
-  }
+  // const handleShowModal = (e) => {
+  //   e.preventDefault()
+  //   handleProductModal()
+  // }
 
   const classValue = `product-card${className ? ` ${className}` : ''}`
 
+  const cateName = category ? category.name : "no category"
+
+  const tag = [cateName, brand]
+
+  const weight = dimensions?.weight
+
   return (
     <div {...rest} className={classValue}>
-      <a className="product-card__image" href="/">
-        <img src={demo} alt={title} />
+      <a className="product-card__image" href={`/product-detail/${id}`}>
+        <img src={demo} alt={name} />
         <div className="product-card__overlay">
           <div className="product-card__overlay-btn-list">
             <Button
               className="product-card__overlay-btn"
               type="icon"
-              onClick={handleShowModal}
+              // onClick={handleShowModal}
             >
               <Icon icon="radix-icons:eye-open" />
             </Button>
@@ -53,13 +59,13 @@ const CardProduct = (props) => {
       <div className="product-card__center">
         <div className="product-card__info">
           {sale && <ProductProgress />}
-          <a className="product-card__title" href="/">
-            {title}
+          <a className="product-card__title" href={`/product-detail/${id}`}>
+            {name}
           </a>
-          <div className="product-card__desc">{desc}</div>
+          <div className="product-card__desc">{description}</div>
         </div>
         <div className="product-card__category">
-          {category.map((cate, i) => (
+          {tag.map((cate, i) => (
             <a key={i} className="product-card__tag" href="/">
               {cate}
             </a>
@@ -68,7 +74,10 @@ const CardProduct = (props) => {
       </div>
       <div className="product-card__bottom">
         <div className="product-card__options">
-          {weight.map((item, i) => (
+          <span className='product-card__weight product-card__weight--active'>
+            {weight} lbs
+          </span>
+          {/* {weight.map((item, i) => (
             <span
               key={i}
               className={
@@ -80,16 +89,16 @@ const CardProduct = (props) => {
             >
               {item} lbs
             </span>
-          ))}
+          ))} */}
         </div>
-        {selectedStock < 1 && (
+        {available < 1 && (
           <div className="product-card__available">OUT OF STOCK</div>
         )}
         <div className="product-card__wrap">
-          <div className="product-card__price">${selectedPrice}.00</div>
+          <div className="product-card__price">${price}.00</div>
           <div className="product-card__icon">
             <Button
-              className={selectedStock < 1 && 'disabled'}
+              className={available < 1 && 'disabled'}
               htmlType="submit"
               type="icon"
             >

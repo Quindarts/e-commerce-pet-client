@@ -17,12 +17,13 @@ import Button from '../../components/Button'
 
 const data = {
   id: '1',
-  title: 'American Journey Landmark Chicken',
-  desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
-  category: ['Whole', 'Hearted'],
-  weight: [8, 16, 32],
-  stock: [1, 0, 1],
-  price: [20, 30, 40],
+  name: 'American Journey Landmark Chicken',
+  description: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+  category: {name: "Food"},
+  brand: "Whole Hearted",
+  dimensions: {weight: 8},
+  available: 200,
+  price: 20,
 }
 
 function Home() {
@@ -45,14 +46,14 @@ function Home() {
   return (
     <div>
       <HeroSection />
-      <TopProducts />
+      <TopProducts data={data}/>
       <ProductTab />
       <OurNews />
       <DailySales />
       <Populated />
       <OurServices id="widget__home" />
       <Testimonials />
-      <Modal
+      {/* <Modal
         showProductModal={showProductModal}
         handleProductModal={handleProductModal}
       >
@@ -63,7 +64,7 @@ function Home() {
           errors={errors}
           handleProductModal={handleProductModal}
         />
-      </Modal>
+      </Modal> */}
       Home
       <Link to="component"> Go to component page</Link>
       <div style={{ width: '232px' }}></div>
