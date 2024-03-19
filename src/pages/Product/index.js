@@ -7,20 +7,22 @@ import TextField from '../../components/TextField'
 import { Icon } from '@iconify/react'
 import SelectFilter from './SelectFilter'
 import PriceSlider from './PriceSlider'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts, reset } from '../../store/slice/productSlice'
 import { useParamsFilter } from '../../hooks/useParams'
 import { getNewUrlByParams } from '../../utils/url'
 import { PARAMS_FILTER } from '../../utils/constants'
+import { productService } from '../../services/productService'
 
 const data = {
   id: '1',
   name: 'American Journey Landmark Chicken',
-  description: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
-  category: {name: "Food"},
-  brand: "Whole Hearted",
-  dimensions: {weight: 8},
+  description:
+    'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+  category: { name: 'Food' },
+  brand: 'Whole Hearted',
+  dimensions: { weight: 8 },
   available: 200,
   price: 20,
 }
@@ -93,26 +95,50 @@ const BRAND_LIST = [
 ]
 
 const Product = () => {
-  const dispatch = useDispatch()
-
-  const productState = useSelector(state => state.product);
-
   const params = useParamsFilter()
+
+  const { pageIndex } = useParams()
+
+  const [productList, setProductList] = useState([])
+
+  const getProducts = async () => {
+    const products = await productService.getProducts(pageIndex)
+    setProductList(products)
+  }
+
+  useEffect(() => {
+    const getProductList = async () => {
+      if (Object.keys(params).length > 0) {
+        const { orderby } = params
+        const paramsApi = []
+        if (orderby) {
+          if (orderby === 'menu_order') {
+            getProducts()
+          } else {
+            paramsApi.push({
+              sortField: 'price',
+              sortType: orderby === 'price' ? 1 : -1,
+            })
+            const products = await productService.getProductsByParams(
+              pageIndex,
+              paramsApi
+            )
+            setProductList(products)
+          }
+        } else {
+          getProducts()
+        }
+      } else {
+        getProducts()
+      }
+    }
+    getProductList()
+  }, [])
 
   const PRICE_RANGE_PARAMS = [
     parseInt(params.min_price) || PRICE_RANGE[0],
     parseInt(params.max_price) || PRICE_RANGE[1],
   ]
-
-  const { pageIndex } = useParams()
-
-  useEffect(() => {
-    getProducts()
-  }, [])
-
-  const getProducts = () => {
-    dispatch(getAllProducts())
-  }
 
   const openFilterMobile = () => {
     const filterMobile = document.querySelector(
@@ -134,7 +160,12 @@ const Product = () => {
     window.location.href = newUrl
   }
 
-  console.log(productState.product);
+  const handleRemoveFilter = (e) => {
+    // const filter = e.currentTarget.dataset.filter;
+    // console.log(filter);
+  }
+
+  
 
   return (
     <>
@@ -147,20 +178,28 @@ const Product = () => {
           <div className="section-shop__content">
             <div className="section-shop__sidebar">
               <div className="sidebar-filter">
-                <div className="sidebar-filter__item sidebar-filter-active">
-                  <div className="sidebar-filter__title">Active filters</div>
-                  <div className="sidebar-filter-active__content">
-                    <ul>
-                      <li className="sidebar-filter-active__item">
-                        <Icon
-                          className="sidebar-filter-active__button"
-                          icon="iconoir:cancel"
-                        />
-                        <span className="sidebar-filter-active__title">Grey</span>
-                      </li>
-                    </ul>
+                {Object.keys(params).length > 0 && (
+                  <div className="sidebar-filter__item sidebar-filter-active">
+                    <div className="sidebar-filter__title">Active filters</div>
+                    <div className="sidebar-filter-active__content">
+                      <ul>
+                      {Object.values(params).map((item, index) => (
+                        <li key={index} data-filter={item} onClick={handleRemoveFilter()} className="sidebar-filter-active__item">
+                          <Icon
+                            className="sidebar-filter-active__button"
+                            icon="iconoir:cancel"
+                          />
+                          <span className="sidebar-filter-active__title">
+                            {item.toUpperCase()}
+                          </span>
+                        </li>
+                      ))}
+                        
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                )}
+
                 <div className="sidebar-filter__item sidebar-filter-price">
                   <div className="sidebar-filter__title">Price</div>
                   <div className="sidebar-filter-price__content">
@@ -268,34 +307,19 @@ const Product = () => {
                   </div>
                 </div>
               </div>
-              <div className="shop-main-list">
-                <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
-                  <div className="col">
-                    <ProductCard data={data} />
-                  </div>
-                  <div className="col">
-                    <ProductCard data={data} />
-                  </div>
-                  <div className="col">
-                    <ProductCard data={data} />
-                  </div>
-                  <div className="col">
-                    <ProductCard data={data} />
-                  </div>
-                  <div className="col">
-                    <ProductCard data={data} />
-                  </div>
-                  <div className="col">
-                    <ProductCard data={data} />
-                  </div>
-                  <div className="col">
-                    <ProductCard data={data} />
-                  </div>
-                  <div className="col">
-                    <ProductCard data={data} />
+              {productList.length > 0 && (
+                <div className="shop-main-list">
+                  <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+                    {productList.map((item) => (
+                      <>
+                        <div className="col">
+                          <ProductCard id={item._id} data={item} />
+                        </div>
+                      </>
+                    ))}
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

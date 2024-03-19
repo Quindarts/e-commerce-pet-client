@@ -1,10 +1,19 @@
-import axiosConfig from "./axiosConfig"
+import axiosConfig from './axiosConfig'
+import { PRODUCTS_PER_PAGE } from '../utils/constants'
 
-const getProducts = async (data) => {
-    const response = await axiosConfig.get(`/products?limit=10&offset=1`)
-    return response
-  }
+const getProducts = async (pageIndex) => {
+  const response = await axiosConfig.get(`/products?limit=${PRODUCTS_PER_PAGE}&offset=${pageIndex || 1}`)
+  return response.list
+}
 
-  export const productService = {
-    getProducts,
-  }
+const getProductsByParams = async (pageIndex, paramsApi) => {
+  const sortField = paramsApi[0].sortField;
+  const sortType = paramsApi[0].sortType;
+  const response = await axiosConfig.get(`/products/filter?limit=${PRODUCTS_PER_PAGE}&offset=${pageIndex || 1}&sortField=${sortField}&sortType=${sortType}`);
+  return response.products;
+}
+
+export const productService = {
+  getProducts,
+  getProductsByParams,
+}

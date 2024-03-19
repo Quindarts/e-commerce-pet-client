@@ -8,7 +8,7 @@ import ProductProgress from '../ProductProgress'
 const CardProduct = (props) => {
   const { sale, data, className, handleProductModal, children, ...rest } = props
 
-  const { id, name, description, category, brand, dimensions, available, price, ...restData } = data
+  const { _id, name, description, category, brand, dimensions, available, price, ...restData } = data
 
   // const { reset } = useForm()
 
@@ -39,7 +39,7 @@ const CardProduct = (props) => {
 
   return (
     <div {...rest} className={classValue}>
-      <a className="product-card__image" href={`/product-detail/${id}`}>
+      <a className="product-card__image" href={`/product-detail/${_id}`}>
         <img src={demo} alt={name} />
         <div className="product-card__overlay">
           <div className="product-card__overlay-btn-list">
@@ -59,7 +59,7 @@ const CardProduct = (props) => {
       <div className="product-card__center">
         <div className="product-card__info">
           {sale && <ProductProgress />}
-          <a className="product-card__title" href={`/product-detail/${id}`}>
+          <a className="product-card__title" href={`/product-detail/${_id}`}>
             {name}
           </a>
           <div className="product-card__desc">{description}</div>
@@ -95,7 +95,7 @@ const CardProduct = (props) => {
           <div className="product-card__available">OUT OF STOCK</div>
         )}
         <div className="product-card__wrap">
-          <div className="product-card__price">${price}.00</div>
+          <div className="product-card__price">${price}</div>
           <div className="product-card__icon">
             <Button
               className={available < 1 && 'disabled'}
