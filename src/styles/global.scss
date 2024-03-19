@@ -8,9 +8,15 @@
 @import './UI/index.scss';
 @import './Shared/index.scss';
 @import './CartPage/index.scss';
+@import "./ServicesPage/index.scss";
+@import './Home/index.scss';
 
-
-
+//Page
+@import './Pages/Home/index.scss';
+@import './ProductDetailPage/index.scss';
+@import './AccountPage/index.scss';
+@import './CheckoutPage/index.scss';
+@import './ProductPage/index.scss';
 
 //Class
 @import './Utils/index.scss';

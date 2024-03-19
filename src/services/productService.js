@@ -1,6 +1,10 @@
-import { get } from '../utils/request'
+import axiosConfig from "./axiosConfig"
 
-export const getProduct = async (id) => {
-    const result = await get(`product/${id}`)
-    return result
-}
+const getProducts = async (data) => {
+    const response = await axiosConfig.get(`/products?limit=10&offset=1`)
+    return response
+  }
+
+  export const productService = {
+    getProducts,
+  }

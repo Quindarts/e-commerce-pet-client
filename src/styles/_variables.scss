@@ -9,6 +9,11 @@ $roboto-font: 'Roboto', sans-serif;
 $font-quicksan: 'Quicksand', sans-serif;
 $font-outfit: 'Outfit', sans-serif;
 
+//font-size
+$font-size-desktop-big: 4rem;
+$font-size-desktop-medium: 3.2rem;
+$font-size-desktop-small: 2.6rem;
+
 //colors:
 $blue-main: #0052b1;
 $blue-main-hover: #00234b;
@@ -52,6 +57,7 @@ $hover-transition: opacity 0.3s linear,
 $opacity-transition: opacity 0.3s linear, visibility 0.3s linear;
 
 
+$background-hover-transition: background .3s, border .3s, border-radius .3s, box-shadow .3s, transform var(--e-transform-transition-duration, .4s);
 
 
 

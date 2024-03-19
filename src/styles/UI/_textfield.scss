@@ -1,8 +1,3 @@
-::selection {
-    color: white;
-    background-color: currentColor;
-}
-
 .textfield {
     width: 100%;
 
@@ -45,12 +40,14 @@
             border-radius: 3px;
         }
 
-        &--search {
+        &--search-type {
             @include text(1.8rem, 400, color, 0);
-            padding: 0.5rem;
+            padding: 0 0 15px 0;
             border: none !important;
             border-bottom: solid 2px currentColor !important;
             background-color: transparent !important;
+            letter-spacing: 0.01em;
+            font-family: $font-outfit;
 
             &:focus {
                 outline: none !important;
