@@ -1,18 +1,34 @@
 import { Outlet } from 'react-router-dom'
 import Footer from '../../components/Shared/Footer'
 
-import Navigation from '../../components/Shared/Header/Navigation'
-import TopHeader from '../../components/Shared/Header/TopHeader'
+import Navbar from '../../components/Shared/Navbar'
 
+import MainBar from '../../components/Shared/Navbar/HeaderBar'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { fetchCategoryTree } from '../../store/categorySlice'
 function MainLayout() {
-    return (
-        <main style={{ maxWidth: '100vw' }}>
-            <TopHeader color={'blue'} />
-            <Navigation color={'blue'} />
-            <Outlet />
-            <Footer />
-        </main>
-    )
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchCategoryTree())
+  }, [dispatch])
+
+  return (
+    <main
+      style={{
+        maxWidth: '100vw',
+        position: 'relative',
+        width: '100%',
+        overflow: 'hidden',
+      }}
+    >
+      <Navbar />
+      <MainBar />
+      <Outlet />
+      <Footer />
+    </main>
+  )
 }
 
 export default MainLayout

@@ -11,6 +11,7 @@ import AuthLayout from '../Layout/AuthLayout'
 import MainLayout from '../Layout/MainLayout'
 import AccountPage from '../pages/AccountPage'
 import EditAccount from '../pages/AccountPage/EditAccount'
+import Product from '../pages/Product'
 import CheckoutPage from '../pages/CheckoutPage'
 
 const {
@@ -26,6 +27,8 @@ const router = createBrowserRouter(
       <Route path="component" element={<TestComponents />} />
       <Route path="product-detail/:product_id" element={<ProductDetail />} />
       <Route path="cart" element={<Cart />} />
+      <Route path="shop" element={<Product />} />
+      <Route path="shop/page/:pageIndex" element={<Product />} />
       <Route path="about_us" element={<AboutUs />} />
       <Route path="/" element={<AuthLayout />}>
         <Route path="login" element={<Login />} />
