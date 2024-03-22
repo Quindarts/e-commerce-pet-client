@@ -7,12 +7,16 @@ import TextField from '../../components/TextField'
 import { Icon } from '@iconify/react'
 import SelectFilter from './SelectFilter'
 import PriceSlider from './PriceSlider'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllProducts, reset } from '../../store/slice/productSlice'
 import { useParamsFilter } from '../../hooks/useParams'
 import { getNewUrlByParams } from '../../utils/url'
 import { PARAMS_FILTER } from '../../utils/constants'
+import Pagination from '../../components/Pagination'
+import { fetchProductsByParams } from '../../store/slice/product-slice'
+import { useSnackbar } from 'notistack'
+import Loading from '../../components/Loading'
 
 const data = {
   id: '1',
@@ -90,28 +94,48 @@ const BRAND_LIST = [
     brandValue: 'wholehearted',
   },
 ]
-
 const Product = () => {
   const dispatch = useDispatch()
-
-  // const productState = useSelector(state => state.product);
-
+  // -------------------------------------------
   const params = useParamsFilter()
+  const param = useParams()
+
+  const { enqueueSnackbar } = useSnackbar()
+  const { products, loaded, error, loading } = useSelector((state) => state)
+
+  const pageIndex = param.pageIndex
+  const totalPage = parseInt(products?.products?.params?.totalPage)
+  useEffect(() => {
+    if (!loaded) {
+      dispatch(
+        fetchProductsByParams({ limit: 12, offset: pageIndex ? pageIndex : 1 })
+      )
+    }
+    if (error) {
+      enqueueSnackbar(error, {
+        variant: 'error',
+      })
+    }
+  }, [dispatch, loaded, error, enqueueSnackbar, pageIndex])
+
+  if (loading) {
+    return <Loading />
+  }
+
+  // ----------------------------------------------
 
   const PRICE_RANGE_PARAMS = [
     parseInt(params.min_price) || PRICE_RANGE[0],
     parseInt(params.max_price) || PRICE_RANGE[1],
   ]
 
-  const { pageIndex } = useParams()
+  // useEffect(() => {
+  //   getProducts()
+  // }, [])
 
-  useEffect(() => {
-    getProducts()
-  }, [])
-
-  const getProducts = () => {
-    dispatch(getAllProducts())
-  }
+  // const getProducts = () => {
+  //   dispatch(getAllProducts())
+  // }
 
   const openFilterMobile = () => {
     const filterMobile = document.querySelector(
@@ -285,6 +309,7 @@ const Product = () => {
                   </div>
                 </div>
               </div>
+              <Pagination data={totalPage} url="/shop/page"></Pagination>
             </div>
           </div>
         </div>
