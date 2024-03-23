@@ -5,7 +5,9 @@ import TextField from '../../components/TextField'
 import Button from '../../components/Button'
 import { useForm } from 'react-hook-form'
 import Radio from '../../components/Radio'
-
+import { useSelector } from 'react-redux'
+import { useHandleCreateOrder } from '../../hooks/useCreateOrder'
+import Loading from '../../components/Loading'
 const CheckoutPage = () => {
   const {
     register,
@@ -13,10 +15,21 @@ const CheckoutPage = () => {
     handleSubmit,
     reset,
   } = useForm()
+  const { handleCreateOrder, loading } = useHandleCreateOrder()
+  const user_id = useSelector((state) => state?.auth?.user?.user?.id)
 
-  const onSubmit = (value) => {
-    console.log(value)
+  const onSubmit = ({ coupon, ...shipping_detail }) => {
+    const data = { shipping_detail, user_id: user_id }
+    handleCreateOrder(data)
     reset()
+  }
+
+  if (loading) {
+    return (
+      <>
+        <Loading />
+      </>
+    )
   }
   return (
     <div className="checkout">
@@ -37,7 +50,7 @@ const CheckoutPage = () => {
           <div className="checkout__wrap">
             <div className="checkout__col-left">
               <div className="checkout__sub-header">Billing details</div>
-              <div className="checkout__billing-fields">
+              <form className="checkout__billing-fields">
                 <TextField
                   className="checkout__billing-fields-name form-row"
                   label="Full name *"
@@ -45,6 +58,7 @@ const CheckoutPage = () => {
                   disabled={false}
                   color="blue"
                   id="fullName"
+                  name="fullName"
                   register={register}
                   validate={{
                     required: 'This field can not empty.',
@@ -57,7 +71,8 @@ const CheckoutPage = () => {
                   type="form"
                   disabled={false}
                   color="blue"
-                  id="emailAddress"
+                  id="email"
+                  name="email"
                   register={register}
                   validate={{
                     required: 'This field can not empty.',
@@ -71,6 +86,7 @@ const CheckoutPage = () => {
                   disabled={false}
                   color="blue"
                   id="phone"
+                  name="phone"
                   register={register}
                   validate={{
                     required: 'This field can not empty.',
@@ -88,13 +104,14 @@ const CheckoutPage = () => {
                   disabled={false}
                   color="blue"
                   id="address"
+                  name="address"
                   register={register}
                   validate={{
                     required: 'This field can not empty.',
                   }}
                   errors={errors}
                 />
-              </div>
+              </form>
             </div>
             <div className="checkout__col-right">
               <div className="checkout__collaterals">
@@ -109,9 +126,9 @@ const CheckoutPage = () => {
                       disabled={false}
                       color="blue"
                       id="coupon"
+                      name="coupon"
                       register={register}
                       validate={{
-                        required: 'This field can not empty.',
                         pattern: {
                           value: /[^\\$] [A-Z0-9]{2,}/,
                           message: 'Coupon is valid',
@@ -120,7 +137,6 @@ const CheckoutPage = () => {
                       errors={errors}
                     />
                     <Button
-                      onClick={handleSubmit(onSubmit)}
                       htmlType="submit"
                       type="primary"
                       size="medium"
@@ -265,6 +281,7 @@ const CheckoutPage = () => {
                     type="primary"
                     className="w-100 text-center"
                     style={{ marginTop: '20px' }}
+                    onClick={handleSubmit(onSubmit)}
                   >
                     Place order
                   </Button>
