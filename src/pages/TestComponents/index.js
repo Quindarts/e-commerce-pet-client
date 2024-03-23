@@ -216,7 +216,6 @@ const TestComponents = () => {
       >
         <Checkbox label="Remember Me" color="blue" size="c-form" />
       </div>
-      <SelectFilter />
       <div className="flex items-center gap-5 bg-gray p-20">
         <Button htmlType="submit" type="primary">
           Click me!
