@@ -13,7 +13,13 @@ const getProductsByParams = async (pageIndex, paramsApi) => {
   return response.products;
 }
 
+const getProductById = async (id) => {
+  const response = await axiosConfig.get(`/products/${id}`)
+  return response.product
+}
+
 export const productService = {
   getProducts,
   getProductsByParams,
+  getProductById
 }

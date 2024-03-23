@@ -81,6 +81,7 @@ function Login() {
                 errors={errors}
                 name="username"
                 autocomplete="user-name"
+                value = "vunontay23311"
               />
               <TextField
                 hidden
@@ -93,6 +94,7 @@ function Login() {
                 register={register}
                 errors={errors}
                 autoComplete="user-password"
+                value = "Hoangvu200202@"
               />
             </form>
             <div className="login__remember">

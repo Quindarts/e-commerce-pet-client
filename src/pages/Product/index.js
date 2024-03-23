@@ -165,8 +165,6 @@ const Product = () => {
     // console.log(filter);
   }
 
-  
-
   return (
     <>
       <div className="page-header">
