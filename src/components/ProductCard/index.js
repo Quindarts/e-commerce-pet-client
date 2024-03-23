@@ -56,7 +56,7 @@ const CardProduct = (props) => {
             </Button>
           </div>
         </div>
-      </Link>
+      </a>
       <div className="product-card__center">
         <div className="product-card__info">
           {sale && <ProductProgress />}
@@ -69,7 +69,7 @@ const CardProduct = (props) => {
           {tag.map((cate, i) => (
             <a key={i} className="product-card__tag" href="/">
               {cate}
-            </Link>
+            </a>
           ))}
         </div>
       </div>
