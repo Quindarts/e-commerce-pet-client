@@ -5,6 +5,7 @@ import demo from '../../assets/img/ricky-118-460x373.jpg'
 import { useForm } from 'react-hook-form'
 import Badge from '../Badge'
 import ProductProgress from '../ProductProgress'
+import { Link } from 'react-router-dom'
 const CardProduct = (props) => {
   const { sale, data, className, handleProductModal, children, ...rest } = props
 

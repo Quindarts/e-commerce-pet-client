@@ -27,15 +27,13 @@ axiosConfig.interceptors.request.use(
 
 axiosConfig.interceptors.response.use(
   (response) => {
-    if (response) {
-      return response.data
-    }
+    return response.data
   },
   async (error) => {
     const userToken = JSON.parse(localStorage.getItem('user') || '{}')
     const originalRequest = error.config
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (error.response.status === 403 && !originalRequest._retry) {
       originalRequest._retry = true
 
       try {
@@ -62,5 +60,4 @@ axiosConfig.interceptors.response.use(
     return Promise.reject(error.response.data)
   }
 )
-
 export default axiosConfig
