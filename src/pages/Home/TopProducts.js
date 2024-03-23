@@ -2,17 +2,18 @@ import { SwiperSlide } from 'swiper/react'
 import SwiperComponent from '../../components/Swiper'
 import ProductCard from '../../components/ProductCard'
 
-const data = {
-  id: '1',
-  title: 'American Journey Landmark Chicken',
-  desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
-  category: ['Whole', 'Hearted'],
-  weight: [8, 16, 32],
-  stock: [1, 0, 1],
-  price: [20, 30, 40],
-}
+// const data = {
+//   id: '1',
+//   title: 'American Journey Landmark Chicken',
+//   desc: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+//   category: ['Whole', 'Hearted'],
+//   weight: [8, 16, 32],
+//   stock: [1, 0, 1],
+//   price: [20, 30, 40],
+// }
 
-const TopProducts = () => {
+const TopProducts = (props) => {
+  const { data } = props;
   let arr = new Array(10).fill(0)
 
   return (

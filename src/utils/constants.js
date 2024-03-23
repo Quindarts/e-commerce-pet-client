@@ -5,3 +5,5 @@ export const PARAMS_FILTER = {
     minPrice: "min_price",
     maxPrice: "max_price",
 } 
+
+export const PRODUCTS_PER_PAGE = 10;

@@ -55,6 +55,7 @@ const TextField = (props) => {
         className={inputClass}
         name={name}
         id={id}
+        value = {value}
         placeholder={placeholder}
         {...register(id, validate)}
         {...restProps}
