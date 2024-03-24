@@ -49,7 +49,7 @@ const CartItem = (props) => {
       <tr className="section-cart__item">
         <td className="section-cart__item-thumbnail">
           <Link to={`/product-detail/${itemCart._id}`}>
-            <img src={demo} alt={itemCart.name} />
+            <img src={itemCart.images[0].url} alt={itemCart.name} />
           </Link>
           <Button
             className="section-cart__item-btnClose"
@@ -62,7 +62,7 @@ const CartItem = (props) => {
         </td>
         <td className="section-cart__item-name">
           <div>
-            <Link className="section-cart__item-title">
+            <Link className="section-cart__item-title" to={`/product-detail/${itemCart._id}`}>
               {itemCart.name} - {itemCart.dimensions.weight} lbs
             </Link>
             <div className="section-cart__item-brand">{itemCart.brand}</div>

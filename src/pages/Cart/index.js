@@ -4,6 +4,7 @@ import CartDetail from './CartDetail'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCartItems } from '../../store/slice/cartSlice'
 import CartTotal from './CartTotal'
+import Loading from '../../components/Loading'
 
 export const UserContext = createContext()
 
@@ -11,6 +12,9 @@ const Cart = () => {
   const dispatch = useDispatch()
   const userState = useSelector((state) => state.auth)
   const user = userState.user.user
+  const cartState = useSelector((state) => state.cart)
+
+  const { cartItems, message, isLoading, cartTotalAmount } = cartState
 
   useEffect(() => {
     dispatch(getAllCartItems())
@@ -24,14 +28,18 @@ const Cart = () => {
       </div>
 
       <div className="section-cart">
-        <div className="section-cart__wrap">
-          <div className="section-cart__col-1">
-            <CartDetail />
+        {!isLoading ? (
+          <div className="section-cart__wrap">
+            <div className="section-cart__col-1">
+              <CartDetail listCart={cartItems} message={message} />
+            </div>
+            <div className="section-cart__col-2">
+              <CartTotal cartTotalAmount={cartTotalAmount} />
+            </div>
           </div>
-          <div className="section-cart__col-2">
-            <CartTotal />
-          </div>
-        </div>
+        ) : (
+          <Loading />
+        )}
       </div>
     </UserContext.Provider>
   )

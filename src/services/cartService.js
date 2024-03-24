@@ -29,8 +29,19 @@ const updateProductCartById = async (userId, productId, data) => {
   return null;
 }
 
+const countCart = (cartItems) => {
+  let cartTotalQuantity = 0
+  let cartTotalAmount = 0
+  cartItems.forEach((product) => {
+    cartTotalQuantity += product.quantity
+    cartTotalAmount += product.quantity * product.price
+  })
+  return { cartTotalQuantity, cartTotalAmount }
+}
+
 export const cartService = {
   getCart,
   getAllProductCart,
-  updateProductCartById
+  updateProductCartById,
+  countCart,
 }
