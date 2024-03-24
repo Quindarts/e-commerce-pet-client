@@ -29,14 +29,20 @@ const Cart = () => {
 
       <div className="section-cart">
         {!isLoading ? (
-          <div className="section-cart__wrap">
-            <div className="section-cart__col-1">
-              <CartDetail listCart={cartItems} message={message} />
-            </div>
-            <div className="section-cart__col-2">
-              <CartTotal cartTotalAmount={cartTotalAmount} />
-            </div>
-          </div>
+          <>
+            {cartItems.length > 0 ? (
+              <div className="section-cart__wrap">
+                <div className="section-cart__col-1">
+                  <CartDetail listCart={cartItems} message={message} />
+                </div>
+                <div className="section-cart__col-2">
+                  <CartTotal cartTotalAmount={cartTotalAmount} />
+                </div>
+              </div>
+            ) : (
+              <h1>Không có sản phẩm trong giỏ hàng</h1>
+            )}
+          </>
         ) : (
           <Loading />
         )}
