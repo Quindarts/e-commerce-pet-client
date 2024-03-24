@@ -229,15 +229,12 @@
 
             a {
                 display: inline-block;
-                margin-left: -15px;
+                // margin-left: -15px;
             }
 
             img {
                 max-width: unset;
                 height: 60px !important;
-                -o-object-position: center;
-                object-position: center;
-                -o-object-fit: cover;
                 object-fit: cover;
                 aspect-ratio: 16/9;
             }
@@ -251,10 +248,15 @@
             line-height: 20px;
             letter-spacing: 0.005em;
             color: $blue-main;
+            // padding-left: 20px !important;
         }
 
         &-title {
             color: $blue-main;
+
+            &:hover {
+                color: $green-1-hover-text;
+            }
         }
 
         &-brand {
@@ -295,7 +297,7 @@
             display: flex;
             width: 100%;
             flex-wrap: wrap;
-            padding-left: 90px;
+            padding-left: 110px;
             align-items: center;
             padding-bottom: 20px;
             margin-bottom: 15px;
@@ -321,6 +323,7 @@
 
             &-name {
                 margin-bottom: 2.2rem;
+                // margin-left: 20px !important;
             }
 
             &-quantity {

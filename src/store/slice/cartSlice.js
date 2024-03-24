@@ -5,6 +5,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 const initialState = {
   cartItems: [],
   cartTotalQuantity: 0,
+  cartTotalAmount: 0,
   isLoading: false,
   isSuccess: false,
   isError: false,
@@ -15,7 +16,13 @@ export const getAllCartItems = createAsyncThunk(
   'cart/getAllProducts',
   async (thunkApi) => {
     try {
-      return cartService.getAllProductCart()
+      const products = await cartService.getAllProductCart()
+      const { cartTotalQuantity, cartTotalAmount } = cartService.countCart(products)
+      return {
+        cartItems: products,
+        cartTotalQuantity: cartTotalQuantity,
+        cartTotalAmount: cartTotalAmount,
+      }
     } catch (error) {
       return thunkApi.rejectWithValue(error)
     }
@@ -37,16 +44,18 @@ export const updateQuantityCartItem = createAsyncThunk(
       const updatedCart = currentCart.map((cartItem) => {
         const foundPayloadItem = payloadCart.find(
           (payloadItem) => payloadItem.product_id === cartItem._id
-        );
-        return { ...cartItem, quantity: foundPayloadItem.quantity };
-      });
+        )
+        return { ...cartItem, quantity: foundPayloadItem.quantity }
+      })
 
-      return updatedCart;
+      const { cartTotalQuantity, cartTotalAmount } = cartService.countCart(updatedCart)
+
+      return {cartItems: updatedCart, cartTotalQuantity: cartTotalQuantity, cartTotalAmount: cartTotalAmount}
     } catch (error) {
-      return thunkApi.rejectWithValue(error);
+      return thunkApi.rejectWithValue(error)
     }
   }
-)
+);
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -61,7 +70,9 @@ export const cartSlice = createSlice({
         state.isLoading = false
         state.isError = false
         state.isSuccess = true
-        state.cartItems = action.payload
+        state.cartItems = action.payload.cartItems
+        state.cartTotalQuantity = action.payload.cartTotalQuantity
+        state.cartTotalAmount = action.payload.cartTotalAmount
       })
       .addCase(getAllCartItems.rejected, (state, action) => {
         state.isError = true
@@ -72,13 +83,15 @@ export const cartSlice = createSlice({
       .addCase(updateQuantityCartItem.pending, (state) => {
         state.isSuccess = false
         state.isLoading = true
-        state.message = ""
+        state.message = ''
       })
       .addCase(updateQuantityCartItem.fulfilled, (state, action) => {
         state.isSuccess = true
         state.isLoading = false
-        state.message = "Update cart successfully"
-        state.cartItems = action.payload
+        state.message = 'Update cart successfully'
+        state.cartItems = action.payload.cartItems
+        state.cartTotalQuantity = action.payload.cartTotalQuantity
+        state.cartTotalAmount = action.payload.cartTotalAmount
       })
       .addCase(updateQuantityCartItem.rejected, (state, action) => {
         state.isError = true
