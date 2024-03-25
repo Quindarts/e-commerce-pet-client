@@ -37,6 +37,14 @@ import populated2 from './svg/populated2.svg'
 
 import reviewerAvt1 from './images/review__avt1.jpg'
 
+import brand1 from './img/ricky-14.png'
+import brand2 from './img/ricky-15.png'
+import brand3 from './img/ricky-16.png'
+import brand4 from './img/ricky-17.png'
+import brand5 from './img/ricky-18.png'
+import brand6 from './img/ricky-19.png'
+import brand7 from './img/ricky-20.png'
+import brand8 from './img/ricky-21.png'
 const images = {
   logo: logo,
   widget1: widget1,
@@ -71,6 +79,15 @@ const images = {
   populated2: populated2,
   cateTabDogs: cateTabDogs,
   reviewerAvt1: reviewerAvt1,
+
+  brand1: brand1,
+  brand2: brand2,
+  brand3: brand3,
+  brand4: brand4,
+  brand5: brand5,
+  brand6: brand6,
+  brand7: brand7,
+  brand8: brand8,
 }
 
 export default images

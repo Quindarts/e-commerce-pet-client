@@ -15,14 +15,16 @@ import ProductQuickview from '../../components/Product/ProductQuickview'
 import { useDispatch, useSelector } from 'react-redux'
 import Button from '../../components/Button'
 import MarqueeRunning from '../../components/MarqueeRunning'
+import Brand from './Brand'
 
 const data = {
   id: '1',
   name: 'American Journey Landmark Chicken',
-  description: 'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
-  category: {name: "Food"},
-  brand: "Whole Hearted",
-  dimensions: {weight: 8},
+  description:
+    'Cats are natural carnivores, so they thrive on a diet that’s high in animal protein.',
+  category: { name: 'Food' },
+  brand: 'Whole Hearted',
+  dimensions: { weight: 8 },
   available: 200,
   price: 20,
 }
@@ -47,7 +49,7 @@ function Home() {
   return (
     <div>
       <HeroSection />
-      <TopProducts data={data}/>
+      <TopProducts data={data} />
       <MarqueeRunning />
       <ProductTab />
       <OurNews />
@@ -67,9 +69,7 @@ function Home() {
           handleProductModal={handleProductModal}
         />
       </Modal> */}
-      Home
-      <Link to="component"> Go to component page</Link>
-      <div style={{ width: '232px' }}></div>
+      <Brand />
     </div>
   )
 }
